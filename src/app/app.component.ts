@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingService } from './loading.service';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  constructor(
+    private loadingService: LoadingService,
+  ) { }
+
   ngOnInit(): void {
-    console.log(`Hello, world!`);
+    this.loadingService.turnLoadingOn();
   }
   title = 'coloradoquiz';
   }
