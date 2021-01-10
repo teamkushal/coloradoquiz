@@ -5,6 +5,7 @@ import { QuizService } from '../quiz.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-quiz',
@@ -18,7 +19,8 @@ export class QuizComponent implements OnInit {
   constructor(
     private api: QuizService,
     private _snackBar: MatSnackBar,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private title: Title
   ) {
     this.quiz = this.api.createDummyQuiz();
   }
@@ -30,11 +32,13 @@ export class QuizComponent implements OnInit {
       this.api.getQuiz();
       this.api.myObservable$.subscribe((response) => {
         this.quiz = response;
+        this.title.setTitle(response.title);
       });
     } else {
         this.api.getQuiz(environment.baseUrl, title);
         this.api.myObservable$.subscribe((response) => {
           this.quiz = response;
+          this.title.setTitle(response.title);
         });
     }
   }
