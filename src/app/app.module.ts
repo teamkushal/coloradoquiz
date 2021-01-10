@@ -9,12 +9,14 @@ import { environment } from '../environments/environment';
 import { MaterialModule } from './material/material.module';
 import { LoadingComponent } from './loading/loading.component';
 import { HomeComponent } from './home/home.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoadingComponent,
-    HomeComponent
+    HomeComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,
