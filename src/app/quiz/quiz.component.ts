@@ -29,7 +29,7 @@ export class QuizComponent implements OnInit {
 
   onClick(option: Option) {
     if (option.correct === true) {
-      this.openSnackBar(`Your answer is correct!`, `Dandy!`);
+      this.openSnackBar(`Your answer is correct! ${option?.more}`, `Dandy!`);
     } else {
       this.openSnackBar(`You picked ${option.text}.`, `Try again?`);
     }
