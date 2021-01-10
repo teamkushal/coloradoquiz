@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Quiz } from '../quiz';
 import { Option } from '../option';
 import { QuizService } from '../quiz.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-quiz',
@@ -13,7 +14,8 @@ export class QuizComponent implements OnInit {
   quiz: Quiz;
 
   constructor(
-    private api: QuizService
+    private api: QuizService,
+    private _snackBar: MatSnackBar
   ) {
     this.quiz = this.api.createDummyQuiz();
   }
@@ -27,10 +29,16 @@ export class QuizComponent implements OnInit {
 
   onClick(option: Option) {
     if (option.correct === true) {
-      alert(`Your answer is correct!`);
+      this.openSnackBar(`Your answer is correct!`, `Dandy!`);
     } else {
-      alert(`You picked ${option.text}. Try again?`);
+      this.openSnackBar(`You picked ${option.text}.`, `Try again?`);
     }
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 
 }
