@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Quiz } from '../quiz';
 import { QuizService } from '../quiz.service';
 
 @Component({
@@ -8,12 +9,19 @@ import { QuizService } from '../quiz.service';
 })
 export class QuizComponent implements OnInit {
 
+  quiz: Quiz;
+
   constructor(
     private api: QuizService
-  ) { }
+  ) {
+    this.quiz = this.api.createDummyQuiz();
+  }
 
   ngOnInit(): void {
     this.api.getQuiz();
+    this.api.myObservable$.subscribe((response) => {
+      this.quiz = response;
+    });
   }
 
 }

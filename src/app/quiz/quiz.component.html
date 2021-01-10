@@ -1,1 +1,14 @@
-<p>quiz works!</p>
+<article>
+    <h1>
+        {{ quiz?.title | uppercase }}
+    </h1>
+    <p>
+        {{ quiz?.description }}
+    </p>
+
+    <div *ngFor="let question of quiz?.questions">
+        <p>
+            {{ quesiton?.question }}
+        </p>
+    </div>
+</article>
