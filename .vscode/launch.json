@@ -1,0 +1,44 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "ng serve",
+        "type": "firefox",
+        "request": "launch",
+        "preLaunchTask": "npm: start",
+        "url": "http://localhost:4200/",
+        "webRoot": "${workspaceFolder}",
+        "pathMappings": [
+          {
+            "url": "webpack:///src",
+            "path": "${workspaceFolder}/src"
+          },
+          {
+            "url": "webpack:///src",
+            "path": "${workspaceFolder}/src"
+          },
+          {
+            "url": "webpack:///src",
+            "path": "${workspaceFolder}/src"
+          }
+        ]
+      },
+      {
+        "name": "ng test",
+        "type": "firefox",
+        "request": "launch",
+        "url": "http://localhost:9876/debug.html",
+        "webRoot": "${workspaceFolder}"
+      },
+      {
+        "name": "ng e2e",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder}/node_modules/protractor/bin/protractor",
+        "protocol": "inspector",
+        "args": [
+          "${workspaceFolder}/e2e/protractor.conf.js"
+        ]
+      }
+    ]
+  }
