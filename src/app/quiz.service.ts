@@ -12,7 +12,7 @@ export class QuizService {
   public myObservable$: Observable<Quiz>;
   private subscription: Subscription = new Subscription();
 
-  jsonUrl: string = '/assets/quiz/us-history.json';
+  baseUrl: string = '/assets/quiz';
 
   constructor(
     private http: HttpClient,
@@ -57,8 +57,8 @@ export class QuizService {
   };
   }
 
-  getQuiz(jsonUrl: string = this.jsonUrl): void {
-    const myObservable = this.http.get(jsonUrl) as Observable<Quiz>;
+  getQuiz(baseUrl: string = this.baseUrl, subject: string = `us-history`): void {
+    const myObservable = this.http.get(`${baseUrl}/${subject}.json`) as Observable<Quiz>;
     this.loadingService.showLoaderUntilCompleted(myObservable).subscribe((response: Quiz) => {
       this.myBehaviorSubject.next(response);
     });

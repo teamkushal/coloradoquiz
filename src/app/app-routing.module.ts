@@ -9,6 +9,10 @@ const routes: Routes = [
     'component': QuizComponent
   },
   {
+    'path': 'quiz/:title',
+    'component': QuizComponent
+  },
+  {
     'path': 'home',
     'component': HomeComponent
   },

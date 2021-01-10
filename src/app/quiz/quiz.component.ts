@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Quiz } from '../quiz';
 import { Option } from '../option';
 import { QuizService } from '../quiz.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-quiz',
@@ -15,16 +17,26 @@ export class QuizComponent implements OnInit {
 
   constructor(
     private api: QuizService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private activatedRoute: ActivatedRoute
   ) {
     this.quiz = this.api.createDummyQuiz();
   }
 
   ngOnInit(): void {
-    this.api.getQuiz();
-    this.api.myObservable$.subscribe((response) => {
-      this.quiz = response;
-    });
+    console.log({ title: this.activatedRoute.snapshot.params['title'] });
+    const title = this.activatedRoute.snapshot.params['title'];
+    if (title === undefined) {
+      this.api.getQuiz();
+      this.api.myObservable$.subscribe((response) => {
+        this.quiz = response;
+      });
+    } else {
+        this.api.getQuiz(environment.baseUrl, title);
+        this.api.myObservable$.subscribe((response) => {
+          this.quiz = response;
+        });
+    }
   }
 
   onClick(option: Option) {
