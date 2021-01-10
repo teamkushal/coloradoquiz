@@ -10,6 +10,7 @@ import { MaterialModule } from './material/material.module';
 import { LoadingComponent } from './loading/loading.component';
 import { HomeComponent } from './home/home.component';
 import { QuizComponent } from './quiz/quiz.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { QuizComponent } from './quiz/quiz.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
