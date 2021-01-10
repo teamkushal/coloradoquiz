@@ -60,7 +60,6 @@ export class QuizService {
   getQuiz(jsonUrl: string = this.jsonUrl): void {
     const myObservable = this.http.get(jsonUrl) as Observable<Quiz>;
     this.loadingService.showLoaderUntilCompleted(myObservable).subscribe((response: Quiz) => {
-      console.log({ response });
       this.myBehaviorSubject.next(response);
     });
   }
