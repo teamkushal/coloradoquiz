@@ -16,6 +16,9 @@ export class QuizComponent implements OnInit {
 
   quiz: Quiz;
 
+  score: boolean[];
+  scorePercentage: number;
+
   constructor(
     private api: QuizService,
     private _snackBar: MatSnackBar,
@@ -23,6 +26,18 @@ export class QuizComponent implements OnInit {
     private title: Title
   ) {
     this.quiz = this.api.createDummyQuiz();
+    this.score = new Array<boolean>();
+    this.scorePercentage = this.calculateScorePercentage(this.score, this.quiz.questions.length);
+  }
+
+  calculateScorePercentage(score: boolean[], total: number): number {
+    let result = 0;
+    score.forEach(response => {
+      if (response) {
+        result += 1;
+      }
+    });
+    return result / total * 100;
   }
 
   ngOnInit(): void {
@@ -33,27 +48,33 @@ export class QuizComponent implements OnInit {
       this.api.myObservable$.subscribe((response) => {
         this.quiz = response;
         this.title.setTitle(response.title);
+        this.scorePercentage = this.calculateScorePercentage(this.score, this.quiz.questions.length);
       });
     } else {
         this.api.getQuiz(environment.baseUrl, title);
         this.api.myObservable$.subscribe((response) => {
           this.quiz = response;
           this.title.setTitle(response.title);
+          this.scorePercentage = this.calculateScorePercentage(this.score, this.quiz.questions.length);
         });
     }
   }
 
-  onClick(option: Option) {
+  onClick(questionNumber: number, option: Option) {
     if (option.correct === true) {
+      this.score[questionNumber - 1] = true;
       this.openSnackBar(`Your answer is correct! ${option?.more}`, `Dandy!`);
     } else {
-      this.openSnackBar(`You picked ${option.text}.`, `Try again?`);
+      this.score[questionNumber - 1] = false;
+      this.openSnackBar(`You picked ${option.text}. That is not correct. ${option?.more}`, `Try again?`);
     }
+    this.scorePercentage = this.calculateScorePercentage(this.score, this.quiz.questions.length);
+    console.log({ score: this.scorePercentage });
   }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
-      duration: 2000,
+      duration: undefined,
     });
   }
 
