@@ -69,7 +69,6 @@ export class QuizComponent implements OnInit {
       this.openSnackBar(`You picked ${option.text}. That is not correct. ${option?.more}`, `Try again?`);
     }
     this.scorePercentage = this.calculateScorePercentage(this.score, this.quiz.questions.length);
-    console.log({ score: this.scorePercentage });
   }
 
   openSnackBar(message: string, action: string) {
