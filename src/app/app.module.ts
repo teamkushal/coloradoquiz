@@ -11,13 +11,15 @@ import { LoadingComponent } from './loading/loading.component';
 import { HomeComponent } from './home/home.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { HttpClientModule } from '@angular/common/http';
+import { KeyIndustriesComponent } from './key-industries/key-industries.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoadingComponent,
     HomeComponent,
-    QuizComponent
+    QuizComponent,
+    KeyIndustriesComponent
   ],
   imports: [
     BrowserModule,
