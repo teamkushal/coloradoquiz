@@ -33,11 +33,10 @@ section {
     }
 
     &.odd, &.even {
-        display: flex;
-        flex-direction:row;
         background-image: url("https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png");
         background-repeat: no-repeat;
         background-position-x: center;
+        max-width: 100%;
         h2 {
             text-transform: uppercase;
             color: $body-header;
@@ -50,23 +49,20 @@ section {
             color: $body-paragraph;
             span {
                 &.big-statistics {
-                    display: inline-block;
-                    margin-top: 2rem;
-                    font-size: 6rem;
+                    line-height: 5rem;
+                    font-size: 5rem;
                     color: $body-emphasis;
-                    font-weight: 900;
+                    font-weight: 700;
                 }
             }
         }
         .left {
-            border: 2px dashed blue;
-            width: 90%;
+            max-width: 30rem;
         }
         .right {
-            border: 2px dotted red;
-            margin-left: 20%;
             padding-top: 4rem;
-            width: 100%;
+            max-width: 30rem;
+            float: right;
             .source {
                 color: $body-source-color;
             }
