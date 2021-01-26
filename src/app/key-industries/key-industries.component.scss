@@ -6,74 +6,50 @@ $body-emphasis: $header-background;
 $body-paragraph: #000000;
 $body-source-color: #FF6D00;
 
+$body-background: #FFF3E0;
+
 $odd-section-background: #FFECB3;
 $odd-section-foreground: #212121;
 
 $even-section-background: #FFB74D;
 
-section {
-    max-width: 100%;
-    &.header {
-        background-color: $header-background; 
+article {
+    display: grid;
+    grid-template-rows: 1fr;
+    min-height: 100vh;
+    background-color: $body-background;
+    section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .header {
+        background-color: $header-background;
         color: $header-foreground;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        min-height: 20rem;
-        background-image: url("https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png");
-        background-repeat: repeat-x space;
+        display: grid;
+        grid-template-areas: centered-header-text;
+        min-height: 30vh;
         h1 {
-            font-size: 3rem;
-            text-align: center;
-            max-width: 15rem;
-            line-height: 4rem;
+            grid-area: centered-header-text;
+            font-size: 8vh;
             font-weight: 900;
+            line-height: 10vh;
+            max-width: 20rem;
+            text-align: center;
         }
     }
-
-    &.odd, &.even {
-        background-image: url("https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png");
-        background-repeat: no-repeat;
-        background-position-x: center;
-        max-width: 100%;
-        h2 {
-            text-transform: uppercase;
-            color: $body-header;
-            font-size: 2rem;
-            line-height: 3rem;
-            padding: 1rem 2rem;
-        }
-        p {
-            padding: 0 2rem;
-            color: $body-paragraph;
-            span {
-                &.big-statistics {
-                    line-height: 5rem;
-                    font-size: 5rem;
-                    color: $body-emphasis;
-                    font-weight: 700;
-                }
-            }
-        }
-        .left {
-            max-width: 30rem;
-        }
-        .right {
-            padding-top: 4rem;
-            max-width: 30rem;
-            float: right;
-            .source {
-                color: $body-source-color;
-            }
-        }
-    }
-
-    &.odd {
+    .odd {
         background-color: $odd-section-background;
     }
-
-    &.even {
+    .even {
         background-color: $even-section-background;
+    }
+    @media (min-width: 40em) {
+       
+        section {
+            h2 {
+                text-transform: uppercase;
+            }
+        }
+        
     }
 }
