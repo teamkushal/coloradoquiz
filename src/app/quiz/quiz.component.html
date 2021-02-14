@@ -10,16 +10,18 @@
         Your score so far: {{ scorePercentage | number:'1.0-0' }} out of 100.
     </p>
 
-    <div *ngFor="let question of quiz?.questions">
-        <h2>
-            {{question?.id}} - {{ question?.question }}
-        </h2>
-        <div *ngFor="let option of question?.options">
-            <div class="button-container">
-                <button mat-flat-button color="accent" (click)="onClick(question.id, option)">
-                    {{ option?.label }}. {{ option?.text }}
-                </button>
+    <mat-vertical-stepper #stepper>
+        <mat-step *ngFor="let question of quiz?.questions">
+            <h2>
+                {{question?.id}} - {{ question?.question }}
+            </h2>
+            <div *ngFor="let option of question?.options">
+                <div class="button-container">
+                    <button mat-flat-button color="accent" (click)="onClick(question.id, option)">
+                        {{ option?.label }}. {{ option?.text }}
+                    </button>
+                </div>
             </div>
-        </div>
-    </div>
+        </mat-step>
+    </mat-vertical-stepper>
 </article>
