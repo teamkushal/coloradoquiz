@@ -1,0 +1,33 @@
+<article>
+    <h1>
+        {{news.title | titlecase}}
+    </h1>
+    <p>
+        Published on
+        <time datetime='news.dateCreated' title="{{news.dateCreated | date: 'long'}}">
+            {{news.dateCreated | date }}
+        </time>.
+    </p>
+    <section *ngFor="let newsItem of news.newsItems">
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar>
+                    <img src='{{newsItem.poster}}'>
+                </div>
+                <mat-card-title>{{newsItem.title}}</mat-card-title>
+                <mat-card-subtitle>{{newsItem.summary}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="{{newsItem.poster}}" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <p *ngFor="let paragraph of newsItem.fullText">
+                    {{paragraph}}
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary">LIKE</button>
+                <button mat-raised-button color="accent">SHARE</button>
+            </mat-card-actions>
+        </mat-card>
+
+    </section>
+</article>

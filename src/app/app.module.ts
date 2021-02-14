@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { HttpClientModule } from '@angular/common/http';
 import { KeyIndustriesComponent } from './key-industries/key-industries.component';
+import { NewsComponent } from './news/news.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { KeyIndustriesComponent } from './key-industries/key-industries.componen
     LoadingComponent,
     HomeComponent,
     QuizComponent,
-    KeyIndustriesComponent
+    KeyIndustriesComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,
