@@ -32,6 +32,7 @@ export class NewsService {
           "title": "First story",
           "thumbnail": "/assets/icons/icon-96x96.png",
           "poster": "/assets/icons/icon-512x512.png",
+          "posterAltText": "Angular logo",
           "summary": "This is the first news story",
           "fullText": [
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec erat nunc, eleifend sed faucibus in, mollis in arcu. Vivamus non orci mi. Vivamus finibus dolor lorem, elementum hendrerit velit elementum vitae. Suspendisse potenti. Fusce lorem lacus, vestibulum non ante quis, ornare hendrerit ex. In quis euismod odio. Fusce nec porttitor tellus, eget aliquam dui. Maecenas interdum, nibh sit amet feugiat pulvinar, augue erat gravida quam, nec laoreet erat felis elementum turpis. Suspendisse efficitur nunc nec dolor fermentum, nec elementum enim aliquam. Etiam rutrum laoreet nunc, quis vehicula odio interdum ac. Integer ac nisi cursus leo commodo hendrerit eu quis metus.",
@@ -46,6 +47,7 @@ export class NewsService {
           "title": "Second story",
           "thumbnail": "/assets/icons/icon-96x96.png",
           "poster": "/assets/icons/icon-512x512.png",
+          "posterAltText": "Angular logo",
           "summary": "This is the second news story",
           "fullText": [
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec erat nunc, eleifend sed faucibus in, mollis in arcu. Vivamus non orci mi. Vivamus finibus dolor lorem, elementum hendrerit velit elementum vitae. Suspendisse potenti. Fusce lorem lacus, vestibulum non ante quis, ornare hendrerit ex. In quis euismod odio. Fusce nec porttitor tellus, eget aliquam dui. Maecenas interdum, nibh sit amet feugiat pulvinar, augue erat gravida quam, nec laoreet erat felis elementum turpis. Suspendisse efficitur nunc nec dolor fermentum, nec elementum enim aliquam. Etiam rutrum laoreet nunc, quis vehicula odio interdum ac. Integer ac nisi cursus leo commodo hendrerit eu quis metus.",
@@ -60,6 +62,7 @@ export class NewsService {
           "title": "Third story",
           "thumbnail": "/assets/icons/icon-96x96.png",
           "poster": "/assets/icons/icon-512x512.png",
+          "posterAltText": "Angular logo",
           "summary": "This is the third news story",
           "fullText": [
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec erat nunc, eleifend sed faucibus in, mollis in arcu. Vivamus non orci mi. Vivamus finibus dolor lorem, elementum hendrerit velit elementum vitae. Suspendisse potenti. Fusce lorem lacus, vestibulum non ante quis, ornare hendrerit ex. In quis euismod odio. Fusce nec porttitor tellus, eget aliquam dui. Maecenas interdum, nibh sit amet feugiat pulvinar, augue erat gravida quam, nec laoreet erat felis elementum turpis. Suspendisse efficitur nunc nec dolor fermentum, nec elementum enim aliquam. Etiam rutrum laoreet nunc, quis vehicula odio interdum ac. Integer ac nisi cursus leo commodo hendrerit eu quis metus.",
@@ -73,7 +76,7 @@ export class NewsService {
     };
   }
 
-  getNews(baseUrl: string = this.baseUrl, subject: string = `top-stories`): void {
+  getNews(subject: string = `top-stories`, baseUrl: string = this.baseUrl): void {
     const myObservable = this.http.get(`${baseUrl}/${subject}.json`) as Observable<News>;
     this.loadingService.showLoaderUntilCompleted(myObservable).subscribe((response: News) => {
       this.myBehaviorSubject.next(response);
