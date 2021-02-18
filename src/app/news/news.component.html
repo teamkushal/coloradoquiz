@@ -17,7 +17,7 @@
                 <mat-card-title>{{newsItem.title}}</mat-card-title>
                 <mat-card-subtitle>{{newsItem.summary}}</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image src="{{newsItem.poster}}" alt="newsItem.posterAltText">
+            <img mat-card-image src="{{newsItem.poster}}" alt="{{newsItem.posterAltText}}">
             <mat-card-content>
                 <p *ngFor="let paragraph of newsItem.fullText">
                     {{paragraph}}
