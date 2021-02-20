@@ -4,9 +4,7 @@
     </h1>
     <p>
         Published on
-        <time datetime='news.dateCreated' title="{{news.dateCreated | date: 'long'}}">
-            {{news.dateCreated | date }}
-        </time>.
+        <time datetime='news.dateCreated' title="{{news.dateCreated | date: 'long'}}">{{news.dateCreated | date }}</time>.
     </p>
     <section *ngFor="let newsItem of news.newsItems">
         <mat-card>
