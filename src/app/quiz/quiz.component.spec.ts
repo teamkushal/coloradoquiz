@@ -16,7 +16,7 @@ describe('QuizComponent', () => {
       providers: [
         {
           provide: ActivatedRoute, useValue: {
-            snapshot: { params: { title: "history" } }
+            snapshot: { params: { title: 'history' } }
           }
         }]
     })

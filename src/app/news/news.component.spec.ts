@@ -16,7 +16,7 @@ describe('NewsComponent', () => {
       providers: [
         {
           provide: ActivatedRoute, useValue: {
-            snapshot: { params: { title: "top-stories" } }
+            snapshot: { params: { title: 'top-stories' } }
           }
         }]
     })

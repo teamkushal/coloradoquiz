@@ -7,32 +7,32 @@ import { QuizComponent } from './quiz/quiz.component';
 
 const routes: Routes = [
   {
-    'path': 'blog/key-industries',
-    'component': KeyIndustriesComponent
+    path: 'blog/key-industries',
+    component: KeyIndustriesComponent
   },
   {
-    'path': 'news',
-    'component': NewsComponent
+    path: 'news',
+    component: NewsComponent
   },
   {
-    'path': 'news/:title',
-    'component': NewsComponent
+    path: 'news/:title',
+    component: NewsComponent
   },
   {
-    'path': 'quiz',
-    'component': QuizComponent
+    path: 'quiz',
+    component: QuizComponent
   },
   {
-    'path': 'quiz/:title',
-    'component': QuizComponent
+    path: 'quiz/:title',
+    component: QuizComponent
   },
   {
-    'path': 'home',
-    'component': HomeComponent
+    path: 'home',
+    component: HomeComponent
   },
   {
-    'path': '',
-    'component': HomeComponent
+    path: '',
+    component: HomeComponent
   }
 ];
 

@@ -25,8 +25,8 @@ export class NewsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log({ title: this.activatedRoute.snapshot.params['title'] });
-    const title = this.activatedRoute.snapshot.params['title'];
+    console.log({ title: this.activatedRoute.snapshot.params.title });
+    const title = this.activatedRoute.snapshot.params.title;
     this.api.getNews(title);
     this.api.myObservable$.subscribe((response) => {
       console.log({ response });
@@ -34,7 +34,7 @@ export class NewsComponent implements OnInit {
       this.title.setTitle(`News | ${response.title}`);
     });
   }
-  
+
   openSnackBar(message: string, action: string, duration: number) {
     this._snackBar.open(message, action, {
       duration: duration * 1000,

@@ -41,8 +41,8 @@ export class QuizComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log({ title: this.activatedRoute.snapshot.params['title'] });
-    const title = this.activatedRoute.snapshot.params['title'];
+    console.log({ title: this.activatedRoute.snapshot.params.title });
+    const title = this.activatedRoute.snapshot.params.title;
     if (title === undefined) {
       this.api.getQuiz();
       this.api.myObservable$.subscribe((response) => {

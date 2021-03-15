@@ -1,7 +1,7 @@
-import { NewsItem } from "./news-item";
+import { NewsItem } from './news-item';
 
 export interface News {
-    title: string,
-    dateCreated: string,
-    newsItems: NewsItem[]
+    title: string;
+    dateCreated: string;
+    newsItems: NewsItem[];
 }

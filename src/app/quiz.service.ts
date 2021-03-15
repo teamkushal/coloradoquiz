@@ -12,7 +12,7 @@ export class QuizService {
   public myObservable$: Observable<Quiz>;
   private subscription: Subscription = new Subscription();
 
-  baseUrl: string = '/assets/quiz';
+  baseUrl = '/assets/quiz';
 
   constructor(
     private http: HttpClient,
@@ -24,32 +24,32 @@ export class QuizService {
 
   createDummyQuiz(): Quiz {
     return {
-      "title": "Loading...",
-      "description": "This is the placeholder quiz",
-      "questions": [
+      title: 'Loading...',
+      description: 'This is the placeholder quiz',
+      questions: [
           {
-              "id": 1,
-              "question": "Select the smallest number from the list",
-              "options": [
+              id: 1,
+              question: 'Select the smallest number from the list',
+              options: [
                   {
-                      "label": "A",
-                      "text": "1732",
-                      "correct": true
+                      label: 'A',
+                      text: '1732',
+                      correct: true
                   },
                   {
-                      "label": "B",
-                      "text": "1987",
-                      "correct": false
+                      label: 'B',
+                      text: '1987',
+                      correct: false
                   },
                   {
-                      "label": "C",
-                      "text": "1776",
-                      "correct": false
+                      label: 'C',
+                      text: '1776',
+                      correct: false
                   },
                   {
-                      "label": "D",
-                      "text": "2020",
-                      "correct": false
+                      label: 'D',
+                      text: '2020',
+                      correct: false
                   }
               ]
           }
