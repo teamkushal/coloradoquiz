@@ -17,7 +17,7 @@ export class NewsComponent implements OnInit {
 
   constructor(
     private api: NewsService,
-    private _snackBar: MatSnackBar,
+    private snackBar: MatSnackBar,
     private activatedRoute: ActivatedRoute,
     private title: Title
   ) {
@@ -36,7 +36,7 @@ export class NewsComponent implements OnInit {
   }
 
   openSnackBar(message: string, action: string, duration: number) {
-    this._snackBar.open(message, action, {
+    this.snackBar.open(message, action, {
       duration: duration * 1000,
     });
   }
