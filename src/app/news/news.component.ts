@@ -9,10 +9,9 @@ import { NewsService } from '../news.service';
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.scss']
+  styleUrls: ['./news.component.scss'],
 })
 export class NewsComponent implements OnInit {
-
   news: News;
 
   constructor(
@@ -35,18 +34,25 @@ export class NewsComponent implements OnInit {
     });
   }
 
-  openSnackBar(message: string, action: string, duration: number) {
+  openSnackBar(message: string, action: string, duration: number): void {
     this.snackBar.open(message, action, {
       duration: duration * 1000,
     });
   }
 
-  like(newsItem: NewsItem) {
-    this.openSnackBar(`Pretend that you have liked ${newsItem.title}.`, `Swell!`, 3);
+  like(newsItem: NewsItem): void {
+    this.openSnackBar(
+      `Pretend that you have liked ${newsItem.title}.`,
+      `Swell!`,
+      3
+    );
   }
 
-  share(newsItem: NewsItem) {
-    this.openSnackBar(`Pretend that you have shared ${newsItem.title}.`, `Dandy!`, 5);
+  share(newsItem: NewsItem): void {
+    this.openSnackBar(
+      `Pretend that you have shared ${newsItem.title}.`,
+      `Dandy!`,
+      5
+    );
   }
-
 }
