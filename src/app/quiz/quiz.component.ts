@@ -21,7 +21,7 @@ export class QuizComponent implements OnInit {
 
   constructor(
     private api: QuizService,
-    private _snackBar: MatSnackBar,
+    private snackBar: MatSnackBar,
     private activatedRoute: ActivatedRoute,
     private title: Title
   ) {
@@ -60,7 +60,7 @@ export class QuizComponent implements OnInit {
     }
   }
 
-  onClick(questionNumber: number, option: Option) {
+  onClick(questionNumber: number, option: Option): void {
     if (option.correct === true) {
       this.score[questionNumber - 1] = true;
       this.openSnackBar(`Your answer is correct! ${option?.more}`, `Dandy!`);
@@ -71,8 +71,8 @@ export class QuizComponent implements OnInit {
     this.scorePercentage = this.calculateScorePercentage(this.score, this.quiz.questions.length);
   }
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
+  openSnackBar(message: string, action: string): void {
+    this.snackBar.open(message, action, {
       duration: undefined,
     });
   }
