@@ -1,27 +1,37 @@
-<article>
+<mat-toolbar color="primary">
+  <a routerLink="/">Colorado Quiz</a>
+  <a routerLink="/quiz/us-history">US History</a>
+  <a routerLink="/quiz/us-geography">US Geography</a>
+  <a routerLink="/quiz/us-civics">US Civics</a>
+</mat-toolbar>
+<mat-card>
+  <article>
     <h1>
-        {{ quiz?.title | uppercase }}
+      {{ quiz?.title | uppercase }}
     </h1>
     <p>
-        {{ quiz?.description }}
+      {{ quiz?.description }}
     </p>
 
-    <p>
-        Your score so far: {{ scorePercentage | number:'1.0-0' }} out of 100.
-    </p>
+    <p>Your score so far: {{ scorePercentage | number: "1.0-0" }} out of 100.</p>
 
     <mat-vertical-stepper #stepper>
-        <mat-step *ngFor="let question of quiz?.questions">
-            <h2>
-                {{ question?.question }}
-            </h2>
-            <div *ngFor="let option of question?.options">
-                <div class="button-container">
-                    <button mat-raised-button color="primary" (click)="onClick(question.id, option)">
-                        {{ option?.label }}. {{ option?.text }}
-                    </button>
-                </div>
-            </div>
-        </mat-step>
+      <mat-step *ngFor="let question of quiz?.questions">
+        <h2>
+          {{ question?.question }}
+        </h2>
+        <div *ngFor="let option of question?.options">
+          <div class="button-container">
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="onClick(question.id, option)"
+            >
+              {{ option?.label }}. {{ option?.text }}
+            </button>
+          </div>
+        </div>
+      </mat-step>
     </mat-vertical-stepper>
-</article>
+  </article>
+</mat-card>

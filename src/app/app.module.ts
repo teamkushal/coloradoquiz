@@ -13,6 +13,7 @@ import { QuizComponent } from './quiz/quiz.component';
 import { HttpClientModule } from '@angular/common/http';
 import { KeyIndustriesComponent } from './key-industries/key-industries.component';
 import { NewsComponent } from './news/news.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { NewsComponent } from './news/news.component';
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
