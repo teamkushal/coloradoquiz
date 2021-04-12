@@ -48,10 +48,18 @@ export class QuizComponent implements OnInit {
     const myNavigationEnd$ = this.router.events.pipe(
       filter((e) : e is NavigationEnd => e instanceof NavigationEnd),
       map(e => {
-        console.log({ after: e.urlAfterRedirects });
+          this.getData();
       })
     );
+    myNavigationEnd$.subscribe(x => {
+      console.log(`Current timestamp: ${new Date()}.`)
+    });
+    this.getData();
+  }
+
+  private getData(): void {
     const title = this.activatedRoute.snapshot.params.title;
+    console.log({ title });
     if (title === undefined) {
       this.api.getQuiz();
       this.api.myObservable$.subscribe((response) => {
