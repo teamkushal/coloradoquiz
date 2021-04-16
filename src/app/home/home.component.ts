@@ -14,9 +14,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle(`Colorado Quiz`);
-    const inspector = require('@inspector-apm/inspector-nodejs')({
-      ingestionKey: 'd6a8a0ece76f65ade858c33d23661b60'
-    });
   }
 
 }
