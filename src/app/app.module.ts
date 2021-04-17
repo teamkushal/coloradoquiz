@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { KeyIndustriesComponent } from './key-industries/key-industries.component';
 import { NewsComponent } from './news/news.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     QuizComponent,
     KeyIndustriesComponent,
-    NewsComponent
+    NewsComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
