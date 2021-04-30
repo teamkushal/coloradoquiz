@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd ~/src/angular/coloradoquiz/;
-time yarn run ng update @angular/core @angular/cli @angular/cdk @angular/material @angular/localize rxjs;
+time yarn run ng update @angular/core @angular/cli @angular/cdk @angular/material @angular/localize;
 date >> README.md;
 git add .;
 git commit -m "update angular";
