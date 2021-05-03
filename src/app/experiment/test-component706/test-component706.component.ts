@@ -1,0 +1,15 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-test-component706',
+  templateUrl: './test-component706.component.html',
+  styleUrls: ['./test-component706.component.scss']
+})
+export class TestComponent706Component implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
