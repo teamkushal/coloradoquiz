@@ -4015,6 +4015,7 @@ import { TestComponent3997Component } from './experiment/test-component3997/test
 import { TestComponent3998Component } from './experiment/test-component3998/test-component3998.component';
 import { TestComponent3999Component } from './experiment/test-component3999/test-component3999.component';
 import { TestComponent4000Component } from './experiment/test-component4000/test-component4000.component';
+import { PlaygroundComponent } from './playground/playground.component';
 
 @NgModule({
   declarations: [
@@ -8024,7 +8025,8 @@ import { TestComponent4000Component } from './experiment/test-component4000/test
     TestComponent3997Component,
     TestComponent3998Component,
     TestComponent3999Component,
-    TestComponent4000Component
+    TestComponent4000Component,
+    PlaygroundComponent
   ],
   imports: [
     BrowserModule,
