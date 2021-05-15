@@ -1,6 +1,8 @@
 #!/bin/bash
 
 cd ~/src/angular/coloradoquiz/;
+free -h;
+export NODE_OPTIONS="--max-old-space-size=6144";
 time yarn run ng update @angular/core @angular/cli @angular/material @angular/localize;
 date >> README.md;
 git add .;
