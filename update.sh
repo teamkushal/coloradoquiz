@@ -1,6 +1,7 @@
 #!/bin/bash
 
 free -h;
+source ~/.nvm/nvm.sh;
 time nvm install --lts;
 time nvm use --lts;
 time npm install --global @angular/cli yarn;
