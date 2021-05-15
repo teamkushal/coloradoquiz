@@ -9,5 +9,5 @@ git add .;
 git commit -m "update angular";
 git pull --rebase origin master --strategy-option=ours;
 git push origin master;
-time yarn run ng build --prod;
+time yarn run ng build --configuration production;
 time yarn run ng test;
