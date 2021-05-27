@@ -45,3 +45,29 @@ real    1m18.937s
 user    2m16.110s
 sys     0m5.986s
 ```
+
+build succeeds with node options
+
+```bash
+$ export NODE_OPTIONS="--max-old-space-size=6144";time yarn run ng build --configuration production > locallog/build.txt
+Warning: Support was requested for IE 11 in the project's browserslist configuration. IE 11 support is deprecated since Angular v12.
+For more information, see https://angular.io/guide/browser-support
+⠹ Generating browser application bundles (phase: building)...: The same color styles are generated multiple times. Read more about how style duplication can be avoided in a dedicated guide. https://github.com/angular/components/blob/master/guides/duplicate-theming-styles.md
+    node_modules/@angular/material/core/theming/_theming.scss 289:7   private-check-duplicate-theme-styles()
+    node_modules/@angular/material/core/theming/_all-theme.scss 42:3  all-component-themes()
+    src/styles.scss 58:1                                              root stylesheet
+
+✔ Browser application bundle generation complete.
+✔ ES5 bundle generation complete.
+✔ Copying assets complete.
+✔ Index html generation complete.
+✔ Service worker generation complete.
+
+Warning: bundle initial-es5 exceeded maximum budget. Budget 2.00 MB was not met by 367.53 kB with a total of 2.36 MB.
+
+
+
+real    5m36.307s
+user    8m14.248s
+sys     0m15.031s
+```
