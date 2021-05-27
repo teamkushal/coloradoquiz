@@ -1,15 +1,7 @@
-# Coloradoquiz
+yarn run v1.22.10
+$ ng build --configuration production
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
 
-This project is live at [https://coloradoquiz.web.app](https://coloradoquiz.web.app "colorado!") 
-thanks to Firebase. 
-
-CI Status: 
-
-![Build](https://github.com/teamkushal/coloradoquiz/workflows/Deploy%20to%20Firebase%20Hosting%20on%20merge/badge.svg)
-
-Build fails
-
-```bash
 $ time yarn run ng build --configuration production > locallog/build.txt
 Warning: Support was requested for IE 11 in the project's browserslist configuration. IE 11 support is deprecated since Angular v12.
 For more information, see https://angular.io/guide/browser-support
@@ -39,9 +31,8 @@ FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaS
 15: 0xc2e869  [ng build --configuration production]
 16: 0xc2f6b4 v8::internal::Builtin_FunctionConstructor(int, unsigned long*, v8::internal::Isolate*) [ng build --configuration production]
 17: 0x1423359  [ng build --configuration production]
-error Command failed with signal "SIGABRT".                                                                                                                                                                    
+error Command failed with signal "SIGABRT".
 
 real    1m18.937s
 user    2m16.110s
 sys     0m5.986s
-```
