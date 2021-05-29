@@ -7,10 +7,13 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  startTime: Date;
 
   constructor(
     private title: Title
-  ) { }
+  ) {
+    this.startTime = new Date();
+  }
 
   ngOnInit(): void {
     this.title.setTitle(`Colorado Quiz`);

@@ -17,6 +17,7 @@ export class QuizComponent implements OnInit {
   quiz: Quiz;
   score: boolean[];
   scorePercentage: number;
+  startTime: Date;
 
   constructor(
     private api: QuizService,
@@ -25,6 +26,7 @@ export class QuizComponent implements OnInit {
     private router: Router,
     private title: Title
   ) {
+    this.startTime = new Date();
     this.quiz = this.api.createDummyQuiz();
     this.score = new Array<boolean>();
     this.scorePercentage = this.calculateScorePercentage(
@@ -62,6 +64,7 @@ export class QuizComponent implements OnInit {
     console.log({ title });
     if (title === undefined) {
       this.api.getQuiz();
+      this.startTime = new Date();
       this.api.myObservable$.subscribe((response) => {
         this.quiz = response;
         this.title.setTitle(response.title);
@@ -74,6 +77,7 @@ export class QuizComponent implements OnInit {
       this.api.getQuiz(environment.baseUrl, title);
       this.api.myObservable$.subscribe((response) => {
         this.quiz = response;
+        this.startTime = new Date();
         this.title.setTitle(response.title);
         this.scorePercentage = this.calculateScorePercentage(
           this.score,
