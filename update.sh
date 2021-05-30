@@ -63,11 +63,11 @@ echo "\`\`\`" >> README.md;
 git add .;
 git commit -m "end prepare to build angular";
 
-echo "\`\`\`bash" >> README.md;
+echo "\`\`\`bash" >> locallog/fedoratest.md;
 git add .;
 git commit -m "begin prepare to unit test angular";
-time yarn run ng test >> README.md;
-echo "\`\`\`" >> README.md;
+time yarn run ng test >> locallog/fedoratest.md;
+echo "\`\`\`" >> locallog/fedoratest.md;
 git add .;
 git commit -m "end prepare to unit test angular";
 
