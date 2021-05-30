@@ -36126,3 +36126,4 @@ ERROR: 'NG0304: 'app-test-component4000' is not a known element:
 [32mTOTAL: 8012 SUCCESS[39m
 TOTAL: 8012 SUCCESS
 Done in 468.69s.
+```bash
