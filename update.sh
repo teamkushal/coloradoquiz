@@ -7,12 +7,17 @@ git commit -m "add timestamp";
 
 echo '' >> README.md;
 echo '# Coloradoquiz' >> README.md;
+echo '' >> README.md;
 
+echo '' >> README.md;
 echo 'This project is live at [https://coloradoquiz.web.app](https://coloradoquiz.web.app "colorado!") thanks to Firebase.' >> README.md;
+echo '' >> README.md;
 
 echo 'CI Status: ' >> README.md;
+echo '' >> README.md;
 
 echo '[![Deploy to Firebase Hosting on merge](https://github.com/teamkushal/coloradoquiz/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/teamkushal/coloradoquiz/actions/workflows/firebase-hosting-merge.yml)' >> README.md;
+echo '' >> README.md;
 
 echo "\`\`\`bash" >> README.md;
 git add .;
