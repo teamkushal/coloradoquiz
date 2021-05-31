@@ -4017,6 +4017,7 @@ import { TestComponent3999Component } from './experiment/test-component3999/test
 import { TestComponent4000Component } from './experiment/test-component4000/test-component4000.component';
 import { PlaygroundComponent } from './playground/playground.component';
 import { LoaderIoComponent } from './loader-io/loader-io.component';
+import { PromptUpdateService } from './prompt-update.service';
 
 @NgModule({
   declarations: [
@@ -8039,7 +8040,9 @@ import { LoaderIoComponent } from './loader-io/loader-io.component';
     ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [
+    PromptUpdateService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
