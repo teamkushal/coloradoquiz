@@ -12,7 +12,7 @@ export class PromptUpdateService {
   }
 
   promptUser(event: UpdateAvailableEvent): boolean {
-    if (event.available.hash === event.current.hash) {
+    if (event.available === event.current) {
       return false;
     } else {
       return true;
