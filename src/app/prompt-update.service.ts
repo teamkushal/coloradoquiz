@@ -3,15 +3,19 @@ import { SwUpdate, UpdateAvailableEvent } from '@angular/service-worker';
 
 @Injectable()
 export class PromptUpdateService {
-  constructor(updates: SwUpdate) {
-    updates.available.subscribe((event) => {
+  constructor(private updates: SwUpdate) {
+    this.checkForUpdates();
+  }
+
+  public checkForUpdates(): void {
+    this.updates.available.subscribe((event) => {
       if (this.promptUser(event)) {
-        updates.activateUpdate().then(() => document.location.reload());
+        this.updates.activateUpdate().then(() => document.location.reload());
       }
     });
   }
 
-  promptUser(event: UpdateAvailableEvent): boolean {
+  private promptUser(event: UpdateAvailableEvent): boolean {
     if (event.available === event.current) {
       return false;
     } else {

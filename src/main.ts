@@ -8,7 +8,13 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule, {
-  defaultEncapsulation: ViewEncapsulation.ShadowDom
-})
-  .catch(err => console.error(err));
+platformBrowserDynamic()
+  .bootstrapModule(AppModule, {
+    defaultEncapsulation: ViewEncapsulation.ShadowDom,
+  })
+  .then(() => {
+    if ('serviceWorker' in navigator && environment.production) {
+      navigator.serviceWorker.register('ngsw-worker.js');
+    }
+  })
+  .catch((err) => console.error(err));
