@@ -1,9 +1,21 @@
 import { Injectable } from '@angular/core';
+import { SwUpdate, UpdateAvailableEvent } from '@angular/service-worker';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class PromptUpdateService {
+  constructor(updates: SwUpdate) {
+    updates.available.subscribe((event) => {
+      if (this.promptUser(event)) {
+        updates.activateUpdate().then(() => document.location.reload());
+      }
+    });
+  }
 
-  constructor() { }
+  promptUser(event: UpdateAvailableEvent): boolean {
+    if (event.available.hash === event.current.hash) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }
