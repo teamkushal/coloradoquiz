@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HandleUnRecoverableStateService } from './handle-un-recoverable-state.service';
+import { HandleUnrecoverableStateService } from './handle-unrecoverable-state.service';
 
-describe('HandleUnRecoverableStateService', () => {
-  let service: HandleUnRecoverableStateService;
+describe('HandleUnrecoverableStateService', () => {
+  let service: HandleUnrecoverableStateService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(HandleUnRecoverableStateService);
+    service = TestBed.inject(HandleUnrecoverableStateService);
   });
 
   it('should be created', () => {
