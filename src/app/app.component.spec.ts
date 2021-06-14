@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { SwUpdate } from '@angular/service-worker';
 import { AppComponent } from './app.component';
 import { LoadingComponent } from './loading/loading.component';
 import { PromptUpdateService } from './prompt-update.service';
@@ -15,7 +16,8 @@ describe('AppComponent', () => {
         LoadingComponent
       ],
       providers: [
-        PromptUpdateService
+        PromptUpdateService,
+        SwUpdate,
       ]
     }).compileComponents();
   });
