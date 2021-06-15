@@ -9,9 +9,9 @@ export class CheckForUpdateService {
   constructor(appRef: ApplicationRef, updates: SwUpdate) {
     // Allow the app to stabilize first, before starting polling for updates with `interval()`.
     const appIsStable$ = appRef.isStable.pipe(first(isStable => isStable === true));
-    const everySixHours$ = interval(6 * 60 * 60 * 1000);
-    const everySixHoursOnceAppIsStable$ = concat(appIsStable$, everySixHours$);
+    const everyMinute$ = interval(1 * 1000);
+    const everyMinuteOnceAppIsStable$ = concat(appIsStable$, everyMinute$);
 
-    everySixHoursOnceAppIsStable$.subscribe(() => updates.checkForUpdate());
+    everyMinuteOnceAppIsStable$.subscribe(() => updates.checkForUpdate());
   }
 }
