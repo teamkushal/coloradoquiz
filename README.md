@@ -56,3 +56,21 @@ success Already up-to-date.
 Done in 0.88s.
 ```
 ```bash
+yarn run v1.22.11
+$ ng build --configuration production
+
+Initial Chunk Files                      | Names                |      Size
+main-es5.a5ff2af3a579d1bf3505.js         | main                 |   2.05 MB
+main-es2015.a5ff2af3a579d1bf3505.js      | main                 |   1.73 MB
+styles.cbdc7aa232ae3dfa43ea.css          | styles               | 191.91 kB
+polyfills-es5.1628205b62ef70da2ae7.js    | polyfills-es5        | 133.75 kB
+polyfills-es2015.0fc0bf883142b22c9a89.js | polyfills            |  36.55 kB
+runtime-es2015.1b6a1778a583a99b12ff.js   | runtime              |   1.17 kB
+runtime-es5.1b6a1778a583a99b12ff.js      | runtime              |   1.17 kB
+
+| Initial ES5 Total    |   2.37 MB
+| Initial ES2015 Total |   1.95 MB
+
+Build at: 2021-08-18T23:56:27.702Z - Hash: 838b89cfff2a8057710c - Time: 315511ms
+Done in 323.11s.
+```
