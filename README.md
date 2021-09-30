@@ -18,3 +18,42 @@ System Storage
 1.2G	.
 ```
 ```bash
+yarn run v1.22.15
+$ ng --version
+
+     _                      _                 ____ _     ___
+    / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
+   / △ \ | '_ \ / _` | | | | |/ _` | '__|   | |   | |    | |
+  / ___ \| | | | (_| | |_| | | (_| | |      | |___| |___ | |
+ /_/   \_\_| |_|\__, |\__,_|_|\__,_|_|       \____|_____|___|
+                |___/
+    
+
+Angular CLI: 12.2.7
+Node: 14.18.0
+Package Manager: yarn 1.22.15
+OS: linux x64
+
+Angular: 12.2.7
+... animations, cli, common, compiler, compiler-cli, core, forms
+... localize, platform-browser, platform-browser-dynamic, router
+... service-worker
+
+Package                         Version
+---------------------------------------------------------
+@angular-devkit/architect       0.1202.7
+@angular-devkit/build-angular   12.2.7
+@angular-devkit/core            12.2.7
+@angular-devkit/schematics      12.2.7
+@angular/cdk                    12.2.8
+@angular/material               12.2.8
+@schematics/angular             12.2.7
+rxjs                            6.6.7
+typescript                      4.2.4
+    
+Done in 1.13s.
+yarn install v1.22.15
+[1/4] Resolving packages...
+success Already up-to-date.
+Done in 0.84s.
+```
