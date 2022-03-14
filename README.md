@@ -18,3 +18,43 @@ System Storage
 460M	.
 ```
 ```bash
+yarn run v1.22.17
+$ ng --version
+
+     _                      _                 ____ _     ___
+    / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
+   / △ \ | '_ \ / _` | | | | |/ _` | '__|   | |   | |    | |
+  / ___ \| | | | (_| | |_| | | (_| | |      | |___| |___ | |
+ /_/   \_\_| |_|\__, |\__,_|_|\__,_|_|       \____|_____|___|
+                |___/
+    
+
+Angular CLI: 13.2.6
+Node: 16.14.0
+Package Manager: yarn 1.22.17
+OS: linux x64
+
+Angular: <error>
+... animations, cdk, common, compiler, compiler-cli, core, forms
+... localize, material, platform-browser
+... platform-browser-dynamic, router, service-worker
+
+Package                         Version
+---------------------------------------------------------
+@angular-devkit/architect       0.1302.6 (cli-only)
+@angular-devkit/build-angular   <error>
+@angular-devkit/core            13.2.6 (cli-only)
+@angular-devkit/schematics      13.2.6 (cli-only)
+@angular/cli                    13.2.6 (cli-only)
+@schematics/angular             13.2.6 (cli-only)
+rxjs                            6.6.7 (cli-only)
+typescript                      <error>
+    
+Done in 0.70s.
+yarn install v1.22.17
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+Done in 32.79s.
+```
