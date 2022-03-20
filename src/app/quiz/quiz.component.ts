@@ -54,7 +54,9 @@ export class QuizComponent implements OnInit {
       })
     );
     myNavigationEnd$.subscribe(x => {
-      console.log(`Current timestamp: ${new Date()}.`)
+      console.log(`Current timestamp: ${new Date()}.`);
+      console.info({ score: this.score });
+      this.score = new Array<boolean>();
     });
     this.getData();
   }
