@@ -78,7 +78,7 @@ export class NewsService {
 
   getNews(subject: string = `top-stories`, baseUrl: string = this.baseUrl): void {
     const myObservable = this.http.get(`${baseUrl}/${subject}.json`) as Observable<News>;
-    this.loadingService.showLoaderUntilCompleted(myObservable).subscribe((response: News) => {
+    myObservable.subscribe((response: News) => {
       this.myBehaviorSubject.next(response);
     });
   }

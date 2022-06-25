@@ -10,7 +10,7 @@ import { MaterialModule } from './material/material.module';
 import { LoadingComponent } from './loading/loading.component';
 import { HomeComponent } from './home/home.component';
 import { QuizComponent } from './quiz/quiz.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { KeyIndustriesComponent } from './key-industries/key-industries.component';
 import { NewsComponent } from './news/news.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -4018,6 +4018,7 @@ import { TestComponent4000Component } from './experiment/test-component4000/test
 import { PlaygroundComponent } from './playground/playground.component';
 import { LoaderIoComponent } from './loader-io/loader-io.component';
 import { PromptUpdateService } from './prompt-update.service';
+import { HttpRequestInterceptorService } from './http-request-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -8041,7 +8042,12 @@ import { PromptUpdateService } from './prompt-update.service';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
-    PromptUpdateService
+    PromptUpdateService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpRequestInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

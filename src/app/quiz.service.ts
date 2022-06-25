@@ -59,7 +59,7 @@ export class QuizService {
 
   getQuiz(baseUrl: string = this.baseUrl, subject: string = `us-history`): void {
     const myObservable = this.http.get(`${baseUrl}/${subject}.json`) as Observable<Quiz>;
-    this.loadingService.showLoaderUntilCompleted(myObservable).subscribe((response: Quiz) => {
+    myObservable.subscribe((response: Quiz) => {
       this.myBehaviorSubject.next(response);
     });
   }
