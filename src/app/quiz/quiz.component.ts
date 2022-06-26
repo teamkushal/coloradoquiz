@@ -105,8 +105,19 @@ export class QuizComponent implements OnInit {
       this.quiz.questions.length
     );
     if (this.scorePercentage === 100) {
+      const time = Math.ceil(Math.abs(new Date().getTime() - this.startTime.getTime()) / (1000));
+        let message = `Congratulations, you've completed the test.`;
+      if (time === 1) {
+        message = `Congratulations, you've completed the test in under ${time} second.`;
+      } else if (time < 61) {
+        message = `Congratulations, you've completed the test in under ${time} seconds.`;
+      } else if (time < 3601) {
+        message = `Congratulations, you've completed the test in under ${time / 60} minutes.`;
+      } else {
+        message = `Congratulations, you've completed the test in under ${time / (60 * 60)} hours.`;
+      }
       this.openSnackBar(
-        "Congratulations, you've completed the test.",
+        message,
         'Swell!'
       );
     }
