@@ -8051,7 +8051,7 @@ import { HttpRequestInterceptorService } from './http-request-interceptor.servic
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
-  ]
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
