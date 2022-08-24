@@ -1,31 +1,34 @@
+<app-hello-world message="George~Washington~1732~2~22~Virginia~1799~12~14~Virginia"></app-hello-world>
+<app-hello-world message="Barack~Obama~1961~8~4~Hawaii"></app-hello-world>
+<app-hello-world message="Narendra~Modi~1950~9~17~Vadnagar, Gujarat"></app-hello-world>
 <article>
-    <h1>
-        {{news.title | titlecase}}
-    </h1>
-    <p>
-        Published on
-        <time datetime='news.dateCreated' title="{{news.dateCreated | date: 'long'}}">{{news.dateCreated | date }}</time>.
-    </p>
-    <section *ngFor="let newsItem of news.newsItems">
-        <mat-card>
-            <mat-card-header>
-                <div mat-card-avatar>
-                    <img src='{{newsItem.thumbnail}}'>
-                </div>
-                <mat-card-title>{{newsItem.title}}</mat-card-title>
-                <mat-card-subtitle>{{newsItem.summary}}</mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image src="{{newsItem.poster}}" alt="{{newsItem.posterAltText}}">
-            <mat-card-content>
-                <p *ngFor="let paragraph of newsItem.fullText">
-                    {{paragraph}}
-                </p>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-raised-button color="primary" (click)='like(newsItem)'>LIKE</button>
-                <button mat-raised-button color="accent" (click)='share(newsItem)'>SHARE</button>
-            </mat-card-actions>
-        </mat-card>
+  <h1>
+    {{news.title | titlecase}}
+  </h1>
+  <p>
+    Published on
+    <time datetime='news.dateCreated' title="{{news.dateCreated | date: 'long'}}">{{news.dateCreated | date }}</time>.
+  </p>
+  <section *ngFor="let newsItem of news.newsItems">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar>
+          <img src='{{newsItem.thumbnail}}'>
+        </div>
+        <mat-card-title>{{newsItem.title}}</mat-card-title>
+        <mat-card-subtitle>{{newsItem.summary}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{newsItem.poster}}" alt="{{newsItem.posterAltText}}">
+      <mat-card-content>
+        <p *ngFor="let paragraph of newsItem.fullText">
+          {{paragraph}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)='like(newsItem)'>LIKE</button>
+        <button mat-raised-button color="accent" (click)='share(newsItem)'>SHARE</button>
+      </mat-card-actions>
+    </mat-card>
 
-    </section>
+  </section>
 </article>
