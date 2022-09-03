@@ -72,6 +72,7 @@ git add .;
 git commit -m "end prepare to unit test angular";
 
 date >> README.md;
+time yarn version --patch >> README.md;
 git add .;
 git commit -m "add timestamp";
 # git pull --rebase origin master --strategy-option=ours;
