@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd ~/src/angular/coloradoquiz/;
-ping -D -c 20 -v 8.8.8.8 > ping.txt;
+ping -A -D -c 20 -v 8.8.8.8 > ping.txt;
 date > README.md;
 git add .;
 git commit -m "add timestamp";
@@ -21,6 +21,7 @@ echo '[![Deploy to Firebase Hosting on merge](https://github.com/teamkushal/colo
 echo '' >> README.md;
 
 echo "\`\`\`bash" >> README.md;
+ping -A -D -c 20 -v 8.8.8.8 > ping.txt;
 git add .;
 git commit -m "begin add system status";
 echo "System Memory" >> README.md;
@@ -35,6 +36,7 @@ git commit -m "end add system status";
 
 
 echo "\`\`\`bash" >> README.md;
+ping -A -D -c 20 -v 8.8.8.8 > ping.txt;
 git add .;
 git commit -m "begin update node";
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh;  # This loads NVM
@@ -45,6 +47,7 @@ export NODE_OPTIONS="--max-old-space-size=8000"; time npm install --global @angu
 export NODE_OPTIONS="--max-old-space-size=8000"; time yarn run ng --version >> README.md;
 time yarn >> README.md;
 echo "\`\`\`" >> README.md;
+ping -A -D -c 20 -v 8.8.8.8 > ping.txt;
 git add .;
 git commit -m "end update node";
 
@@ -57,6 +60,7 @@ git add .;
 git commit -m "end prepare to update angular";
 
 echo "\`\`\`bash" >> README.md;
+ping -A -D -c 20 -v 8.8.8.8 > ping.txt;
 git add .;
 git commit -m "begin prepare to build angular";
 export NODE_OPTIONS="--max-old-space-size=8000"; time yarn run ng build --configuration production >> README.md;
@@ -65,10 +69,12 @@ git add .;
 git commit -m "end prepare to build angular";
 
 echo "\`\`\`bash" > locallog/fedoratest.md;
+ping -A -D -c 20 -v 8.8.8.8 > ping.txt;
 git add .;
 git commit -m "begin prepare to unit test angular";
 export NODE_OPTIONS="--max-old-space-size=8000"; time yarn run ng test >> locallog/fedoratest.md;
 echo "\`\`\`" >> locallog/fedoratest.md;
+ping -A -D -c 20 -v 8.8.8.8 > ping.txt;
 git add .;
 git commit -m "end prepare to unit test angular";
 
