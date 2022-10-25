@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cd ~/src/angular/coloradoquiz/;
+ping -D -c 20 -v 8.8.8.8 > ping.txt;
 date > README.md;
 git add .;
 git commit -m "add timestamp";
@@ -72,6 +73,7 @@ git add .;
 git commit -m "end prepare to unit test angular";
 
 date >> README.md;
+ping -D -c 20 -v 8.8.8.8 > ping.txt;
 time yarn version --patch >> README.md;
 git add .;
 git commit -m "add timestamp";
