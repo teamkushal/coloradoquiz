@@ -69,7 +69,7 @@ git add .;
 git commit -m "end prepare to build angular";
 
 echo "\`\`\`bash" > locallog/fedoratest.md;
-ping -A -D -c 20 -v 8.8.8.8 > ping.txt;
+ping -A -D -c 20 -v 8.8.8.8 >> ping.txt;
 git add .;
 git commit -m "begin prepare to unit test angular";
 export NODE_OPTIONS="--max-old-space-size=8000"; time yarn run ng test >> locallog/fedoratest.md;
