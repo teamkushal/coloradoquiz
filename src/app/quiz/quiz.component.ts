@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Quiz } from '../quiz';
 import { Option } from '../option';
 import { QuizService } from '../quiz.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Title } from '@angular/platform-browser';
