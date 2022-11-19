@@ -27,3 +27,7 @@ success Already up-to-date.
 Done in 0.65s.
 ```
 ```bash
+yarn run v1.22.19
+$ ng build --configuration production
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+```
