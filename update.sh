@@ -44,7 +44,7 @@ source ~/.nvm/nvm.sh;
 time nvm install --lts;
 time nvm use --lts;
 export NODE_OPTIONS="--max-old-space-size=8000"; time npm install --global @angular/cli yarn;
-export NODE_OPTIONS="--max-old-space-size=8000"; time yarn run ng --version >> README.md;
+export NODE_OPTIONS="--max-old-space-size=8000"; time yarn run ng version >> README.md;
 time yarn >> README.md;
 echo "\`\`\`" >> README.md;
 ping -A -D -c 20 -v 8.8.8.8 >> ping.txt;
