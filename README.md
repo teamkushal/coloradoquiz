@@ -57,3 +57,74 @@ yarn install v1.22.19
 success Already up-to-date.
 Done in 0.46s.
 ```
+Browserslist: caniuse-lite is outdated. Please run:
+  npx browserslist@latest --update-db
+  Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
+Latest version:     1.0.30001434
+Installed versions: 1.0.30001171, 1.0.30001228, 1.0.30001286, 1.0.30001346, 1.0.30001383, 1.0.30001431
+Removing old caniuse-lite from lock file
+Installing new caniuse-lite version
+$ yarn add -W caniuse-lite
+warning " > codelyzer@6.0.1" has incorrect peer dependency "@angular/compiler@>=2.3.1 <12.0.0 || ^11.0.0-next || ^11.1.0-next || ^11.2.0-next".
+warning " > codelyzer@6.0.1" has incorrect peer dependency "@angular/core@>=2.3.1 <12.0.0 || ^11.0.0-next || ^11.1.0-next || ^11.2.0-next".
+Cleaning package.json dependencies from caniuse-lite
+$ yarn remove -W caniuse-lite
+warning " > codelyzer@6.0.1" has incorrect peer dependency "@angular/compiler@>=2.3.1 <12.0.0 || ^11.0.0-next || ^11.1.0-next || ^11.2.0-next".
+warning " > codelyzer@6.0.1" has incorrect peer dependency "@angular/core@>=2.3.1 <12.0.0 || ^11.0.0-next || ^11.1.0-next || ^11.2.0-next".
+caniuse-lite has been successfully updated
+
+Target browser changes:
+- and_chr 96
++ and_chr 107
+- and_ff 94
++ and_ff 106
+- and_qq 10.4
++ and_qq 13.1
+- and_uc 12.12
++ and_uc 13.4
+- android 96
++ android 107
+- baidu 7.12
++ baidu 13.18
+- chrome 96
+- chrome 95
+- chrome 94
++ chrome 107
++ chrome 106
++ chrome 105
+- edge 96
+- edge 95
++ edge 107
++ edge 106
++ edge 105
+- firefox 95
+- firefox 94
++ firefox 107
++ firefox 106
++ firefox 105
+- ios_saf 15.0-15.1
+- ios_saf 14.0-14.4
+- ios_saf 12.2-12.5
++ ios_saf 16.1
++ ios_saf 16.0
++ ios_saf 15.6
++ ios_saf 15.5
+- op_mob 64
++ op_mob 72
+- opera 82
+- opera 81
+- opera 80
++ opera 92
++ opera 91
+- safari 15.1
+- safari 15
+- safari 14.1
+- safari 13.1
++ safari 16.1
++ safari 16.0
++ safari 15.6
+- samsung 15.0
+- samsung 14.0
++ samsung 19.0
++ samsung 18.0
+```bash
