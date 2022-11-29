@@ -58,7 +58,10 @@ git commit -m "begin prepare to update angular";
 export NODE_OPTIONS="--max-old-space-size=8000"; time yarn run ng update @angular/core @angular/cli @angular/material @angular/localize;
 git add .;
 git commit -m "end prepare to update angular";
+
+echo "\`\`\`bash" >> README.md 2>&1;
 time npx browserslist --update-db >> README.md 2>&1;
+echo "\`\`\`" >> README.md 2>&1;
 
 echo "\`\`\`bash" >> README.md 2>&1;
 ping -A -D -c 20 -v 8.8.8.8 >> ping.txt 2>&1;
