@@ -60,3 +60,24 @@ warning You don't appear to have an internet connection. Try the --offline flag 
 success Already up-to-date.
 Done in 0.82s.
 ```
+```bash
+{"type":"warning","data":"You don't appear to have an internet connection. Try the --offline flag to use the cache for registry queries."}
+{"type":"error","data":"Received invalid response from npm."}
+undefined:1
+
+
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at getLatestInfo (/home/kushal/src/angular/coloradoquiz/node_modules/@angular/compiler-cli/node_modules/browserslist/update-db.js:46:19)
+    at updateDB (/home/kushal/src/angular/coloradoquiz/node_modules/@angular/compiler-cli/node_modules/browserslist/update-db.js:291:16)
+    at Object.<anonymous> (/home/kushal/src/angular/coloradoquiz/node_modules/@angular/compiler-cli/node_modules/browserslist/cli.js:42:3)
+    at Module._compile (node:internal/modules/cjs/loader:1159:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1213:10)
+    at Module.load (node:internal/modules/cjs/loader:1037:32)
+    at Module._load (node:internal/modules/cjs/loader:878:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at node:internal/main/run_main_module:23:47
+
+Node.js v18.12.1
+```
+```bash
