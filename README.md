@@ -96,3 +96,9 @@ getaddrinfo EAI_AGAIN fonts.googleapis.com
 error Command failed with exit code 1.
 info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
 ```
+Wed Nov 30 10:19:32 PM EST 2022
+yarn version v1.22.19
+warning You don't appear to have an internet connection. Try the --offline flag to use the cache for registry queries.
+info Current version: 0.0.415
+info New version: 0.0.416
+Done in 0.38s.
