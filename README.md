@@ -17,3 +17,4 @@ Swap:          8.0Gi       6.0Mi       8.0Gi
 System Storage
 5.5G	.
 ```
+```bash
