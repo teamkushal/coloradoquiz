@@ -56,3 +56,20 @@ yarn install v1.22.19
 success Already up-to-date.
 Done in 0.48s.
 ```
+```bash
+Latest version:     1.0.30001446
+Installed version:  1.0.30001445
+Removing old caniuse-lite from lock file
+Installing new caniuse-lite version
+$ yarn add -W caniuse-lite
+warning " > codelyzer@6.0.1" has incorrect peer dependency "@angular/compiler@>=2.3.1 <12.0.0 || ^11.0.0-next || ^11.1.0-next || ^11.2.0-next".
+warning " > codelyzer@6.0.1" has incorrect peer dependency "@angular/core@>=2.3.1 <12.0.0 || ^11.0.0-next || ^11.1.0-next || ^11.2.0-next".
+Cleaning package.json dependencies from caniuse-lite
+$ yarn remove -W caniuse-lite
+warning " > codelyzer@6.0.1" has incorrect peer dependency "@angular/compiler@>=2.3.1 <12.0.0 || ^11.0.0-next || ^11.1.0-next || ^11.2.0-next".
+warning " > codelyzer@6.0.1" has incorrect peer dependency "@angular/core@>=2.3.1 <12.0.0 || ^11.0.0-next || ^11.1.0-next || ^11.2.0-next".
+caniuse-lite has been successfully updated
+
+No target browser changes
+```
+```bash
