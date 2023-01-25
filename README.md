@@ -77,3 +77,17 @@ SyntaxError: Unexpected token { in JSON at position 95
 Node.js v18.13.0
 ```
 ```bash
+yarn run v1.22.19
+$ ng build --configuration production
+- Generating browser application bundles (phase: setup)...
+✔ Browser application bundle generation complete.
+✔ Browser application bundle generation complete.
+- Copying assets...
+✔ Copying assets complete.
+- Generating index html...
+✖ Index html generation failed.
+Inlining of fonts failed. An error has occurred while retrieving https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap over the internet.
+connect ETIMEDOUT 2607:f8b0:4000:80b::200a:443
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+```
