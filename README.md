@@ -56,3 +56,24 @@ yarn install v1.22.19
 success Already up-to-date.
 Done in 0.45s.
 ```
+```bash
+{"type":"error","data":"Received invalid response from npm."}
+undefined:2
+{"type":"info","data":"There appears to be trouble with your network connection. Retrying..."}
+^
+
+SyntaxError: Unexpected token { in JSON at position 95
+    at JSON.parse (<anonymous>)
+    at getLatestInfo (/home/kushal/src/angular/coloradoquiz/node_modules/@babel/core/node_modules/update-browserslist-db/index.js:60:19)
+    at updateDB (/home/kushal/src/angular/coloradoquiz/node_modules/@babel/core/node_modules/update-browserslist-db/index.js:251:16)
+    at Object.<anonymous> (/home/kushal/src/angular/coloradoquiz/node_modules/@babel/core/node_modules/browserslist/cli.js:42:3)
+    at Module._compile (node:internal/modules/cjs/loader:1218:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1272:10)
+    at Module.load (node:internal/modules/cjs/loader:1081:32)
+    at Module._load (node:internal/modules/cjs/loader:922:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at node:internal/main/run_main_module:23:47
+
+Node.js v18.13.0
+```
+```bash
