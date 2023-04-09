@@ -72,3 +72,36 @@ caniuse-lite has been successfully updated
 No target browser changes
 ```
 ```bash
+yarn run v1.22.19
+$ ng build --configuration production
+- Generating browser application bundles (phase: setup)...
+✔ Browser application bundle generation complete.
+✔ Browser application bundle generation complete.
+- Copying assets...
+✔ Copying assets complete.
+- Generating index html...
+✔ Index html generation complete.
+- Generating service worker...
+✔ Service worker generation complete.
+
+Initial Chunk Files           | Names         |  Raw Size | Estimated Transfer Size
+main.f205a826469c01ed.js      | main          | 576.04 kB |               136.67 kB
+styles.b26801e62d72f745.css   | styles        | 273.62 kB |                18.02 kB
+polyfills.1ab6a21e4e14d9a7.js | polyfills     |  37.04 kB |                11.81 kB
+runtime.2731ab190b54de91.js   | runtime       | 902 bytes |               517 bytes
+
+| Initial Total | 887.59 kB |               167.00 kB
+
+Build at: 2023-04-09T16:06:45.686Z - Hash: ba9d7b238f4cde73 - Time: 181565ms
+
+./src/styles.scss - Warning: Module Warning (from ./node_modules/sass-loader/dist/cjs.js):
+The same color styles are generated multiple times. Read more about how style duplication can be avoided in a dedicated guide. https://github.com/angular/components/blob/main/guides/duplicate-theming-styles.md
+
+node_modules/@angular/material/core/theming/_theming.scss 352:7          private-check-duplicate-theme-styles()
+node_modules/@angular/material/legacy-core/theming/_all-theme.scss 43:3  all-legacy-component-themes()
+src/styles.scss 67:1                                                     root stylesheet
+
+
+
+Done in 184.53s.
+```
