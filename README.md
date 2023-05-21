@@ -99,3 +99,21 @@ src/styles.scss 67:1                                                     root st
 
 Done in 73.28s.
 ```
+Sun May 21 09:49:19 AM EDT 2023
+/home/kushal/.nvm/versions/node/v18.16.0/lib/node_modules/yarn/lib/cli.js:53317
+	} else {
+	  ^^^^
+
+SyntaxError: Unexpected token 'else'
+    at new Script (node:vm:100:7)
+    at NativeCompileCache._moduleCompile (/home/kushal/.nvm/versions/node/v18.16.0/lib/node_modules/yarn/lib/v8-compile-cache.js:226:18)
+    at Module._compile (/home/kushal/.nvm/versions/node/v18.16.0/lib/node_modules/yarn/lib/v8-compile-cache.js:172:36)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1308:10)
+    at Module.load (node:internal/modules/cjs/loader:1117:32)
+    at Module._load (node:internal/modules/cjs/loader:958:12)
+    at Module.require (node:internal/modules/cjs/loader:1141:19)
+    at require (node:internal/modules/cjs/helpers:110:18)
+    at Object.<anonymous> (/home/kushal/.nvm/versions/node/v18.16.0/lib/node_modules/yarn/bin/yarn.js:24:13)
+    at Module._compile (node:internal/modules/cjs/loader:1254:14)
+
+Node.js v18.16.0
