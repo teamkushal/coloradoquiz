@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SwUpdate, UpdateAvailableEvent } from '@angular/service-worker';
+import { SwUpdate  } from '@angular/service-worker';
 
 @Injectable()
 export class PromptUpdateService {
@@ -8,18 +8,10 @@ export class PromptUpdateService {
   }
 
   public checkForUpdates(): void {
-    this.updates.available.subscribe((event) => {
-      if (this.promptUser(event)) {
-        this.updates.activateUpdate().then(() => document.location.reload());
-      }
+    this.updates.checkForUpdate().then((event) => {
+      console.info("hello from check for updates");
+      console.info({ event });
+      this.updates.activateUpdate().then(() => document.location.reload());
     });
-  }
-
-  private promptUser(event: UpdateAvailableEvent): boolean {
-    if (event.available === event.current) {
-      return false;
-    } else {
-      return true;
-    }
   }
 }
