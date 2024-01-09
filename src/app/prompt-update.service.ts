@@ -11,7 +11,9 @@ export class PromptUpdateService {
     this.updates.checkForUpdate().then((event) => {
       console.info("hello from check for updates");
       console.info({ event });
-      this.updates.activateUpdate().then(() => document.location.reload());
+      if (event === true) {
+        this.updates.activateUpdate().then(() => document.location.reload());
+      }
     });
   }
 }
