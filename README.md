@@ -67,3 +67,12 @@ warning " > codelyzer@6.0.1" has incorrect peer dependency "@angular/core@>=2.3.
 success Saved lockfile.
 Done in 7.94s.
 ```
+```bash
+Latest version:     1.0.30001576
+Installed version:  1.0.30001576
+caniuse-lite is up to date
+caniuse-lite has been successfully updated
+
+No target browser changes
+```
+```bash
