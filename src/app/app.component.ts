@@ -9,6 +9,7 @@ import { PromptUpdateService } from './prompt-update.service';
 })
 export class AppComponent {
   constructor(private sw: PromptUpdateService) {
-    this.sw.checkForUpdates();
+    // this.sw.checkForUpdates();
+    setInterval(() => this.sw.checkForUpdates(), 60000);
   }
 }
