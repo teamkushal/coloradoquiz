@@ -3,8 +3,8 @@
   "version": "0.0.1192",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "export NODE_OPTIONS=\"--max-old-space-size=6144\"; ng serve --host=0.0.0.0 --disable-host-check --hmr=true",
+    "build": "ng build --aot=true --build-optimizer=true --configuration=production --delete-output-path --optimization=true --extract-licenses=true --output-path=public --stats-json=true --subresource-integrity=true --verbose=true ",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
