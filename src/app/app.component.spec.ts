@@ -4,6 +4,7 @@ import { ServiceWorkerModule, SwUpdate } from '@angular/service-worker';
 import { AppComponent } from './app.component';
 import { LoadingComponent } from './loading/loading.component';
 import { PromptUpdateService } from './prompt-update.service';
+import { IpinfoService } from './ipinfo.service';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -19,6 +20,7 @@ describe('AppComponent', () => {
       providers: [
         PromptUpdateService,
         SwUpdate,
+        IpinfoService
       ]
     }).compileComponents();
   });
