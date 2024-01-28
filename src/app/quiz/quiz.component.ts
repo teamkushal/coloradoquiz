@@ -7,6 +7,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs/operators';
+import { HoneynutCheeriosService } from '../honeynut-cheerios.service';
 
 @Component({
   selector: 'app-quiz',
@@ -21,6 +22,7 @@ export class QuizComponent implements OnInit {
 
   constructor(
     private api: QuizService,
+    private honeynutcheeriosApi: HoneynutCheeriosService,
     private snackBar: MatSnackBar,
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -81,6 +83,7 @@ export class QuizComponent implements OnInit {
         this.quiz = response;
         this.startTime = new Date();
         this.title.setTitle(response.title);
+        this.honeynutcheeriosApi.submit(`arrived at page ${title}`, this.router.url, document.referrer ?? "");
         this.scorePercentage = this.calculateScorePercentage(
           this.score,
           this.quiz.questions.length
