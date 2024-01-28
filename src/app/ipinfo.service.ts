@@ -31,13 +31,15 @@ export class IpinfoService {
       loc: "0, 0",
       org: "example inc",
       postal: "00000",
-      timezone: "UTC"
+      timezone: "UTC",
+      lastupdated: new Date()
     };
   }
 
   getIpAddress() {
     const myObservable = this.http.get(`https://ipinfo.io/json?token=61c154777637f4`) as Observable<Ipinforesponse>;
     myObservable.subscribe((response: Ipinforesponse) => {
+      response.lastupdated = new Date();
       this.myBehaviorSubject.next(response);
     });
   }

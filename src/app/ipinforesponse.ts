@@ -8,5 +8,5 @@ export interface Ipinforesponse {
   org: string,
   postal: string,
   timezone: string,
-
+  lastupdated: Date
 }
