@@ -58,3 +58,24 @@ yarn install v1.22.21
 success Already up-to-date.
 Done in 0.33s.
 ```
+```bash
+{"type":"error","data":"Received invalid response from npm."}
+/home/kushal/.npm/_npx/2662cbd72e57abb6/node_modules/update-browserslist-db/cli.js:39
+      throw e
+      ^
+
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at getLatestInfo (/home/kushal/.npm/_npx/2662cbd72e57abb6/node_modules/update-browserslist-db/index.js:62:19)
+    at updateDB (/home/kushal/.npm/_npx/2662cbd72e57abb6/node_modules/update-browserslist-db/index.js:272:16)
+    at Object.<anonymous> (/home/kushal/.npm/_npx/2662cbd72e57abb6/node_modules/update-browserslist-db/cli.js:34:5)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:135:12)
+    at node:internal/main/run_main_module:28:49
+
+Node.js v20.11.0
+```
+```bash
