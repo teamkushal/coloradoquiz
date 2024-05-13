@@ -69,3 +69,26 @@ caniuse-lite has been successfully updated
 No target browser changes
 ```
 ```bash
+yarn run v1.22.22
+$ ng build --configuration production
+- Generating browser application bundles (phase: setup)...
+✔ Browser application bundle generation complete.
+✔ Browser application bundle generation complete.
+- Copying assets...
+✔ Copying assets complete.
+- Generating index html...
+✔ Index html generation complete.
+- Generating service worker...
+✔ Service worker generation complete.
+
+Initial chunk files           | Names         |  Raw size | Estimated transfer size
+main.d41c241792021f27.js      | main          | 959.21 kB |               189.99 kB
+styles.418979faf5b15ef8.css   | styles        | 149.71 kB |                 9.29 kB
+polyfills.e49d9a69d1927eec.js | polyfills     |  33.89 kB |                11.01 kB
+runtime.4dc6018cf5dd0399.js   | runtime       |   1.05 kB |               595 bytes
+
+                              | Initial total |   1.12 MB |               210.87 kB
+
+Build at: 2024-05-13T01:02:06.273Z - Hash: 5102145f1fe69482 - Time: 10435ms
+Done in 11.95s.
+```
