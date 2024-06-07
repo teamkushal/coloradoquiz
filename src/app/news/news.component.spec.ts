@@ -1,9 +1,10 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 
 import { NewsComponent } from './news.component';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('NewsComponent', () => {
   let component: NewsComponent;
@@ -11,15 +12,18 @@ describe('NewsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewsComponent ],
-      imports: [HttpClientTestingModule, MaterialModule],
-      providers: [
+    declarations: [NewsComponent],
+    imports: [MaterialModule],
+    providers: [
         {
-          provide: ActivatedRoute, useValue: {
-            snapshot: { params: { title: 'top-stories' } }
-          }
-        }]
-    })
+            provide: ActivatedRoute, useValue: {
+                snapshot: { params: { title: 'top-stories' } }
+            }
+        },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+})
     .compileComponents();
   });
 
