@@ -90,4 +90,4 @@ git commit -m "add timestamp";
 git pull --rebase origin master --strategy-option=ours;
 git add .;
 git commit -m "merge from remote";
-# git push origin master;
+git push origin master;
