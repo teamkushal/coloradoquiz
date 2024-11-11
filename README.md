@@ -71,3 +71,25 @@ caniuse-lite has been successfully updated
 No target browser changes
 ```
 ```bash
+yarn run v1.22.22
+$ ng build --configuration production
+❯ Building...
+✔ Building...
+Initial chunk files   | Names         |  Raw size | Estimated transfer size
+main-A3O4NPN7.js      | main          | 956.66 kB |               195.85 kB
+styles-DKDMYQOG.css   | styles        | 158.92 kB |                 9.51 kB
+polyfills-XD2QEJ3Z.js | polyfills     |  34.98 kB |                11.51 kB
+
+                      | Initial total |   1.15 MB |               216.86 kB
+
+Application bundle generation complete. [13.949 seconds]
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mPolyfill for "@angular/localize/init" was added automatically.[0m [1m[35m[plugin angular-polyfills][0m
+
+  In the future, this functionality will be removed. Please add this polyfill in the "polyfills" section of your "angular.json" instead.
+
+
+Output location: /home/kushal/src/angular/coloradoquiz/dist/coloradoquiz
+
+Done in 15.47s.
+```
