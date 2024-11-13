@@ -58,3 +58,12 @@ yarn install v1.22.22
 success Already up-to-date.
 Done in 0.65s.
 ```
+```bash
+Latest version:     1.0.30001680
+Installed version:  1.0.30001680
+caniuse-lite is up to date
+caniuse-lite has been successfully updated
+
+No target browser changes
+```
+```bash
