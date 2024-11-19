@@ -10,9 +10,10 @@ import { filter, map } from 'rxjs/operators';
 import { HoneynutCheeriosService } from '../honeynut-cheerios.service';
 
 @Component({
-  selector: 'app-quiz',
-  templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.scss'],
+    selector: 'app-quiz',
+    templateUrl: './quiz.component.html',
+    styleUrls: ['./quiz.component.scss'],
+    standalone: false
 })
 export class QuizComponent implements OnInit {
   quiz: Quiz;
