@@ -1,8 +1,6 @@
 #!/bin/bash
 
 source ~/.nvm/nvm.sh
-nvm install
-nvm use lts
 
 cd ~/src/angular/coloradoquiz/;
 ping -A -D -c 20 -v 8.8.8.8 > ping.txt;
