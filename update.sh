@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source ~/.nvm/nvm.sh
-
+nvm install
 nvm use lts
 
 cd ~/src/angular/coloradoquiz/;
