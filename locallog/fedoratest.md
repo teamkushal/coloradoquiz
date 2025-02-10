@@ -1,1 +1,370 @@
 ```bash
+yarn run v1.22.22
+$ ng test
+10 02 2025 06:11:00.355:INFO [karma-server]: Karma v6.4.2 server started at http://localhost:9876/
+10 02 2025 06:11:00.357:INFO [launcher]: Launching browsers FirefoxHeadless with concurrency unlimited
+10 02 2025 06:11:00.362:INFO [launcher]: Starting browser Firefox
+10 02 2025 06:11:03.602:INFO [Firefox 128.0 (Linux x86_64)]: Connected on socket Th3s4GXWAMJLx-yRAAAB with id 87465406
+Firefox 128.0 (Linux x86_64): Executed 0 of 18 SUCCESS (0 secs / 0 secs)
+[1A[2KFirefox 128.0 (Linux x86_64) HttpRequestInterceptorService should be created FAILED
+	NullInjectorError: R3InjectorError[HttpRequestInterceptorService -> HttpRequestInterceptorService]: 
+	  NullInjectorError: No provider for HttpRequestInterceptorService! in vendor.js (line 77684)
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'HttpRequestInterceptorService', 'HttpRequestInterceptorService' ] })
+	get@vendor.js:77684:21
+	get@vendor.js:78208:27
+	get@vendor.js:78208:27
+	inject@vendor.js:121299:58
+	inject@vendor.js:121142:33
+	9074/</<@main.js:413:74
+	invoke@polyfills.js:413:158
+	onInvoke@vendor.js:6490:33
+	invoke@polyfills.js:413:46
+	run@polyfills.js:184:35
+	runInTestZone@vendor.js:4669:30
+	2309/patchJasmine/</wrapTestInZone/<@vendor.js:4684:16
+	<Jasmine>
+	invoke@polyfills.js:413:158
+	run@polyfills.js:184:35
+	4124/patchPromise/</scheduleResolveOrReject/<@polyfills.js:2502:30
+	invokeTask@polyfills.js:438:171
+	runTask@polyfills.js:237:37
+	drainMicroTaskQueue@polyfills.js:609:23
+Firefox 128.0 (Linux x86_64): Executed 1 of 18 (1 FAILED) (0 secs / 0.031 secs)
+Firefox 128.0 (Linux x86_64) HttpRequestInterceptorService should be created FAILED
+	NullInjectorError: R3InjectorError[HttpRequestInterceptorService -> HttpRequestInterceptorService]: 
+	  NullInjectorError: No provider for HttpRequestInterceptorService! in vendor.js (line 77684)
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'HttpRequestInterceptorService', 'HttpRequestInterceptorService' ] })
+	get@vendor.js:77684:21
+	get@vendor.js:78208:27
+	get@vendor.js:78208:27
+	inject@vendor.js:121299:58
+	inject@vendor.js:121142:33
+	9074/</<@main.js:413:74
+	invoke@polyfills.js:413:158
+	onInvoke@vendor.js:6490:33
+	invoke@polyfills.js:413:46
+	run@polyfills.js:184:35
+	runInTestZone@vendor.js:4669:30
+	2309/patchJasmine/</wrapTestInZone/<@vendor.js:4684:16
+	<Jasmine>
+	invoke@polyfills.js:413:158
+	run@polyfills.js:184:35
+	4124/patchPromise/</scheduleResolveOrReject/<@polyfills.js:2502:30
+	invokeTask@polyfills.js:438:171
+	runTask@polyfills.js:237:37
+	drainMicroTaskQueue@polyfills.js:609:23
+[1A[2KFirefox 128.0 (Linux x86_64): Executed 2 of 18 (1 FAILED) (0 secs / 0.054 secs)
+[1A[2KFirefox 128.0 (Linux x86_64) HandleUnrecoverableStateService should notify user on unrecoverable event FAILED
+	createSpyObj requires a non-empty array or object of method names to create spies for thrown
+Firefox 128.0 (Linux x86_64): Executed 3 of 18 (2 FAILED) (0 secs / 0.057 secs)
+Firefox 128.0 (Linux x86_64) HandleUnrecoverableStateService should notify user on unrecoverable event FAILED
+	createSpyObj requires a non-empty array or object of method names to create spies for thrown
+[1A[2KFirefox 128.0 (Linux x86_64) HandleUnrecoverableStateService should be created FAILED
+	createSpyObj requires a non-empty array or object of method names to create spies for thrown
+Firefox 128.0 (Linux x86_64): Executed 4 of 18 (3 FAILED) (0 secs / 0.059 secs)
+Firefox 128.0 (Linux x86_64) HandleUnrecoverableStateService should be created FAILED
+	createSpyObj requires a non-empty array or object of method names to create spies for thrown
+[1A[2KERROR: 'NG0304: 'mat-toolbar' is not a known element (used in the 'HomeComponent' component template):
+1. If 'mat-toolbar' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-toolbar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+Firefox 128.0 (Linux x86_64): Executed 4 of 18 (3 FAILED) (0 secs / 0.059 secs)
+ERROR: 'NG0304: 'mat-toolbar' is not a known element (used in the 'HomeComponent' component template):
+1. If 'mat-toolbar' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-toolbar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+[1A[2KERROR: 'NG0304: 'app-menu' is not a known element (used in the 'HomeComponent' component template):
+1. If 'app-menu' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'app-menu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+Firefox 128.0 (Linux x86_64): Executed 4 of 18 (3 FAILED) (0 secs / 0.059 secs)
+ERROR: 'NG0304: 'app-menu' is not a known element (used in the 'HomeComponent' component template):
+1. If 'app-menu' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'app-menu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+[1A[2KFirefox 128.0 (Linux x86_64): Executed 5 of 18 (3 FAILED) (0 secs / 0.134 secs)
+[1A[2KFirefox 128.0 (Linux x86_64) AppComponent should create the app FAILED
+	NullInjectorError: R3InjectorError(DynamicTestModule)[IpinfoService -> HttpClient -> HttpClient]: 
+	  NullInjectorError: No provider for HttpClient! in vendor.js (line 77684)
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'IpinfoService', 'HttpClient', 'HttpClient' ] })
+	get@vendor.js:77684:21
+	get@vendor.js:78208:27
+	get@vendor.js:78208:27
+	injectInjectorOnly@vendor.js:77140:36
+	ɵɵinject@vendor.js:77146:59
+	IpinfoService_Factory@ng:///IpinfoService/ɵfac.js:5:57
+	7580/hydrate/<@vendor.js:78321:35
+	runInInjectorProfilerContext@vendor.js:76911:5
+	hydrate@vendor.js:78320:39
+	get@vendor.js:78199:23
+	get@vendor.js:80765:32
+	lookupTokenUsingModuleInjector@vendor.js:81108:31
+	getOrCreateInjectable@vendor.js:81154:10
+	ɵɵdirectiveInject@vendor.js:92874:38
+	AppComponent_Factory@ng:///AppComponent/ɵfac.js:6:7
+	getNodeInjectable@vendor.js:81348:38
+	instantiateAllDirectives@vendor.js:88329:40
+	createDirectivesInstances@vendor.js:88048:27
+	create@vendor.js:93479:34
+	initComponent@vendor.js:121366:45
+	invoke@polyfills.js:413:158
+	onInvoke@vendor.js:6490:33
+	invoke@polyfills.js:413:46
+	onInvoke@vendor.js:82560:25
+	invoke@polyfills.js:413:46
+	run@polyfills.js:184:35
+	run@vendor.js:82412:24
+	createComponent@vendor.js:121371:37
+	createComponent@vendor.js:121157:33
+	1675/</<@main.js:38:80
+	invoke@polyfills.js:413:158
+	onInvoke@vendor.js:6490:33
+	invoke@polyfills.js:413:46
+	run@polyfills.js:184:35
+	runInTestZone@vendor.js:4669:30
+	2309/patchJasmine/</wrapTestInZone/<@vendor.js:4684:16
+	<Jasmine>
+	invoke@polyfills.js:413:158
+	run@polyfills.js:184:35
+	4124/patchPromise/</scheduleResolveOrReject/<@polyfills.js:2502:30
+	invokeTask@polyfills.js:438:171
+	runTask@polyfills.js:237:37
+	drainMicroTaskQueue@polyfills.js:609:23
+	invokeTask@polyfills.js:518:11
+	4124/initZone/ZoneTask/this.invoke@polyfills.js:504:38
+	4124/patchTimer/scheduleTask/data.args[0]@polyfills.js:1793:26
+Firefox 128.0 (Linux x86_64): Executed 6 of 18 (4 FAILED) (0 secs / 0.194 secs)
+Firefox 128.0 (Linux x86_64) AppComponent should create the app FAILED
+	NullInjectorError: R3InjectorError(DynamicTestModule)[IpinfoService -> HttpClient -> HttpClient]: 
+	  NullInjectorError: No provider for HttpClient! in vendor.js (line 77684)
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'IpinfoService', 'HttpClient', 'HttpClient' ] })
+	get@vendor.js:77684:21
+	get@vendor.js:78208:27
+	get@vendor.js:78208:27
+	injectInjectorOnly@vendor.js:77140:36
+	ɵɵinject@vendor.js:77146:59
+	IpinfoService_Factory@ng:///IpinfoService/ɵfac.js:5:57
+	7580/hydrate/<@vendor.js:78321:35
+	runInInjectorProfilerContext@vendor.js:76911:5
+	hydrate@vendor.js:78320:39
+	get@vendor.js:78199:23
+	get@vendor.js:80765:32
+	lookupTokenUsingModuleInjector@vendor.js:81108:31
+	getOrCreateInjectable@vendor.js:81154:10
+	ɵɵdirectiveInject@vendor.js:92874:38
+	AppComponent_Factory@ng:///AppComponent/ɵfac.js:6:7
+	getNodeInjectable@vendor.js:81348:38
+	instantiateAllDirectives@vendor.js:88329:40
+	createDirectivesInstances@vendor.js:88048:27
+	create@vendor.js:93479:34
+	initComponent@vendor.js:121366:45
+	invoke@polyfills.js:413:158
+	onInvoke@vendor.js:6490:33
+	invoke@polyfills.js:413:46
+	onInvoke@vendor.js:82560:25
+	invoke@polyfills.js:413:46
+	run@polyfills.js:184:35
+	run@vendor.js:82412:24
+	createComponent@vendor.js:121371:37
+	createComponent@vendor.js:121157:33
+	1675/</<@main.js:38:80
+	invoke@polyfills.js:413:158
+	onInvoke@vendor.js:6490:33
+	invoke@polyfills.js:413:46
+	run@polyfills.js:184:35
+	runInTestZone@vendor.js:4669:30
+	2309/patchJasmine/</wrapTestInZone/<@vendor.js:4684:16
+	<Jasmine>
+	invoke@polyfills.js:413:158
+	run@polyfills.js:184:35
+	4124/patchPromise/</scheduleResolveOrReject/<@polyfills.js:2502:30
+	invokeTask@polyfills.js:438:171
+	runTask@polyfills.js:237:37
+	drainMicroTaskQueue@polyfills.js:609:23
+	invokeTask@polyfills.js:518:11
+	4124/initZone/ZoneTask/this.invoke@polyfills.js:504:38
+	4124/patchTimer/scheduleTask/data.args[0]@polyfills.js:1793:26
+10 02 2025 06:11:05.522:WARN [web-server]: 404: /_karma_webpack_/ngsw-worker.js
+[1A[2KFirefox 128.0 (Linux x86_64): Executed 7 of 18 (4 FAILED) (0 secs / 0.264 secs)
+[1A[2KERROR: 'Service worker registration failed with:', TypeError: ServiceWorker script at http://localhost:9876/ngsw-worker.js for scope http://localhost:9876/ encountered an error during installation.
+
+Firefox 128.0 (Linux x86_64): Executed 7 of 18 (4 FAILED) (0 secs / 0.264 secs)
+ERROR: 'Service worker registration failed with:', TypeError: ServiceWorker script at http://localhost:9876/ngsw-worker.js for scope http://localhost:9876/ encountered an error during installation.
+
+[1A[2KFirefox 128.0 (Linux x86_64): Executed 8 of 18 (4 FAILED) (0 secs / 0.288 secs)
+[1A[2KFirefox 128.0 (Linux x86_64) PromptUpdateService should be created FAILED
+	Error: Unexpected value 'PromptUpdateService' imported by the module 'DynamicTestModule'. Please add an @NgModule annotation. in vendor.js (line 109018)
+	verifySemanticsOfNgModuleDef@vendor.js:109018:13
+	7580/verifySemanticsOfNgModuleDef/<@vendor.js:109028:33
+	verifySemanticsOfNgModuleDef@vendor.js:109026:58
+	get@vendor.js:108983:22
+	applyProviderOverridesInScope@vendor.js:120506:25
+	compileTestModule@vendor.js:120817:10
+	finalize@vendor.js:120330:10
+	get testModuleRef@vendor.js:121391:43
+	inject@vendor.js:121298:20
+	inject@vendor.js:121142:33
+	1230/</<@main.js:1368:74
+	invoke@polyfills.js:413:158
+	onInvoke@vendor.js:6490:33
+	invoke@polyfills.js:413:46
+	run@polyfills.js:184:35
+	runInTestZone@vendor.js:4669:30
+	2309/patchJasmine/</wrapTestInZone/<@vendor.js:4684:16
+	<Jasmine>
+	invoke@polyfills.js:413:158
+	run@polyfills.js:184:35
+	4124/patchPromise/</scheduleResolveOrReject/<@polyfills.js:2502:30
+	invokeTask@polyfills.js:438:171
+	runTask@polyfills.js:237:37
+	drainMicroTaskQueue@polyfills.js:609:23
+Firefox 128.0 (Linux x86_64): Executed 9 of 18 (5 FAILED) (0 secs / 0.292 secs)
+Firefox 128.0 (Linux x86_64) PromptUpdateService should be created FAILED
+	Error: Unexpected value 'PromptUpdateService' imported by the module 'DynamicTestModule'. Please add an @NgModule annotation. in vendor.js (line 109018)
+	verifySemanticsOfNgModuleDef@vendor.js:109018:13
+	7580/verifySemanticsOfNgModuleDef/<@vendor.js:109028:33
+	verifySemanticsOfNgModuleDef@vendor.js:109026:58
+	get@vendor.js:108983:22
+	applyProviderOverridesInScope@vendor.js:120506:25
+	compileTestModule@vendor.js:120817:10
+	finalize@vendor.js:120330:10
+	get testModuleRef@vendor.js:121391:43
+	inject@vendor.js:121298:20
+	inject@vendor.js:121142:33
+	1230/</<@main.js:1368:74
+	invoke@polyfills.js:413:158
+	onInvoke@vendor.js:6490:33
+	invoke@polyfills.js:413:46
+	run@polyfills.js:184:35
+	runInTestZone@vendor.js:4669:30
+	2309/patchJasmine/</wrapTestInZone/<@vendor.js:4684:16
+	<Jasmine>
+	invoke@polyfills.js:413:158
+	run@polyfills.js:184:35
+	4124/patchPromise/</scheduleResolveOrReject/<@polyfills.js:2502:30
+	invokeTask@polyfills.js:438:171
+	runTask@polyfills.js:237:37
+	drainMicroTaskQueue@polyfills.js:609:23
+[1A[2KFirefox 128.0 (Linux x86_64): Executed 10 of 18 (5 FAILED) (0 secs / 0.304 secs)
+[1A[2KFirefox 128.0 (Linux x86_64): Executed 11 of 18 (5 FAILED) (0 secs / 0.312 secs)
+[1A[2KFirefox 128.0 (Linux x86_64): Executed 12 of 18 (5 FAILED) (0 secs / 0.321 secs)
+[1A[2KFirefox 128.0 (Linux x86_64): Executed 13 of 18 (5 FAILED) (0 secs / 0.335 secs)
+[1A[2KFirefox 128.0 (Linux x86_64): Executed 14 of 18 (5 FAILED) (0 secs / 0.347 secs)
+[1A[2KERROR: 'NG0304: 'app-menu' is not a known element (used in the 'QuizComponent' component template):
+1. If 'app-menu' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'app-menu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+Firefox 128.0 (Linux x86_64): Executed 14 of 18 (5 FAILED) (0 secs / 0.347 secs)
+ERROR: 'NG0304: 'app-menu' is not a known element (used in the 'QuizComponent' component template):
+1. If 'app-menu' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'app-menu' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+[1A[2KLOG: Object{title: 'history'}
+Firefox 128.0 (Linux x86_64): Executed 14 of 18 (5 FAILED) (0 secs / 0.347 secs)
+LOG: Object{title: 'history'}
+[1A[2KLOG: Object{title: 'history'}
+Firefox 128.0 (Linux x86_64): Executed 14 of 18 (5 FAILED) (0 secs / 0.347 secs)
+LOG: Object{title: 'history'}
+[1A[2KFirefox 128.0 (Linux x86_64): Executed 15 of 18 (5 FAILED) (0 secs / 0.457 secs)
+[1A[2KFirefox 128.0 (Linux x86_64) ERROR
+  An error was thrown in afterAll
+  TypeError: ipinfo is null in http://localhost:9876/_karma_webpack_/main.js (line 355)
+  createReal@http://localhost:9876/_karma_webpack_/main.js:355:7
+  submit@http://localhost:9876/_karma_webpack_/main.js:368:25
+  1400/getData/<@http://localhost:9876/_karma_webpack_/main.js:1685:34
+  next@http://localhost:9876/_karma_webpack_/vendor.js:675:25
+  _next@http://localhost:9876/_karma_webpack_/vendor.js:644:22
+  next@http://localhost:9876/_karma_webpack_/vendor.js:617:12
+  _subscribe@http://localhost:9876/_karma_webpack_/vendor.js:145:40
+  _trySubscribe@http://localhost:9876/_karma_webpack_/vendor.js:246:19
+  _trySubscribe@http://localhost:9876/_karma_webpack_/vendor.js:499:18
+  3942/subscribe/<@http://localhost:9876/_karma_webpack_/vendor.js:240:113
+  errorContext@http://localhost:9876/_karma_webpack_/vendor.js:4064:5
+  subscribe@http://localhost:9876/_karma_webpack_/vendor.js:235:69
+  getData@http://localhost:9876/_karma_webpack_/main.js:1681:30
+  ngOnInit@http://localhost:9876/_karma_webpack_/main.js:1664:10
+  callHookInternal@http://localhost:9876/_karma_webpack_/vendor.js:80227:10
+  callHook@http://localhost:9876/_karma_webpack_/vendor.js:80251:23
+  callHooks@http://localhost:9876/_karma_webpack_/vendor.js:80211:17
+  executeInitAndCheckHooks@http://localhost:9876/_karma_webpack_/vendor.js:80166:14
+  refreshView@http://localhost:9876/_karma_webpack_/vendor.js:89946:35
+  detectChangesInView@http://localhost:9876/_karma_webpack_/vendor.js:90141:16
+  detectChangesInViewWhileDirty@http://localhost:9876/_karma_webpack_/vendor.js:89852:24
+  detectChangesInternal@http://localhost:9876/_karma_webpack_/vendor.js:89836:34
+  detectChanges@http://localhost:9876/_karma_webpack_/vendor.js:90488:26
+  9399/detectChanges/<@http://localhost:9876/_karma_webpack_/vendor.js:119614:34
+  invoke@http://localhost:9876/_karma_webpack_/polyfills.js:413:158
+  onInvoke@http://localhost:9876/_karma_webpack_/vendor.js:6490:33
+  invoke@http://localhost:9876/_karma_webpack_/polyfills.js:413:46
+  onInvoke@http://localhost:9876/_karma_webpack_/vendor.js:82560:25
+  invoke@http://localhost:9876/_karma_webpack_/polyfills.js:413:46
+  run@http://localhost:9876/_karma_webpack_/polyfills.js:184:35
+  run@http://localhost:9876/_karma_webpack_/vendor.js:82412:24
+  detectChanges@http://localhost:9876/_karma_webpack_/vendor.js:119611:22
+  7791/</<@http://localhost:9876/_karma_webpack_/main.js:1584:13
+  invoke@http://localhost:9876/_karma_webpack_/polyfills.js:413:158
+  onInvoke@http://localhost:9876/_karma_webpack_/vendor.js:6490:33
+  invoke@http://localhost:9876/_karma_webpack_/polyfills.js:413:46
+  run@http://localhost:9876/_karma_webpack_/polyfills.js:184:35
+  runInTestZone@http://localhost:9876/_karma_webpack_/vendor.js:4669:30
+  2309/patchJasmine/</wrapTestInZone/<@http://localhost:9876/_karma_webpack_/vendor.js:4684:16
+  <Jasmine>
+  invoke@http://localhost:9876/_karma_webpack_/polyfills.js:413:158
+  run@http://localhost:9876/_karma_webpack_/polyfills.js:184:35
+  4124/patchPromise/</scheduleResolveOrReject/<@http://localhost:9876/_karma_webpack_/polyfills.js:2502:30
+  invokeTask@http://localhost:9876/_karma_webpack_/polyfills.js:438:171
+  runTask@http://localhost:9876/_karma_webpack_/polyfills.js:237:37
+  drainMicroTaskQueue@http://localhost:9876/_karma_webpack_/polyfills.js:609:23
+Firefox 128.0 (Linux x86_64): Executed 15 of 18 (5 FAILED) ERROR (0 secs / 0.457 secs)
+Firefox 128.0 (Linux x86_64) ERROR
+  An error was thrown in afterAll
+  TypeError: ipinfo is null in http://localhost:9876/_karma_webpack_/main.js (line 355)
+  createReal@http://localhost:9876/_karma_webpack_/main.js:355:7
+  submit@http://localhost:9876/_karma_webpack_/main.js:368:25
+  1400/getData/<@http://localhost:9876/_karma_webpack_/main.js:1685:34
+  next@http://localhost:9876/_karma_webpack_/vendor.js:675:25
+  _next@http://localhost:9876/_karma_webpack_/vendor.js:644:22
+  next@http://localhost:9876/_karma_webpack_/vendor.js:617:12
+  _subscribe@http://localhost:9876/_karma_webpack_/vendor.js:145:40
+  _trySubscribe@http://localhost:9876/_karma_webpack_/vendor.js:246:19
+  _trySubscribe@http://localhost:9876/_karma_webpack_/vendor.js:499:18
+  3942/subscribe/<@http://localhost:9876/_karma_webpack_/vendor.js:240:113
+  errorContext@http://localhost:9876/_karma_webpack_/vendor.js:4064:5
+  subscribe@http://localhost:9876/_karma_webpack_/vendor.js:235:69
+  getData@http://localhost:9876/_karma_webpack_/main.js:1681:30
+  ngOnInit@http://localhost:9876/_karma_webpack_/main.js:1664:10
+  callHookInternal@http://localhost:9876/_karma_webpack_/vendor.js:80227:10
+  callHook@http://localhost:9876/_karma_webpack_/vendor.js:80251:23
+  callHooks@http://localhost:9876/_karma_webpack_/vendor.js:80211:17
+  executeInitAndCheckHooks@http://localhost:9876/_karma_webpack_/vendor.js:80166:14
+  refreshView@http://localhost:9876/_karma_webpack_/vendor.js:89946:35
+  detectChangesInView@http://localhost:9876/_karma_webpack_/vendor.js:90141:16
+  detectChangesInViewWhileDirty@http://localhost:9876/_karma_webpack_/vendor.js:89852:24
+  detectChangesInternal@http://localhost:9876/_karma_webpack_/vendor.js:89836:34
+  detectChanges@http://localhost:9876/_karma_webpack_/vendor.js:90488:26
+  9399/detectChanges/<@http://localhost:9876/_karma_webpack_/vendor.js:119614:34
+  invoke@http://localhost:9876/_karma_webpack_/polyfills.js:413:158
+  onInvoke@http://localhost:9876/_karma_webpack_/vendor.js:6490:33
+  invoke@http://localhost:9876/_karma_webpack_/polyfills.js:413:46
+  onInvoke@http://localhost:9876/_karma_webpack_/vendor.js:82560:25
+  invoke@http://localhost:9876/_karma_webpack_/polyfills.js:413:46
+  run@http://localhost:9876/_karma_webpack_/polyfills.js:184:35
+  run@http://localhost:9876/_karma_webpack_/vendor.js:82412:24
+  detectChanges@http://localhost:9876/_karma_webpack_/vendor.js:119611:22
+  7791/</<@http://localhost:9876/_karma_webpack_/main.js:1584:13
+  invoke@http://localhost:9876/_karma_webpack_/polyfills.js:413:158
+  onInvoke@http://localhost:9876/_karma_webpack_/vendor.js:6490:33
+  invoke@http://localhost:9876/_karma_webpack_/polyfills.js:413:46
+  run@http://localhost:9876/_karma_webpack_/polyfills.js:184:35
+  runInTestZone@http://localhost:9876/_karma_webpack_/vendor.js:4669:30
+  2309/patchJasmine/</wrapTestInZone/<@http://localhost:9876/_karma_webpack_/vendor.js:4684:16
+  <Jasmine>
+  invoke@http://localhost:9876/_karma_webpack_/polyfills.js:413:158
+  run@http://localhost:9876/_karma_webpack_/polyfills.js:184:35
+  4124/patchPromise/</scheduleResolveOrReject/<@http://localhost:9876/_karma_webpack_/polyfills.js:2502:30
+  invokeTask@http://localhost:9876/_karma_webpack_/polyfills.js:438:171
+  runTask@http://localhost:9876/_karma_webpack_/polyfills.js:237:37
+  drainMicroTaskQueue@http://localhost:9876/_karma_webpack_/polyfills.js:609:23
+[1A[2KFirefox 128.0 (Linux x86_64): Executed 15 of 18 (5 FAILED) ERROR (0.571 secs / 0.457 secs)
+[1A[2KFirefox 128.0 (Linux x86_64) ERROR
+  Disconnected , because no message in 30000 ms.
+Firefox 128.0 (Linux x86_64): Executed 15 of 18 (5 FAILED) DISCONNECTED (30.587 secs / 0.457 secs)
+Firefox 128.0 (Linux x86_64) ERROR
+  Disconnected , because no message in 30000 ms.
+[1A[2KFirefox 128.0 (Linux x86_64): Executed 15 of 18 (5 FAILED) DISCONNECTED (30.587 secs / 0.457 secs)
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+```
