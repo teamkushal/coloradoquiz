@@ -59,3 +59,47 @@ yarn install v1.22.22
 success Already up-to-date.
 Done in 0.64s.
 ```
+```bash
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Latest version:     1.0.30001701
+Installed version:  1.0.30001700
+Removing old caniuse-lite from lock file
+Installing new caniuse-lite version
+$ yarn add -W caniuse-lite
+warning "@angular-devkit/build-angular > @vitejs/plugin-basic-ssl@1.2.0" has unmet peer dependency "vite@^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0".
+warning "@angular-devkit/build-angular > @angular/build > @inquirer/confirm@5.1.1" has unmet peer dependency "@types/node@>=18".
+warning "@angular-devkit/build-angular > @angular/build > @inquirer/confirm > @inquirer/type@3.0.2" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts@7.2.1" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/checkbox@4.0.6" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/confirm@5.1.3" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/editor@4.2.3" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/expand@4.0.6" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/input@4.1.3" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/number@3.0.6" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/password@4.0.6" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/rawlist@4.0.6" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/search@3.0.6" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/select@4.0.6" has unmet peer dependency "@types/node@>=18".
+Cleaning package.json dependencies from caniuse-lite
+$ yarn remove -W caniuse-lite
+warning "@angular-devkit/build-angular > @vitejs/plugin-basic-ssl@1.2.0" has unmet peer dependency "vite@^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0".
+warning "@angular-devkit/build-angular > @angular/build > @inquirer/confirm@5.1.1" has unmet peer dependency "@types/node@>=18".
+warning "@angular-devkit/build-angular > @angular/build > @inquirer/confirm > @inquirer/type@3.0.2" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts@7.2.1" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/checkbox@4.0.6" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/confirm@5.1.3" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/editor@4.2.3" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/expand@4.0.6" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/input@4.1.3" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/number@3.0.6" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/password@4.0.6" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/rawlist@4.0.6" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/search@3.0.6" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/select@4.0.6" has unmet peer dependency "@types/node@>=18".
+caniuse-lite has been successfully updated
+
+No target browser changes
+```
+```bash
