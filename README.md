@@ -58,3 +58,21 @@ yarn install v1.22.22
 success Already up-to-date.
 Done in 0.64s.
 ```
+```bash
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Latest version:     1.0.30001702
+Installed version:  1.0.30001701
+Removing old caniuse-lite from lock file
+Installing new caniuse-lite version
+$ yarn add -W caniuse-lite
+warning "@angular-devkit/build-angular > @vitejs/plugin-basic-ssl@1.2.0" has unmet peer dependency "vite@^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0".
+Cleaning package.json dependencies from caniuse-lite
+$ yarn remove -W caniuse-lite
+warning "@angular-devkit/build-angular > @vitejs/plugin-basic-ssl@1.2.0" has unmet peer dependency "vite@^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0".
+caniuse-lite has been successfully updated
+
+No target browser changes
+```
+```bash
