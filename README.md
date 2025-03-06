@@ -70,3 +70,14 @@ caniuse-lite has been successfully updated
 No target browser changes
 ```
 ```bash
+yarn run v1.22.22
+$ ng build --configuration production
+❯ Building...
+✖ Building... [FAILED: Inlining of fonts failed. An error has occurred while retrieving https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap over the internet.
+]
+An unhandled exception occurred: Inlining of fonts failed. An error has occurred while retrieving https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap over the internet.
+
+See "/tmp/ng-XEcEfH/angular-errors.log" for further details.
+error Command failed with exit code 127.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+```
