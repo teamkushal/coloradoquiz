@@ -61,3 +61,15 @@ warning "@angular-devkit/build-angular > @vitejs/plugin-basic-ssl@1.2.0" has unm
 success Saved lockfile.
 Done in 16.50s.
 ```
+```bash
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Latest version:     1.0.30001715
+Installed version:  1.0.30001715
+caniuse-lite is up to date
+caniuse-lite has been successfully updated
+
+No target browser changes
+```
+```bash
