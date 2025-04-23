@@ -71,3 +71,10 @@ caniuse-lite has been successfully updated
 No target browser changes
 ```
 ```bash
+yarn run v1.22.22
+$ ng build --configuration production
+Node packages may not be installed. Try installing with 'yarn install'.
+Error: Could not find the '@angular-devkit/build-angular:application' builder's node package.
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+```
