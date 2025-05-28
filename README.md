@@ -70,3 +70,33 @@ caniuse-lite has been successfully updated
 No target browser changes
 ```
 ```bash
+yarn run v1.22.22
+$ ng build --configuration production
+❯ Building...
+✔ Building...
+Application bundle generation failed. [19.959 seconds]
+
+✘ [ERROR] No matching export in "node_modules/@angular/core/fesm2022/core.mjs" for import "afterRender"
+
+    node_modules/@angular/cdk/fesm2022/overlay-module-BUj0D19H.mjs:2:121:
+      2 │ ...wEncapsulation, untracked, afterRender, afterNextRender, Element...
+        ╵                               ~~~~~~~~~~~
+
+
+✘ [ERROR] No matching export in "node_modules/@angular/core/fesm2022/core.mjs" for import "afterRender"
+
+    node_modules/@angular/material/fesm2022/form-field-DqPi4knt.mjs:6:224:
+      6 │ ...ION_MODULE_TYPE, computed, afterRender, ContentChild, ContentChi...
+        ╵                               ~~~~~~~~~~~
+
+
+✘ [ERROR] No matching export in "node_modules/@angular/core/fesm2022/core.mjs" for import "afterRender"
+
+    node_modules/@angular/material/fesm2022/snack-bar.mjs:2:161:
+      2 │ ...ef, ANIMATION_MODULE_TYPE, afterRender, ViewChild, Injector, Tem...
+        ╵                               ~~~~~~~~~~~
+
+
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+```
