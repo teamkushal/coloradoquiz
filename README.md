@@ -71,3 +71,20 @@ caniuse-lite has been successfully updated
 No target browser changes
 ```
 ```bash
+yarn run v1.22.22
+$ ng build --configuration production
+❯ Building...
+✔ Building...
+Initial chunk files   | Names         |  Raw size | Estimated transfer size
+main-3PC5YDFQ.js      | main          | 986.10 kB |               202.14 kB
+styles-454WRQ3E.css   | styles        |  92.94 kB |                 7.48 kB
+polyfills-PZJUNZMN.js | polyfills     |  34.99 kB |                11.55 kB
+
+                      | Initial total |   1.11 MB |               221.17 kB
+
+Application bundle generation complete. [12.202 seconds]
+
+Output location: /home/kushal/src/angular/coloradoquiz/dist/coloradoquiz
+
+Done in 13.61s.
+```
