@@ -76,3 +76,20 @@ npm notice To update run: npm install -g npm@11.5.2
 npm notice
 ```
 ```bash
+yarn run v1.22.22
+$ ng build --configuration production
+❯ Building...
+✔ Building...
+Initial chunk files   | Names         |  Raw size | Estimated transfer size
+main-FU7655RS.js      | main          | 990.51 kB |               203.05 kB
+styles-D7KQ5Q3L.css   | styles        | 103.12 kB |                 7.58 kB
+polyfills-PZJUNZMN.js | polyfills     |  34.99 kB |                11.55 kB
+
+                      | Initial total |   1.13 MB |               222.18 kB
+
+Application bundle generation complete. [12.722 seconds]
+
+Output location: /home/kushal/src/angular/coloradoquiz/dist/coloradoquiz
+
+Done in 14.39s.
+```
