@@ -10,3 +10,9 @@ CI Status:
 [![Deploy to Firebase Hosting on merge](https://github.com/teamkushal/coloradoquiz/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/teamkushal/coloradoquiz/actions/workflows/firebase-hosting-merge.yml)
 
 ```bash
+System Memory
+               total        used        free      shared  buff/cache   available
+Mem:           3.7Gi       670Mi       794Mi       2.2Mi       2.6Gi       3.1Gi
+Swap:          975Mi       883Mi        92Mi
+System Storage
+2.0G	.
