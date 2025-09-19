@@ -72,3 +72,19 @@ caniuse-lite has been successfully updated
 No target browser changes
 ```
 ```bash
+yarn run v1.22.22
+$ ng build --configuration production
+❯ Building...
+✔ Building...
+Application bundle generation failed. [8.945 seconds] - 2025-09-19T17:10:36.654Z
+
+✘ [ERROR] TS2304: Cannot find name 'PromiseSettledResult'. [plugin angular-compiler]
+
+    node_modules/@angular/core/discovery.d.d.ts:73:22:
+      73 │     running?: Promise<PromiseSettledResult<void>[]>;
+         ╵                       ~~~~~~~~~~~~~~~~~~~~
+
+
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+```
