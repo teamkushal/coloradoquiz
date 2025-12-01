@@ -75,3 +75,33 @@ caniuse-lite has been successfully updated
 No target browser changes
 ```
 ```bash
+yarn run v1.22.22
+$ ng build --configuration production
+❯ Building...
+✔ Building...
+Initial chunk files   | Names         |  Raw size | Estimated transfer size
+main-JEM5Q6L7.js      | main          | 987.50 kB |               201.62 kB
+styles-CZWGMGW6.css   | styles        | 103.79 kB |                 7.64 kB
+polyfills-RJMUQUVT.js | polyfills     |  34.98 kB |                11.51 kB
+
+                      | Initial total |   1.13 MB |               220.77 kB
+
+Application bundle generation complete. [11.205 seconds] - 2025-12-01T10:10:39.013Z
+
+▲ [WARNING] NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. [plugin angular-compiler]
+
+    src/app/quiz/quiz.component.html:18:30:
+      18 │       @for (question of quiz?.questions; track question) {
+         ╵                               ~~~~~~~~~
+
+  Warning occurs in the template of component QuizComponent.
+
+    src/app/quiz/quiz.component.ts:14:17:
+      14 │     templateUrl: './quiz.component.html',
+         ╵                  ~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Output location: /home/kushal/src/angular/coloradoquiz/dist/coloradoquiz
+
+Done in 12.63s.
+```
