@@ -63,3 +63,21 @@ yarn install v1.22.22
 success Already up-to-date.
 Done in 1.14s.
 ```
+```bash
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Latest version:     1.0.30001760
+Installed version:  1.0.30001759
+Removing old caniuse-lite from lock file
+Installing new caniuse-lite version
+$ yarn add -W caniuse-lite baseline-browser-mapping
+warning " > @angular/forms@21.0.3" has unmet peer dependency "@standard-schema/spec@^1.0.0".
+Cleaning package.json dependencies from caniuse-lite
+$ yarn remove -W caniuse-lite baseline-browser-mapping
+warning " > @angular/forms@21.0.3" has unmet peer dependency "@standard-schema/spec@^1.0.0".
+caniuse-lite has been successfully updated
+
+No target browser changes
+```
+```bash
