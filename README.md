@@ -63,3 +63,20 @@ yarn install v1.22.22
 success Already up-to-date.
 Done in 1.13s.
 ```
+```bash
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Latest version:     1.0.30001761
+Installed version:  1.0.30001760
+Removing old caniuse-lite from lock file
+Installing new caniuse-lite version
+$ yarn add -W caniuse-lite baseline-browser-mapping
+warning Pattern ["baseline-browser-mapping@^2.9.10"] is trying to unpack in the same destination "/home/kushal/.cache/yarn/v6/npm-baseline-browser-mapping-2.9.10-099221e89b30ec784675af076fbd4a93e58b53c3-integrity/node_modules/baseline-browser-mapping" as pattern ["baseline-browser-mapping@^2.9.0"]. This could result in non-deterministic behavior, skipping.
+Cleaning package.json dependencies from caniuse-lite
+$ yarn remove -W caniuse-lite baseline-browser-mapping
+caniuse-lite has been successfully updated
+
+No target browser changes
+```
+```bash
