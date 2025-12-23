@@ -17,3 +17,4 @@ Swap:          975Mi       804Mi       171Mi
 System Storage
 2.0G	.
 ```
+```bash
