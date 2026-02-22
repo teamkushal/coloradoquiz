@@ -18,3 +18,48 @@ System Storage
 2.7G	.
 ```
 ```bash
+yarn run v1.22.22
+$ ng version
+
+     _                      _                 ____ _     ___
+    / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
+   / △ \ | '_ \ / _` | | | | |/ _` | '__|   | |   | |    | |
+  / ___ \| | | | (_| | |_| | | (_| | |      | |___| |___ | |
+ /_/   \_\_| |_|\__, |\__,_|_|\__,_|_|       \____|_____|___|
+                |___/
+    
+
+Angular CLI       : 21.1.4
+Angular           : 21.1.5
+Node.js           : 24.13.1
+Package Manager   : yarn 1.22.22
+Operating System  : linux x64
+
+┌───────────────────────────────────┬───────────────────┬───────────────────┐
+│ Package                           │ Installed Version │ Requested Version │
+├───────────────────────────────────┼───────────────────┼───────────────────┤
+│ @angular-devkit/build-angular     │ 21.1.4            │ ^21.1.4           │
+│ @angular/animations               │ 21.1.5            │ ^21.1.5           │
+│ @angular/cdk                      │ 21.1.5            │ 21.1.5            │
+│ @angular/cli                      │ 21.1.4            │ ^21.1.4           │
+│ @angular/common                   │ 21.1.5            │ ^21.1.5           │
+│ @angular/compiler                 │ 21.1.5            │ ^21.1.5           │
+│ @angular/compiler-cli             │ 21.1.5            │ ^21.1.5           │
+│ @angular/core                     │ 21.1.5            │ ^21.1.5           │
+│ @angular/forms                    │ 21.1.5            │ ^21.1.5           │
+│ @angular/localize                 │ 21.1.5            │ 21.1.5            │
+│ @angular/material                 │ 21.1.5            │ 21.1.5            │
+│ @angular/platform-browser         │ 21.1.5            │ ^21.1.5           │
+│ @angular/platform-browser-dynamic │ 21.1.5            │ ^21.1.5           │
+│ @angular/router                   │ 21.1.5            │ ^21.1.5           │
+│ @angular/service-worker           │ 21.1.5            │ ^21.1.5           │
+│ rxjs                              │ 7.8.1             │ ~7.8.0            │
+│ typescript                        │ 5.9.3             │ ~5.9.3            │
+│ zone.js                           │ 0.15.0            │ ~0.15.0           │
+└───────────────────────────────────┴───────────────────┴───────────────────┘
+Done in 0.66s.
+yarn install v1.22.22
+[1/4] Resolving packages...
+success Already up-to-date.
+Done in 0.72s.
+```
