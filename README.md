@@ -63,3 +63,23 @@ yarn install v1.22.22
 success Already up-to-date.
 Done in 0.70s.
 ```
+```bash
+(node:940454) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Latest version:     1.0.30001774
+Installed version:  1.0.30001772
+Removing old caniuse-lite from lock file
+Installing new caniuse-lite version
+$ yarn add -W caniuse-lite baseline-browser-mapping
+(node:940475) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Cleaning package.json dependencies from caniuse-lite
+$ yarn remove -W caniuse-lite baseline-browser-mapping
+caniuse-lite has been successfully updated
+
+No target browser changes
+```
+```bash
