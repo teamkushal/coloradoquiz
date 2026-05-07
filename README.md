@@ -63,3 +63,20 @@ yarn install v1.22.22
 success Already up-to-date.
 Done in 0.75s.
 ```
+```bash
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Latest version:     1.0.30001792
+Installed version:  1.0.30001792
+caniuse-lite is up to date
+caniuse-lite has been successfully updated
+
+No target browser changes
+npm notice
+npm notice New minor version of npm available! 11.12.1 -> 11.14.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.14.0
+npm notice To update run: npm install -g npm@11.14.0
+npm notice
+```
+```bash
