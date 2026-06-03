@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 
 import { NewsComponent } from './news.component';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('NewsComponent', () => {
   let component: NewsComponent;
@@ -20,7 +20,7 @@ describe('NewsComponent', () => {
                 snapshot: { params: { title: 'top-stories' } }
             }
         },
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideHttpClientTesting()
     ]
 })

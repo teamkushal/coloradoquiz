@@ -10,7 +10,7 @@ import { MaterialModule } from './material/material.module';
 import { LoadingComponent } from './loading/loading.component';
 import { HomeComponent } from './home/home.component';
 import { QuizComponent } from './quiz/quiz.component';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { KeyIndustriesComponent } from './key-industries/key-industries.component';
 import { NewsComponent } from './news/news.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -52,6 +52,6 @@ import { HttpRequestInterceptorService } from './http-request-interceptor.servic
             useClass: HttpRequestInterceptorService,
             multi: true
         },
-        provideHttpClient(withInterceptorsFromDi())
+        provideHttpClient(withXhr(), withInterceptorsFromDi())
     ] })
 export class AppModule { }

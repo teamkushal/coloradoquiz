@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MaterialModule } from '../material/material.module';
 
 import { QuizComponent } from './quiz.component';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('QuizComponent', () => {
   let component: QuizComponent;
@@ -22,7 +22,7 @@ describe('QuizComponent', () => {
                 snapshot: { params: { title: 'history' } }
             }
         },
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideHttpClientTesting()
     ]
 })

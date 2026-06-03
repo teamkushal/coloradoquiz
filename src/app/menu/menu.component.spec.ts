@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MaterialModule } from '../material/material.module';
 
 import { MenuComponent } from './menu.component';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
@@ -13,7 +13,7 @@ describe('MenuComponent', () => {
     await TestBed.configureTestingModule({
     declarations: [MenuComponent],
     imports: [MaterialModule],
-    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+    providers: [provideHttpClient(withXhr(), withInterceptorsFromDi()), provideHttpClientTesting()]
 }).compileComponents();
   });
 
