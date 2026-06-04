@@ -89,3 +89,8 @@ Application bundle generation failed. [8.925 seconds] - 2026-06-04T15:10:45.733Z
 error Command failed with exit code 1.
 info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
 ```
+Thu Jun  4 11:11:03 AM EDT 2026
+yarn version v1.22.22
+info Current version: 0.0.14416
+info New version: 0.0.14417
+Done in 0.08s.
