@@ -1,7 +1,7 @@
 import { Question } from './question';
 
 export interface Quiz {
-    title: string;
-    description: string;
-    questions: Question[];
+  title: string;
+  description: string;
+  questions: Question[];
 }

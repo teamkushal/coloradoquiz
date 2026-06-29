@@ -1,17 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    selector: 'app-loader-io',
-    templateUrl: './loader-io.component.html',
-    styleUrls: ['./loader-io.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+  selector: 'app-loader-io',
+  imports: [],
+  templateUrl: './loader-io.component.html',
+  styleUrl: './loader-io.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoaderIoComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class LoaderIoComponent {}

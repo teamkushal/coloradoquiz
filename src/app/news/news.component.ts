@@ -1,60 +1,50 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { DatePipe, TitleCasePipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
-import { News } from '../news';
+import { map, switchMap, tap } from 'rxjs';
 import { NewsItem } from '../news-item';
 import { NewsService } from '../news.service';
 
 @Component({
-    selector: 'app-news',
-    templateUrl: './news.component.html',
-    styleUrls: ['./news.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+  selector: 'app-news',
+  imports: [DatePipe, TitleCasePipe, MatButtonModule, MatCardModule],
+  templateUrl: './news.component.html',
+  styleUrl: './news.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NewsComponent implements OnInit {
-  news: News;
+export class NewsComponent {
+  private readonly api = inject(NewsService);
+  private readonly snackBar = inject(MatSnackBar);
+  private readonly titleService = inject(Title);
 
-  constructor(
-    private api: NewsService,
-    private snackBar: MatSnackBar,
-    private activatedRoute: ActivatedRoute,
-    private title: Title
-  ) {
-    this.news = this.api.createDummyNews();
-  }
+  /** Bound from the `:title` route parameter via `withComponentInputBinding()`. */
+  readonly title = input<string>();
 
-  ngOnInit(): void {
-    console.log({ title: this.activatedRoute.snapshot.params.title });
-    const title = this.activatedRoute.snapshot.params.title;
-    this.api.getNews(title);
-    this.api.myObservable$.subscribe((response) => {
-      console.log({ response });
-      this.news = response;
-      this.title.setTitle(`News | ${response.title}`);
-    });
-  }
-
-  openSnackBar(message: string, action: string, duration: number): void {
-    this.snackBar.open(message, action, {
-      duration: duration * 1000,
-    });
-  }
+  readonly news = toSignal(
+    toObservable(this.title).pipe(
+      map((title) => title ?? 'top-stories'),
+      switchMap((subject) =>
+        this.api
+          .getNews(subject)
+          .pipe(tap((news) => this.titleService.setTitle(`News | ${news.title}`))),
+      ),
+    ),
+    { initialValue: NewsService.placeholder() },
+  );
 
   like(newsItem: NewsItem): void {
-    this.openSnackBar(
-      `Pretend that you have liked ${newsItem.title}.`,
-      `Swell!`,
-      3
-    );
+    this.openSnackBar(`Pretend that you have liked ${newsItem.title}.`, 'Swell!', 3);
   }
 
   share(newsItem: NewsItem): void {
-    this.openSnackBar(
-      `Pretend that you have shared ${newsItem.title}.`,
-      `Dandy!`,
-      5
-    );
+    this.openSnackBar(`Pretend that you have shared ${newsItem.title}.`, 'Dandy!', 5);
+  }
+
+  private openSnackBar(message: string, action: string, durationSeconds: number): void {
+    this.snackBar.open(message, action, { duration: durationSeconds * 1000 });
   }
 }

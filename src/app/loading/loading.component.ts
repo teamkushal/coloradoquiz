@@ -1,18 +1,14 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoadingService } from '../loading.service';
 
 @Component({
-    selector: 'app-loading',
-    templateUrl: './loading.component.html',
-    styleUrls: ['./loading.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+  selector: 'app-loading',
+  imports: [MatProgressSpinnerModule],
+  templateUrl: './loading.component.html',
+  styleUrl: './loading.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoadingComponent implements OnInit {
-
-  constructor(public loadingService: LoadingService) { }
-
-  ngOnInit(): void {
-  }
-
+export class LoadingComponent {
+  protected readonly loadingService = inject(LoadingService);
 }

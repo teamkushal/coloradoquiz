@@ -1,19 +1,26 @@
-import { Injectable } from '@angular/core';
-import { SwUpdate  } from '@angular/service-worker';
+import { inject, Service } from '@angular/core';
+import { SwUpdate } from '@angular/service-worker';
 
-@Injectable()
+/**
+ * Checks for a new service-worker version and, when one is ready, activates it
+ * and reloads the page. No-ops when the service worker is disabled (e.g. dev).
+ */
+@Service()
 export class PromptUpdateService {
-  constructor(private updates: SwUpdate) {
-    this.checkForUpdates();
-  }
+  private readonly updates = inject(SwUpdate);
 
-  public checkForUpdates(): void {
-    this.updates.checkForUpdate().then((event) => {
-      console.info("hello from check for updates");
-      console.info({ event });
-      if (event === true) {
-        this.updates.activateUpdate().then(() => document.location.reload());
-      }
-    });
+  checkForUpdates(): void {
+    if (!this.updates.isEnabled) {
+      return;
+    }
+    this.updates
+      .checkForUpdate()
+      .then((hasUpdate) => {
+        if (hasUpdate) {
+          return this.updates.activateUpdate().then(() => document.location.reload());
+        }
+        return undefined;
+      })
+      .catch((error) => console.error('Service worker update check failed', error));
   }
 }
