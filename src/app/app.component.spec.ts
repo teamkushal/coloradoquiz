@@ -1,33 +1,43 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { ServiceWorkerModule, SwUpdate } from '@angular/service-worker';
+import { provideRouter } from '@angular/router';
+import { of } from 'rxjs';
 import { AppComponent } from './app.component';
-import { LoadingComponent } from './loading/loading.component';
-import { PromptUpdateService } from './prompt-update.service';
+import { HandleUnrecoverableStateService } from './handle-unrecoverable-state.service';
 import { IpinfoService } from './ipinfo.service';
+import { PromptUpdateService } from './prompt-update.service';
 
 describe('AppComponent', () => {
+  const ipInfo = { getIpAddress: vi.fn(() => of({ ip: '203.0.113.1', country: 'US' })) };
+  const promptUpdate = { checkForUpdates: vi.fn() };
+
   beforeEach(async () => {
+    ipInfo.getIpAddress.mockClear();
+    localStorage.clear();
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        ServiceWorkerModule.register('ngsw-worker.js', { enabled: true })
-      ],
-      declarations: [
-        AppComponent,
-        LoadingComponent
-      ],
+      imports: [AppComponent],
       providers: [
-        PromptUpdateService,
-        SwUpdate,
-        IpinfoService
-      ]
+        provideRouter([]),
+        { provide: IpinfoService, useValue: ipInfo },
+        { provide: PromptUpdateService, useValue: promptUpdate },
+        { provide: HandleUnrecoverableStateService, useValue: {} },
+      ],
     }).compileComponents();
   });
 
-  it('should create the app', () => {
+  it('creates the root component', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
+  it('fetches and caches IP information when none is stored', () => {
+    TestBed.createComponent(AppComponent);
+    expect(ipInfo.getIpAddress).toHaveBeenCalledTimes(1);
+    expect(localStorage.getItem('ipInformation')).not.toBeNull();
+  });
+
+  it('does not fetch IP information when it is already cached', () => {
+    localStorage.setItem('ipInformation', JSON.stringify({ ip: 'cached' }));
+    TestBed.createComponent(AppComponent);
+    expect(ipInfo.getIpAddress).not.toHaveBeenCalled();
   });
 });

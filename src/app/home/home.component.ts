@@ -1,24 +1,21 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { Title } from '@angular/platform-browser';
+import { RouterLink } from '@angular/router';
+import { MenuComponent } from '../menu/menu.component';
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+  selector: 'app-home',
+  imports: [DatePipe, MatToolbarModule, RouterLink, MenuComponent],
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent implements OnInit {
-  startTime: Date;
+export class HomeComponent {
+  protected readonly startTime = new Date();
 
-  constructor(
-    private title: Title
-  ) {
-    this.startTime = new Date();
+  constructor() {
+    inject(Title).setTitle('Colorado Quiz');
   }
-
-  ngOnInit(): void {
-    this.title.setTitle(`Colorado Quiz`);
-  }
-
 }

@@ -1,17 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    selector: 'app-playground',
-    templateUrl: './playground.component.html',
-    styleUrls: ['./playground.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+  selector: 'app-playground',
+  imports: [],
+  templateUrl: './playground.component.html',
+  styleUrl: './playground.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PlaygroundComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class PlaygroundComponent {}

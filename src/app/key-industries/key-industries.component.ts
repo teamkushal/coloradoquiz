@@ -1,17 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    selector: 'app-key-industries',
-    templateUrl: './key-industries.component.html',
-    styleUrls: ['./key-industries.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+  selector: 'app-key-industries',
+  imports: [],
+  templateUrl: './key-industries.component.html',
+  styleUrl: './key-industries.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KeyIndustriesComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class KeyIndustriesComponent {}

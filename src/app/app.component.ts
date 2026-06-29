@@ -1,24 +1,30 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { LoadingService } from './loading.service';
-import { PromptUpdateService } from './prompt-update.service';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { HandleUnrecoverableStateService } from './handle-unrecoverable-state.service';
 import { IpinfoService } from './ipinfo.service';
+import { LoadingComponent } from './loading/loading.component';
+import { PromptUpdateService } from './prompt-update.service';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+  selector: 'app-root',
+  imports: [RouterOutlet, LoadingComponent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  constructor(private sw: PromptUpdateService, private ipInfoApi: IpinfoService) {
-    // this.sw.checkForUpdates();
-    setInterval(() => this.sw.checkForUpdates(), 60000);
-    let ipInformation = localStorage.getItem("ipInformation");
-    if (ipInformation === null) {
-      this.ipInfoApi.getIpAddress();
-      this.ipInfoApi.myObservable$.subscribe(response => {
-        localStorage.setItem("ipInformation", JSON.stringify(response));
+  private readonly promptUpdate = inject(PromptUpdateService);
+  private readonly ipInfo = inject(IpinfoService);
+
+  // Instantiated for its side effect: subscribing to unrecoverable SW state.
+  private readonly unrecoverableState = inject(HandleUnrecoverableStateService);
+
+  constructor() {
+    setInterval(() => this.promptUpdate.checkForUpdates(), 60_000);
+
+    if (localStorage.getItem('ipInformation') === null) {
+      this.ipInfo.getIpAddress().subscribe((response) => {
+        localStorage.setItem('ipInformation', JSON.stringify(response));
       });
     }
   }

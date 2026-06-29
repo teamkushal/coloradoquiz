@@ -1,23 +1,22 @@
-import { Injectable } from '@angular/core';
-import { Observable, Subject, BehaviorSubject, of } from 'rxjs';
-import { tap, concatMap, finalize } from 'rxjs/operators';
+import { computed, Service, signal } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+/**
+ * Tracks the number of in-flight HTTP requests and exposes a single derived
+ * `loading` signal. Counting (rather than a plain boolean) keeps the spinner
+ * visible while multiple requests overlap.
+ */
+@Service()
 export class LoadingService {
-  private loadingSubject = new BehaviorSubject<boolean>(false);
-  loading$: Observable<boolean> = this.loadingSubject.asObservable();
-  constructor() { }
-  showLoaderUntilCompleted<T>(observable$: Observable<T>): Observable<T> {
-    return of(null).pipe(tap(() => this.turnLoadingOn()), concatMap(() => observable$),
-      finalize(() => this.turnLoadingOff())
-    );
+  private readonly inFlight = signal(0);
+
+  /** True whenever at least one tracked request is pending. */
+  readonly loading = computed(() => this.inFlight() > 0);
+
+  show(): void {
+    this.inFlight.update((count) => count + 1);
   }
-  turnLoadingOn(): void {
-    this.loadingSubject.next(true);
-  }
-  turnLoadingOff(): void {
-    this.loadingSubject.next(false);
+
+  hide(): void {
+    this.inFlight.update((count) => Math.max(0, count - 1));
   }
 }
