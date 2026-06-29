@@ -3,28 +3,28 @@ On branch feat/kus/upgrade-2026-06-29
 nothing to commit, working tree clean
 
 real	0m0.005s
-user	0m0.003s
-sys	0m0.002s
-remote: Enumerating objects: 335, done.
-remote: Counting objects: 100% (335/335), done.
-remote: Compressing objects: 100% (90/90), done.
-remote: Total 335 (delta 205), reused 320 (delta 190), pack-reused 0 (from 0)
-Receiving objects: 100% (335/335), 120.05 KiB | 2.79 MiB/s, done.
-Resolving deltas: 100% (205/205), completed with 2 local objects.
+user	0m0.001s
+sys	0m0.004s
+remote: Enumerating objects: 145, done.
+remote: Counting objects: 100% (145/145), done.
+remote: Compressing objects: 100% (34/34), done.
+remote: Total 136 (delta 85), reused 130 (delta 79), pack-reused 0 (from 0)
+Receiving objects: 100% (136/136), 14.56 KiB | 14.56 MiB/s, done.
+Resolving deltas: 100% (85/85), completed with 7 local objects.
 From github.com:teamkushal/coloradoquiz
  * branch                  master     -> FETCH_HEAD
-   52e2e61388..85a9184422  master     -> origin/master
+   85a9184422..2148bd25bc  master     -> origin/master
 Successfully rebased and updated refs/heads/feat/kus/upgrade-2026-06-29.
 
-real	0m1.041s
-user	0m0.237s
-sys	0m0.098s
+real	0m1.235s
+user	0m0.356s
+sys	0m0.204s
 On branch feat/kus/upgrade-2026-06-29
 nothing to commit, working tree clean
 
-real	0m0.010s
-user	0m0.006s
-sys	0m0.003s
+real	0m0.012s
+user	0m0.009s
+sys	0m0.002s
 * remote origin
   Fetch URL: git@github.com:teamkushal/coloradoquiz.git
   Push  URL: git@github.com:teamkushal/coloradoquiz.git
@@ -44,8 +44,8 @@ sys	0m0.003s
     feat/kus/upgrade-2026-06-29 pushes to feat/kus/upgrade-2026-06-29 (local out of date)
     master                      pushes to master                      (local out of date)
 
-real	0m0.514s
-user	0m0.011s
+real	0m0.503s
+user	0m0.009s
 sys	0m0.006s
 kushal@fedora:~/src/angular/coloradoquiz$ cd ~/src/angular/coloradoquiz/; cat update.sh; time bash update.sh;
 #!/usr/bin/env bash
@@ -335,26 +335,26 @@ fi
 note "done."
 
 ==> Node version manager: fnm
-[feat/kus/upgrade-2026-06-29 785841c249] add timestamp
- 2 files changed, 25 insertions(+), 323 deletions(-)
-[feat/kus/upgrade-2026-06-29 5a1f91ffea] begin add system status
+[feat/kus/upgrade-2026-06-29 6314bfff2b] add timestamp
+ 2 files changed, 25 insertions(+), 319 deletions(-)
+[feat/kus/upgrade-2026-06-29 e1f10cf976] begin add system status
  2 files changed, 38 insertions(+)
-[feat/kus/upgrade-2026-06-29 a368555fd4] add system status
+[feat/kus/upgrade-2026-06-29 0816eb645f] add system status
  1 file changed, 6 insertions(+)
-[feat/kus/upgrade-2026-06-29 e6e8dfa7e8] end add system status
+[feat/kus/upgrade-2026-06-29 ecf4e7b3d4] end add system status
  1 file changed, 1 insertion(+)
-[feat/kus/upgrade-2026-06-29 956648413e] begin update node
+[feat/kus/upgrade-2026-06-29 413830060b] begin update node
  2 files changed, 28 insertions(+)
 Installing Node v24.18.0 (x64)
 warning: Version already installed at "/home/kushal/.local/share/fnm/node-versions/v24.18.0"
 
-real	0m0.118s
-user	0m0.008s
-sys	0m0.005s
+real	0m0.116s
+user	0m0.005s
+sys	0m0.008s
 Using Node for alias lts-latest
 
-real	0m0.003s
-user	0m0.001s
+real	0m0.002s
+user	0m0.000s
 sys	0m0.002s
 
 changed 278 packages in 5s
@@ -366,18 +366,18 @@ npm warn allow-scripts   yarn@1.22.22 (preinstall: :; (node ./preinstall.js > /d
 npm warn allow-scripts
 npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.
 
-real	0m5.276s
-user	0m3.254s
-sys	0m1.784s
+real	0m4.861s
+user	0m3.238s
+sys	0m1.761s
 
-real	0m0.376s
-user	0m0.297s
-sys	0m0.116s
+real	0m0.383s
+user	0m0.330s
+sys	0m0.110s
 
-real	0m0.229s
-user	0m0.250s
-sys	0m0.051s
-[feat/kus/upgrade-2026-06-29 b95845f4ab] end update node
+real	0m0.222s
+user	0m0.245s
+sys	0m0.057s
+[feat/kus/upgrade-2026-06-29 f803c2175b] end update node
  2 files changed, 70 insertions(+)
 On branch feat/kus/upgrade-2026-06-29
 nothing to commit, working tree clean
@@ -390,220 +390,43 @@ Package '@angular/localize' is not a dependency.
 error Command failed with exit code 1.
 info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
 
-real	0m1.557s
-user	0m1.062s
-sys	0m0.303s
+real	0m1.561s
+user	0m1.041s
+sys	0m0.308s
 On branch feat/kus/upgrade-2026-06-29
 nothing to commit, working tree clean
 
-real	0m1.184s
-user	0m0.786s
-sys	0m0.228s
-[feat/kus/upgrade-2026-06-29 4f9d2d0f73] begin prepare to build angular
+real	0m1.059s
+user	0m0.855s
+sys	0m0.196s
+[feat/kus/upgrade-2026-06-29 86b7ce693a] begin prepare to build angular
  2 files changed, 36 insertions(+)
 
-real	0m3.403s
-user	0m5.795s
-sys	0m0.731s
-[feat/kus/upgrade-2026-06-29 c3ffaf1653] end prepare to build angular
+real	0m3.263s
+user	0m5.634s
+sys	0m0.691s
+[feat/kus/upgrade-2026-06-29 0cb06c5531] end prepare to build angular
  1 file changed, 29 insertions(+)
-[feat/kus/upgrade-2026-06-29 82f09e2ce0] begin prepare to unit test angular
+[feat/kus/upgrade-2026-06-29 2183a7e323] begin prepare to unit test angular
  2 files changed, 27 insertions(+), 8 deletions(-)
 [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
-✘ [ERROR] TS2304: Cannot find name 'jasmine'. [plugin angular-compiler]
 
-    src/app/handle-unrecoverable-state.service.spec.ts:16:20:
-      16 │           useValue: jasmine.createSpyObj('SwUpdate', ['unrecoverab...
-         ╵                     ~~~~~~~
+real	0m4.045s
+user	0m20.529s
+sys	0m3.976s
+[feat/kus/upgrade-2026-06-29 78aaef134d] end prepare to unit test angular
+ 2 files changed, 60 insertions(+)
 
-
-✘ [ERROR] TS2304: Cannot find name 'jasmine'. [plugin angular-compiler]
-
-    src/app/handle-unrecoverable-state.service.spec.ts:20:20:
-      20 │           useValue: jasmine.createSpyObj('NgswCommChannel', []),
-         ╵                     ~~~~~~~
-
-
-✘ [ERROR] TS2503: Cannot find namespace 'jasmine'. [plugin angular-compiler]
-
-    src/app/handle-unrecoverable-state.service.spec.ts:34:34:
-      34 │ ...wUpdateSpy.unrecoverable as jasmine.SpyObj<Subject<Unrecoverabl...
-         ╵                                ~~~~~~~
-
-
-✘ [ERROR] TS2304: Cannot find name 'spyOn'. [plugin angular-compiler]
-
-    src/app/handle-unrecoverable-state.service.spec.ts:36:26:
-      36 │     const consoleLogSpy = spyOn(console, 'log');
-         ╵                           ~~~~~
-
-
-✘ [ERROR] Could not resolve "../material/material.module"
-
-    src/app/menu/menu.component.spec.ts:3:31:
-      3 │ import { MaterialModule } from '../material/material.module';
-        ╵                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] TS2307: Cannot find module '../material/material.module' or its corresponding type declarations. [plugin angular-compiler]
-
-    src/app/menu/menu.component.spec.ts:3:31:
-      3 │ import { MaterialModule } from '../material/material.module';
-        ╵                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] Could not resolve "../material/material.module"
-
-    src/app/news/news.component.spec.ts:4:31:
-      4 │ import { MaterialModule } from '../material/material.module';
-        ╵                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] TS2307: Cannot find module '../material/material.module' or its corresponding type declarations. [plugin angular-compiler]
-
-    src/app/news/news.component.spec.ts:4:31:
-      4 │ import { MaterialModule } from '../material/material.module';
-        ╵                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] Could not resolve "./http-request-interceptor.service"
-
-    src/app/prompt-update.service.spec.ts:4:46:
-      4 │ ...uestInterceptorService } from './http-request-interceptor.service';
-        ╵                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] TS2307: Cannot find module './http-request-interceptor.service' or its corresponding type declarations. [plugin angular-compiler]
-
-    src/app/prompt-update.service.spec.ts:5:46:
-      5 │ ...uestInterceptorService } from './http-request-interceptor.service';
-        ╵                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-error Command failed with exit code 1.                                                                                                                                                                                                                                                                                                                                                                                                  
-
-real	0m1.895s
-user	0m3.617s
-sys	0m0.488s
-[feat/kus/upgrade-2026-06-29 a7762a0c93] end prepare to unit test angular
- 2 files changed, 35 insertions(+)
-
-real	0m0.138s
-user	0m0.083s
-sys	0m0.058s
-[feat/kus/upgrade-2026-06-29 df8c99330f] add timestamp
+real	0m0.155s
+user	0m0.103s
+sys	0m0.047s
+[feat/kus/upgrade-2026-06-29 563d13d32d] add timestamp
  2 files changed, 32 insertions(+)
 
 ==> running export.sh (refresh docs/llm/dump.txt)
-[feat/kus/upgrade-2026-06-29 b28d6ddf77] add repo context dump
- 2 files changed, 353 insertions(+), 878 deletions(-)
+update.sh: line 285: unexpected EOF while looking for matching `"'
 
-==> syncing with origin/feat/kus/upgrade-2026-06-29
-From github.com:teamkushal/coloradoquiz
- * branch                  feat/kus/upgrade-2026-06-29 -> FETCH_HEAD
-warning: skipped previously applied commit 457bff4f02
-warning: skipped previously applied commit 71d4cc63b7
-warning: skipped previously applied commit f75c145891
-warning: skipped previously applied commit 07191ea639
-warning: skipped previously applied commit b15c9adc4f
-warning: skipped previously applied commit a33bb11b56
-warning: skipped previously applied commit ab7a33f858
-warning: skipped previously applied commit dd966da26e
-warning: skipped previously applied commit d1371ebca0
-warning: skipped previously applied commit fc0f3b28a3
-warning: skipped previously applied commit 8d442e6ee3
-warning: skipped previously applied commit 5bd5aab696
-warning: skipped previously applied commit 8f82cbc2b9
-warning: skipped previously applied commit b4ddcbb1fa
-warning: skipped previously applied commit 0564b436ac
-warning: skipped previously applied commit 2369269620
-hint: use --reapply-cherry-picks to include skipped commits
-hint: Disable this message with "git config set advice.skippedCherryPicks false"
-dropping b82f6017df0787c28fd281b223a7d0f12138cb4c add timestamp -- patch contents already upstream
-dropping ba7e04a8803154d9907675c5829c0f837ebfb22a begin add system status -- patch contents already upstream
-dropping 3d12b7a676def732b3cc65bd504947e6d694a047 add system status -- patch contents already upstream
-dropping 5e040447f3a4d8bcf131e98f2e98d55b1a954f83 end add system status -- patch contents already upstream
-dropping 6297ef16ef1b4cee25ada2f5b85164dc4380ab3d begin update node -- patch contents already upstream
-dropping 97c73f2d2fc297c9c3bfc5e7ab5801a09cb22565 end update node -- patch contents already upstream
-dropping 0b8d062d1bc444cc7747714004917179ad30c1c3 begin prepare to build angular -- patch contents already upstream
-dropping 2b0d89d7e830e52343cefdf102588ac284e65257 end prepare to build angular -- patch contents already upstream
-dropping ea007bf0d096494b189423a227784333b8c7b8b6 begin prepare to unit test angular -- patch contents already upstream
-dropping 666534d953d00c8d9c67d623cb5e26e69a7b6ad4 end prepare to unit test angular -- patch contents already upstream
-dropping 743a35c25053dded264f535d6c68a37beac0e47e v0.0.15018 -- patch contents already upstream
-dropping eed5e88f0636d2bd90b631f9792e717dc0272b4a add timestamp -- patch contents already upstream
-dropping cbc39192cf14b00b8afa884d7f056b34d2f0004b add repo context dump -- patch contents already upstream
-dropping ad98b03cb6e901e3b3ead2b47114ccd45764d398 add timestamp -- patch contents already upstream
-dropping 8b7be5341d37529514974c92ee5f15848b2f8e24 begin add system status -- patch contents already upstream
-dropping 08a514850cdf6dbdc29f9f3e7a882dde5ee32ef1 add system status -- patch contents already upstream
-dropping 04ac65d790ca5498fd55cb083acded1dbc6e392a end add system status -- patch contents already upstream
-dropping a15c922a7c4d8b3bae265020beaaf79044ce86ba begin update node -- patch contents already upstream
-dropping 3aef4f065935db4c20da430198c99db44468185b end update node -- patch contents already upstream
-dropping 4c8948e7b57b3740b1c54c3fbe83294226e05439 begin prepare to build angular -- patch contents already upstream
-dropping c12f182d66c3fbe1b77ea618a8c51f3f85a2c7ab end prepare to build angular -- patch contents already upstream
-dropping b28b33db171062685f630fd5ce952735fd32078d begin prepare to unit test angular -- patch contents already upstream
-dropping a18427ca1da2e57292076cae8792b5f53c8270e7 end prepare to unit test angular -- patch contents already upstream
-dropping ec67b901cb178f4edbb2387847aed7925398643c v0.0.15019 -- patch contents already upstream
-dropping 64dc6e4d1f49639ff0182ca158074d3fdc5210dd add timestamp -- patch contents already upstream
-dropping 22ba979779b4ef69ff4f3a4a14775223d786af3d add repo context dump -- patch contents already upstream
-dropping f360ca06cc7da39b317405ea6e21c5709c1f5daf add timestamp -- patch contents already upstream
-dropping 0787e9e5a05a60968e6b6c06ac131b8ff9c08511 begin add system status -- patch contents already upstream
-dropping cd05ca57310dd8805ebefa238e39ffeba508feb5 add system status -- patch contents already upstream
-dropping ffe2225cdf6415fb6e7c2cf16b7b612a67f14a05 end add system status -- patch contents already upstream
-dropping 447c58a7c4c2e7a63f2dad00daeedc150d71db84 begin update node -- patch contents already upstream
-dropping ea641f9563d3575fe9c960642a9d85b9122f38b9 end update node -- patch contents already upstream
-dropping 2121df7f4340aa334469f980d09f3f0fbe4fd7d6 begin prepare to build angular -- patch contents already upstream
-dropping bba69d572b23a91874cdc4fccef61451ecd2e642 end prepare to build angular -- patch contents already upstream
-dropping 43c57da367c51d638f2b762982234e69d235d8d4 begin prepare to unit test angular -- patch contents already upstream
-dropping a60062a51d68ccb86115f89a768cb582a444dcdb end prepare to unit test angular -- patch contents already upstream
-dropping 13063aa02dc9328ec47162deab9c69d126f79b8e v0.0.15020 -- patch contents already upstream
-dropping 2263f431cee5bd768a816ff9552316e67c3afc7f add timestamp -- patch contents already upstream
-dropping 126caab9218507b33719c9cf2c0a6a5f6c3bd6fc add repo context dump -- patch contents already upstream
-dropping af52e4ec95cc357cb355191a7d66e7d9567bf4e3 add timestamp -- patch contents already upstream
-dropping 7e31a73db5964e974de4d593ae8fdff23e3b8482 begin add system status -- patch contents already upstream
-dropping 99fa3158fe4c8c7899b7d971d24e57789d688e08 add system status -- patch contents already upstream
-dropping 9eda00743298a003ffb10c9867fc0d7d9c88a48b end add system status -- patch contents already upstream
-dropping b9a434261f41db7186fc728dde014b434d6e5fa3 begin update node -- patch contents already upstream
-dropping 8d1ce4fa76cc6827f9aa8f32db5ffdb9aaa57120 end update node -- patch contents already upstream
-dropping c877975bb278e4f28e07dbeefc93053a94bcdfd5 begin prepare to build angular -- patch contents already upstream
-dropping 126da14a2cbac713e20e08afa170792c044cc050 end prepare to build angular -- patch contents already upstream
-dropping f1e722f3df6561949c7f63b8fbb7bee884f3bdce begin prepare to unit test angular -- patch contents already upstream
-dropping 4847fdecfaf13b00b9adb34c81c49e19afa2b164 end prepare to unit test angular -- patch contents already upstream
-dropping dde4a92ea4a1c60e91e53989c4ffa6e06a1c9901 v0.0.15021 -- patch contents already upstream
-dropping cf7c3d3199e96c7e93ff54fcbfe46ad4d41b9e45 add timestamp -- patch contents already upstream
-dropping 4e3fcbd60cc853b67af928e7eda896c4ab767ccd add repo context dump -- patch contents already upstream
-dropping 540a26afec3505971efc31168f4784b3baa09c59 add timestamp -- patch contents already upstream
-dropping 66e12abb673d54ba2b17d618c20e72bb62a616e2 begin add system status -- patch contents already upstream
-dropping ba55071cad3d123257d981b52626b30b8febcee2 add system status -- patch contents already upstream
-dropping 1d34998706cec1391d105cf8193f9778908bf55b end add system status -- patch contents already upstream
-dropping bf9f158c7739d2ad09647762947f8672e42e72ba begin update node -- patch contents already upstream
-dropping 6e9066899a360a6b4cba167553303f97a9a75465 end update node -- patch contents already upstream
-dropping 8ae9d7db34a770cdeb8a8be74ba94a7225061b3c begin prepare to build angular -- patch contents already upstream
-dropping 4f1e9e7a8b81c0331ae0284b33720f09e82a400a end prepare to build angular -- patch contents already upstream
-dropping 23352c3e0ae1965b32a8a1fdc827d096b0eecb64 begin prepare to unit test angular -- patch contents already upstream
-dropping 662ae2b87b9e97745116a93b74bc669a06ddfaab end prepare to unit test angular -- patch contents already upstream
-dropping 2103e553c1e7d2aebdc2726a7da0485aaf2093ae v0.0.15022 -- patch contents already upstream
-dropping 3b6c146d9c172ea4f1bb226569c59425684751cb add timestamp -- patch contents already upstream
-dropping 85a9184422f34978df1f69ce8d0ff8002dde1c4e add repo context dump -- patch contents already upstream
-dropping b59cce413d183ee280d243dda9b3144469180620 add all changes -- patch contents already upstream
-dropping 606686457a09385bcf4f393f6dc731c8b171c23a add timestamp -- patch contents already upstream
-dropping b84015637a88d4184cd843ca9681c792ec0e9f39 begin prepare to unit test angular -- patch contents already upstream
-dropping a28a3617eb126696f2ed29cc27e67dee5391f6e5 add repo context dump -- patch contents already upstream
-Successfully rebased and updated refs/heads/feat/kus/upgrade-2026-06-29.
-On branch feat/kus/upgrade-2026-06-29
-nothing to commit, working tree clean
-Enumerating objects: 85, done.
-Counting objects: 100% (85/85), done.
-Delta compression using up to 16 threads
-Compressing objects: 100% (61/61), done.
-Writing objects: 100% (75/75), 15.96 KiB | 5.32 MiB/s, done.
-Total 75 (delta 43), reused 2 (delta 0), pack-reused 0 (from 0)
-remote: Resolving deltas: 100% (43/43), completed with 6 local objects.
-To github.com:teamkushal/coloradoquiz.git
-   ec9b3e631b..41d4a7da78  feat/kus/upgrade-2026-06-29 -> feat/kus/upgrade-2026-06-29
-
-==> done.
-
-real	1m23.141s
-user	0m53.543s
-sys	0m11.575s
+real	1m22.104s
+user	1m9.066s
+sys	0m14.879s
 kushal@fedora:~/src/angular/coloradoquiz$ 
