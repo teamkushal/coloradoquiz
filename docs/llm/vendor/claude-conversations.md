@@ -20,4 +20,8 @@ this app needs a complete rewrite
 can you please write this with the latest standards such as angular signal, vitest, etc 
 and give me the FULL project so I an copy paste the whole thing on top of the current project? 
 I have made a new branch so it won't automatically deploy what I do here anymore. 
-also can you please generate this update.sh so it writes to the docs/llm folder as well? 
+also can you please generate a modern version of this update.sh as well? 
+the update.sh should work with either nvm or fnm 
+it should not assume the current directory is a specific directory
+it should run export.sh 
+it should not lose any functionality of the current implementation
