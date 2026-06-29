@@ -65,3 +65,12 @@ yarn install v1.22.22
 [4/4] Building fresh packages...
 Done in 5.43s.
 ```
+```bash
+Latest version:     1.0.30001799
+Installed version:  1.0.30001799
+caniuse-lite is up to date
+caniuse-lite has been successfully updated
+
+No target browser changes
+```
+```bash
