@@ -48,7 +48,7 @@ GH_SLUG="teamkushal/coloradoquiz"        # owner/repo used for the CI badge
 WORKFLOW_FILE="firebase-hosting-merge.yml"
 
 # Packages handed to `ng update`.
-NG_UPDATE_PKGS=(@angular/core @angular/cli @angular/material @angular/localize)
+NG_UPDATE_PKGS=(@angular/core @angular/cli @angular/material)
 
 # Node version manager selection: auto | fnm | nvm
 NODE_VM="${NODE_VM:-auto}"
