@@ -18,3 +18,50 @@ System Storage
 605M	.
 ```
 ```bash
+yarn run v1.22.22
+$ ng version
+
+     _                      _                 ____ _     ___
+    / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
+   / △ \ | '_ \ / _` | | | | |/ _` | '__|   | |   | |    | |
+  / ___ \| | | | (_| | |_| | | (_| | |      | |___| |___ | |
+ /_/   \_\_| |_|\__, |\__,_|_|\__,_|_|       \____|_____|___|
+                |___/
+    
+
+Angular CLI       : 22.0.4
+Angular           : <error>
+Node.js           : 24.18.0
+Package Manager   : yarn 1.22.22
+Operating System  : linux x64
+
+┌───────────────────────────────────┬───────────────────┬───────────────────┐
+│ Package                           │ Installed Version │ Requested Version │
+├───────────────────────────────────┼───────────────────┼───────────────────┤
+│ @angular-devkit/build-angular     │ <error>           │ ^22.0.4           │
+│ @angular/animations               │ <error>           │ ^22.0.4           │
+│ @angular/cdk                      │ <error>           │ 22.0.2            │
+│ @angular/cli                      │ <error>           │ ^22.0.4           │
+│ @angular/common                   │ <error>           │ ^22.0.4           │
+│ @angular/compiler                 │ <error>           │ ^22.0.4           │
+│ @angular/compiler-cli             │ <error>           │ ^22.0.4           │
+│ @angular/core                     │ <error>           │ ^22.0.4           │
+│ @angular/forms                    │ <error>           │ ^22.0.4           │
+│ @angular/localize                 │ <error>           │ 22.0.4            │
+│ @angular/material                 │ <error>           │ 22.0.2            │
+│ @angular/platform-browser         │ <error>           │ ^22.0.4           │
+│ @angular/platform-browser-dynamic │ <error>           │ ^22.0.4           │
+│ @angular/router                   │ <error>           │ ^22.0.4           │
+│ @angular/service-worker           │ <error>           │ ^22.0.4           │
+│ rxjs                              │ <error>           │ ~7.8.0            │
+│ typescript                        │ <error>           │ ~6.0.3            │
+│ zone.js                           │ <error>           │ ~0.15.0           │
+└───────────────────────────────────┴───────────────────┴───────────────────┘
+Done in 0.37s.
+yarn install v1.22.22
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+Done in 5.43s.
+```
