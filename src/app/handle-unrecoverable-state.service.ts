@@ -1,11 +1,11 @@
-import { inject, Service } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
 
 /**
  * Listens for the rare "unrecoverable" service-worker state and surfaces it.
  * Instantiated eagerly from the root component so the subscription is active.
  */
-@Service()
+@Injectable({ providedIn: 'root' })
 export class HandleUnrecoverableStateService {
   private readonly updates = inject(SwUpdate);
 

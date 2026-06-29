@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Service } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HoneynutCheeriosRequest } from './honeynut-cheerios-request';
 import { HoneynutCheeriosRequestData } from './honeynut-cheerios-request-data';
 import { Ipinforesponse } from './ipinforesponse';
 
-@Service()
+@Injectable({ providedIn: 'root' })
 export class HoneynutCheeriosService {
   private readonly http = inject(HttpClient);
   private readonly endpoint = 'https://honeynutcheerios.2w7sp317.workers.dev/';

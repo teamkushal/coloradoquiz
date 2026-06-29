@@ -8,12 +8,9 @@ describe('LoaderIoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoaderIoComponent ]
-    })
-    .compileComponents();
-  });
+      imports: [LoaderIoComponent],
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(LoaderIoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
