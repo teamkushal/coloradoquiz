@@ -65,3 +65,12 @@ error @angular/animations@22.0.4: The engine "node" is incompatible with this mo
 error Found incompatible module.
 info Visit https://yarnpkg.com/en/docs/cli/install for documentation about this command.
 ```
+```bash
+Latest version:     1.0.30001799
+Installed version:  1.0.30001799
+caniuse-lite is up to date
+caniuse-lite has been successfully updated
+
+No target browser changes
+```
+```bash
