@@ -1,0 +1,33 @@
+<article>
+  <h1>{{ news().title | titlecase }}</h1>
+  <p>
+    Published on
+    <time [attr.datetime]="news().dateCreated" [title]="news().dateCreated | date: 'long'">
+      {{ news().dateCreated | date }}
+    </time>.
+  </p>
+
+  @for (newsItem of news().newsItems; track newsItem.id) {
+    <section>
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar>
+            <img [src]="newsItem.thumbnail" [alt]="newsItem.title" />
+          </div>
+          <mat-card-title>{{ newsItem.title }}</mat-card-title>
+          <mat-card-subtitle>{{ newsItem.summary }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="newsItem.poster" [alt]="newsItem.posterAltText" />
+        <mat-card-content>
+          @for (paragraph of newsItem.fullText; track $index) {
+            <p>{{ paragraph }}</p>
+          }
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="like(newsItem)">LIKE</button>
+          <button mat-raised-button color="accent" (click)="share(newsItem)">SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+    </section>
+  }
+</article>

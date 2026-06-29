@@ -1,0 +1,7 @@
+<button mat-button [matMenuTriggerFor]="menu">Quizzes</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/quiz/general-physics">General Physics</button>
+  <button mat-menu-item routerLink="/quiz/us-history">US History</button>
+  <button mat-menu-item routerLink="/quiz/us-geography">US Geography</button>
+  <button mat-menu-item routerLink="/quiz/us-civics">US Civics</button>
+</mat-menu>

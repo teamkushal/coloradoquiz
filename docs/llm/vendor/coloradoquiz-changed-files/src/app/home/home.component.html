@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  Home
+  <app-menu />
+  <caption>{{ startTime | date: 'mediumTime' }}</caption>
+</mat-toolbar>
+
+<article>
+  <h1>Quizzes</h1>
+  <p><a routerLink="/quiz/us-history">US History</a></p>
+  <p><a routerLink="/quiz/us-geography">US Geography</a></p>
+  <p><a routerLink="/quiz/us-civics">US Civics</a></p>
+  <h2>News</h2>
+  <p><a routerLink="/news/top-stories">Top Stories</a></p>
+  <p><a routerLink="/news/local">Local News</a></p>
+</article>
