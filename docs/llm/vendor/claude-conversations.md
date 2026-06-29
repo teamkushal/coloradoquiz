@@ -25,3 +25,7 @@ the update.sh should work with either nvm or fnm
 it should not assume the current directory is a specific directory
 it should run export.sh 
 it should not lose any functionality of the current implementation
+it should not assume we are working on any particular git branch 
+
+also I failed to explain this but we should exclude yarn.lock from our dump.txt 
+also we should exclude all orphaned code from our output 
