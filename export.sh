@@ -2,13 +2,16 @@
 # =============================================================================
 # export.sh — Repository context dump for LLM consumption
 #
+# Location: <repo root>/export.sh
+#
 # Usage:  bash export.sh
 #         time bash export.sh
 #
 # Behaviour:
 #   • Resolves its own location; works regardless of CWD.
 #   • Silently exits if no Git repository is found at that location.
-#   • Dumps all Git-tracked files (excluding docs/llm/**) to docs/llm/dump.txt.
+#   • Dumps all Git-tracked files (excluding docs/llm/** and yarn.lock) to
+#     docs/llm/dump.txt.
 #   • Prepends its own source to the dump (self-documentation).
 #   • Emits rich per-file metadata (name, path, size, permissions, mtime, SHA-256).
 #   • Includes a file-tree view of all included files.
@@ -43,6 +46,14 @@ REPO_ROOT="$(git -C "$SCRIPT_DIR" rev-parse --show-toplevel 2>/dev/null)" || exi
 # 2. Constants & derived paths
 # ---------------------------------------------------------------------------
 EXCLUDE_DIR="docs/llm"
+
+# Individual files to exclude from the dump, in addition to EXCLUDE_DIR.
+# A bare name (no slash) is excluded wherever it appears; a name containing a
+# slash is treated as an exact repo-relative path.
+EXCLUDE_FILES=("yarn.lock")
+EXCLUDE_FILES_DISPLAY="$(printf '%s, ' "${EXCLUDE_FILES[@]}")"
+EXCLUDE_FILES_DISPLAY="${EXCLUDE_FILES_DISPLAY%, }"
+
 OUTPUT_DIR="${REPO_ROOT}/${EXCLUDE_DIR}"
 OUTPUT_FILE="${OUTPUT_DIR}/dump.txt"
 
@@ -60,10 +71,10 @@ USER_VAL="$(id -un 2>/dev/null || echo 'unknown')"
 OS_VAL="$(uname -srm 2>/dev/null || echo 'unknown')"
 
 # ---------------------------------------------------------------------------
-# 3. Collect tracked files, excluding the output directory
+# 3. Collect tracked files, excluding the output directory and EXCLUDE_FILES
 #    git ls-files guarantees only committed/staged files; no build artefacts.
 # ---------------------------------------------------------------------------
-mapfile -t ALL_FILES < <(
+mapfile -t _RAW_FILES < <(
     git -C "$REPO_ROOT" ls-files \
         --cached \
         --others \
@@ -71,9 +82,26 @@ mapfile -t ALL_FILES < <(
         -z \
         2>/dev/null \
     | tr '\0' '\n' \
-    | grep -v "^${EXCLUDE_DIR}/" \
-    | sort
+    | sort -u
 )
+
+ALL_FILES=()
+for _f in "${_RAW_FILES[@]}"; do
+    [[ -z "$_f" ]] && continue
+    # Skip the entire excluded directory tree.
+    [[ "$_f" == "${EXCLUDE_DIR}/"* ]] && continue
+    # Skip any individually-excluded file.
+    _skip=0
+    for _ex in "${EXCLUDE_FILES[@]}"; do
+        if [[ "$_ex" == */* ]]; then
+            [[ "$_f" == "$_ex" ]] && { _skip=1; break; }
+        else
+            [[ "$_f" == "$_ex" || "$_f" == */"$_ex" ]] && { _skip=1; break; }
+        fi
+    done
+    (( _skip )) && continue
+    ALL_FILES+=("$_f")
+done
 
 FILE_COUNT="${#ALL_FILES[@]}"
 
@@ -202,6 +230,7 @@ REPOSITORY METADATA
   Remote origin  : ${GIT_REMOTE}
   Files included : ${FILE_COUNT}
   Excluded path  : ${EXCLUDE_DIR}/
+  Excluded files : ${EXCLUDE_FILES_DISPLAY}
 
 GIT WORKING TREE STATUS (first 20 lines)
 ═════════════════════════════════════════════════════════════════════════════════
