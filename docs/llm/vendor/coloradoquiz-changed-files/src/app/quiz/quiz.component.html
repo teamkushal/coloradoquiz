@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <a routerLink="/">Home</a>
+  <app-menu />
+  <caption>{{ startTime() | date: 'mediumTime' }}</caption>
+</mat-toolbar>
+
+<mat-card>
+  <article>
+    <h1>{{ quiz().title | uppercase }}</h1>
+    <p>{{ quiz().description }}</p>
+    <p>Your score so far: {{ scorePercentage() | number: '1.0-0' }} out of 100.</p>
+
+    <mat-stepper orientation="vertical">
+      @for (question of quiz().questions; track question.id) {
+        <mat-step>
+          <h2>{{ question.question }}</h2>
+          @for (option of question.options; track option.label) {
+            <div class="button-container">
+              <button mat-raised-button color="primary" (click)="onClick(question.id, option)">
+                {{ option.label }}. {{ option.text }}
+              </button>
+            </div>
+          }
+        </mat-step>
+      }
+    </mat-stepper>
+  </article>
+</mat-card>

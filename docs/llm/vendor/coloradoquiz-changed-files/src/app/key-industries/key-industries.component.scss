@@ -1,0 +1,70 @@
+$header-background: #2962ff;
+$header-foreground: #ffd600;
+
+$body-header: #ff6d00;
+$body-source-color: #ff6d00;
+
+$body-background: #fff3e0;
+
+$odd-section-background: #ffecb3;
+$even-section-background: #ffb74d;
+
+article {
+  display: grid;
+  grid-template-rows: 1fr;
+  min-height: 100vh;
+  background-color: $body-background;
+
+  section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .header {
+    background-color: $header-background;
+    color: $header-foreground;
+    display: grid;
+    grid-template-areas: 'centered-header-text';
+    min-height: 30vh;
+
+    h1 {
+      grid-area: centered-header-text;
+      font-size: 8vh;
+      font-weight: 900;
+      line-height: 10vh;
+      max-width: 20rem;
+      text-align: center;
+    }
+  }
+
+  .odd {
+    background-color: $odd-section-background;
+  }
+
+  .even {
+    background-color: $even-section-background;
+  }
+
+  @media (min-width: 40em) {
+    section {
+      padding: 1rem;
+
+      h2 {
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 2rem;
+        color: $body-header;
+      }
+    }
+
+    .odd,
+    .even {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+
+      .source {
+        color: $body-source-color;
+      }
+    }
+  }
+}
