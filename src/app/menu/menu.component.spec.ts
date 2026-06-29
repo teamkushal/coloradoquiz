@@ -1,9 +1,7 @@
-import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MaterialModule } from '../material/material.module';
+import { provideRouter } from '@angular/router';
 
 import { MenuComponent } from './menu.component';
-import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
@@ -11,13 +9,10 @@ describe('MenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    declarations: [MenuComponent],
-    imports: [MaterialModule],
-    providers: [provideHttpClient(withXhr(), withInterceptorsFromDi()), provideHttpClientTesting()]
-}).compileComponents();
-  });
+      imports: [MenuComponent],
+      providers: [provideRouter([])],
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(MenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

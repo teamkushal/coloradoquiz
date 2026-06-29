@@ -1,40 +1,40 @@
 import { TestBed } from '@angular/core/testing';
 import { SwUpdate, UnrecoverableStateEvent } from '@angular/service-worker';
-
-import { HandleUnrecoverableStateService } from './handle-unrecoverable-state.service';
 import { Subject } from 'rxjs';
 
+import { HandleUnrecoverableStateService } from './handle-unrecoverable-state.service';
+
 describe('HandleUnrecoverableStateService', () => {
-  let service: HandleUnrecoverableStateService;
+  let unrecoverable: Subject<UnrecoverableStateEvent>;
 
   beforeEach(() => {
+    unrecoverable = new Subject<UnrecoverableStateEvent>();
     TestBed.configureTestingModule({
-      providers: [
-        HandleUnrecoverableStateService,
-        {
-          provide: SwUpdate,
-          useValue: jasmine.createSpyObj('SwUpdate', ['unrecoverable']),
-        },
-        {
-          provide: 'NgswCommChannel',
-          useValue: jasmine.createSpyObj('NgswCommChannel', []),
-        },
-      ]
+      providers: [{ provide: SwUpdate, useValue: { unrecoverable } }],
     });
-    service = TestBed.inject(HandleUnrecoverableStateService);
   });
 
   it('should be created', () => {
+    const service = TestBed.inject(HandleUnrecoverableStateService);
     expect(service).toBeTruthy();
   });
 
-  it('should notify user on unrecoverable event', () => {
-    const swUpdateSpy = TestBed.inject(SwUpdate);
-    const event: UnrecoverableStateEvent = { reason: 'Some error reason', type: "UNRECOVERABLE_STATE" };
-    (swUpdateSpy.unrecoverable as jasmine.SpyObj<Subject<UnrecoverableStateEvent>>).next(event);
-    
-    const consoleLogSpy = spyOn(console, 'log');
-    expect(consoleLogSpy).toHaveBeenCalledWith(`An error occurred that we cannot recover from:\n${event.reason}\n\nPlease reload the page.`);
-  });  
-  
+  it('notifies the user when an unrecoverable state occurs', () => {
+    const consoleLogSpy = vi.spyOn(console, 'log').mockImplementation(() => undefined);
+
+    // Injecting the service activates its constructor subscription.
+    TestBed.inject(HandleUnrecoverableStateService);
+
+    const event: UnrecoverableStateEvent = {
+      type: 'UNRECOVERABLE_STATE',
+      reason: 'Some error reason',
+    };
+    unrecoverable.next(event);
+
+    expect(consoleLogSpy).toHaveBeenCalledWith(
+      `An error occurred that we cannot recover from:\n${event.reason}\n\nPlease reload the page.`,
+    );
+
+    consoleLogSpy.mockRestore();
+  });
 });

@@ -1,0 +1,609 @@
+kushal@fedora:~/src/angular/coloradoquiz$ cd ~/src/angular/coloradoquiz/; time git status; time git pull --rebase origin master --strategy-option=theirs; time git status; time git remote show origin;
+On branch feat/kus/upgrade-2026-06-29
+nothing to commit, working tree clean
+
+real	0m0.005s
+user	0m0.003s
+sys	0m0.002s
+remote: Enumerating objects: 335, done.
+remote: Counting objects: 100% (335/335), done.
+remote: Compressing objects: 100% (90/90), done.
+remote: Total 335 (delta 205), reused 320 (delta 190), pack-reused 0 (from 0)
+Receiving objects: 100% (335/335), 120.05 KiB | 2.79 MiB/s, done.
+Resolving deltas: 100% (205/205), completed with 2 local objects.
+From github.com:teamkushal/coloradoquiz
+ * branch                  master     -> FETCH_HEAD
+   52e2e61388..85a9184422  master     -> origin/master
+Successfully rebased and updated refs/heads/feat/kus/upgrade-2026-06-29.
+
+real	0m1.041s
+user	0m0.237s
+sys	0m0.098s
+On branch feat/kus/upgrade-2026-06-29
+nothing to commit, working tree clean
+
+real	0m0.010s
+user	0m0.006s
+sys	0m0.003s
+* remote origin
+  Fetch URL: git@github.com:teamkushal/coloradoquiz.git
+  Push  URL: git@github.com:teamkushal/coloradoquiz.git
+  HEAD branch: master
+  Remote branches:
+    feat/kus/upgrade-2026-06-29                    tracked
+    feature/experimental/too-many-components       tracked
+    feature/jignesh/angular-element                tracked
+    increase-memory-proposal-github-actions        tracked
+    master                                         tracked
+    refs/remotes/origin/feat/kus/claude-2026-06-28 stale (use 'git remote prune' to remove)
+    refs/remotes/origin/feat/kus/claude-2026-06-29 stale (use 'git remote prune' to remove)
+  Local branches configured for 'git pull':
+    feat/kus/claude-2026-06-29 merges with remote feat/kus/claude-2026-06-29
+    master                     merges with remote master
+  Local refs configured for 'git push':
+    feat/kus/upgrade-2026-06-29 pushes to feat/kus/upgrade-2026-06-29 (local out of date)
+    master                      pushes to master                      (local out of date)
+
+real	0m0.514s
+user	0m0.011s
+sys	0m0.006s
+kushal@fedora:~/src/angular/coloradoquiz$ cd ~/src/angular/coloradoquiz/; cat update.sh; time bash update.sh;
+#!/usr/bin/env bash
+# =============================================================================
+# update.sh — Toolchain update + rebuild + test + publish for this repo.
+#
+# Location: <repo root>/update.sh   (sits next to export.sh)
+#
+# Run with:   bash update.sh
+#             bash /any/absolute/path/to/update.sh     # CWD does NOT matter
+#
+# What it does (modernised, while preserving every step of the original):
+#   • Locates the repository from THIS script's own path, so the current
+#     working directory is irrelevant (no hard-coded project directory).
+#   • Bootstraps Node via fnm OR nvm, whichever is present (auto-detected;
+#     force one with NODE_VM=fnm or NODE_VM=nvm in the environment).
+#   • Operates on the CURRENT git branch — nothing is hard-coded to master.
+#   • Writes its human-readable run log to docs/llm/update.md by default
+#     (see UPDATE_LOG_REL below) instead of README.md.
+#   • Logs unit-test output to locallog/fedoratest.md (as before).
+#   • Appends network probes to ping.txt (as before).
+#   • Upgrades Node to the latest LTS, installs the global @angular/cli + yarn,
+#     records `ng version`, installs deps, runs `ng update`, refreshes the
+#     browserslist DB, builds for production, runs the unit tests, bumps the
+#     patch version, runs export.sh to refresh docs/llm/dump.txt, then rebases
+#     from and pushes to origin on the current branch.
+#
+# ERROR-HANDLING NOTE:
+#   This script intentionally does NOT use `set -e`. Like the original, it is a
+#   best-effort pipeline: every checkpoint is committed and the run always
+#   proceeds to the final push, even if an individual step (a flaky test, a
+#   build warning treated as an error, an unreachable ping host, etc.) fails.
+#   Fallible commands are individually guarded with `|| true`.
+# =============================================================================
+
+# ---------------------------------------------------------------------------
+# Configuration — edit to taste
+# ---------------------------------------------------------------------------
+UPDATE_LOG_REL="docs/llm/update.md"      # main run log (replaces the old README.md target)
+TEST_LOG_REL="locallog/fedoratest.md"    # unit-test output log
+PING_LOG_REL="ping.txt"                  # network-probe log
+
+NODE_MAX_OLD_SPACE_MB="8000"             # Node heap ceiling for the heavy Angular steps
+PING_COUNT="20"                          # echo requests per probe
+PING_TARGET="8.8.8.8"                    # probe target host
+
+PROJECT_TITLE="Coloradoquiz"
+SITE_URL="https://coloradoquiz.web.app"
+GH_SLUG="teamkushal/coloradoquiz"        # owner/repo used for the CI badge
+WORKFLOW_FILE="firebase-hosting-merge.yml"
+
+# Packages handed to `ng update`.
+NG_UPDATE_PKGS=(@angular/core @angular/cli @angular/material @angular/localize)
+
+# Node version manager selection: auto | fnm | nvm
+NODE_VM="${NODE_VM:-auto}"
+
+# ---------------------------------------------------------------------------
+# 0. Resolve this script's own location, then the repo root (CWD-independent)
+# ---------------------------------------------------------------------------
+resolve_self() {
+    local src="${BASH_SOURCE[0]}"
+    if command -v readlink >/dev/null 2>&1 && readlink -f "$src" >/dev/null 2>&1; then
+        readlink -f "$src"
+        return
+    fi
+    # Portable fallback for systems without GNU `readlink -f`.
+    local dir
+    while [[ -h "$src" ]]; do
+        dir="$(cd -P "$(dirname "$src")" >/dev/null 2>&1 && pwd)"
+        src="$(readlink "$src")"
+        [[ "$src" != /* ]] && src="$dir/$src"
+    done
+    printf '%s\n' "$(cd -P "$(dirname "$src")" >/dev/null 2>&1 && pwd)/$(basename "$src")"
+}
+
+SCRIPT_PATH="$(resolve_self)"
+SCRIPT_DIR="$(dirname "$SCRIPT_PATH")"
+EXPORT_SH="${SCRIPT_DIR}/export.sh"
+
+if ! REPO_ROOT="$(git -C "$SCRIPT_DIR" rev-parse --show-toplevel 2>/dev/null)"; then
+    echo "ERROR: '$SCRIPT_DIR' is not inside a git repository; aborting." >&2
+    exit 1
+fi
+cd "$REPO_ROOT" || { echo "ERROR: cannot cd into '$REPO_ROOT'." >&2; exit 1; }
+
+CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo HEAD)"
+
+# Absolute paths derived from the configurable relative paths above.
+LOG="${REPO_ROOT}/${UPDATE_LOG_REL}"
+TEST_LOG="${REPO_ROOT}/${TEST_LOG_REL}"
+PING_LOG="${REPO_ROOT}/${PING_LOG_REL}"
+mkdir -p "$(dirname "$LOG")" "$(dirname "$TEST_LOG")" "$(dirname "$PING_LOG")"
+
+# Applied to every Node-heavy command below (exported once).
+export NODE_OPTIONS="--max-old-space-size=${NODE_MAX_OLD_SPACE_MB}"
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+note() { printf '\n==> %s\n' "$*"; }                  # progress line to the terminal
+
+gc() {                                                 # git checkpoint; never aborts the run
+    git add -A
+    git commit -m "$1" || true
+}
+
+md()         { printf '%s\n'   "$*"          >> "$LOG"; }   # append a line to the run log
+md_code()    { printf '```%s\n' "${1:-}"     >> "$LOG"; }   # open a fenced block (``` or ```bash)
+md_endcode() { printf '```\n'                >> "$LOG"; }   # close a fenced block
+
+ping_first() { ping -A -D -c "$PING_COUNT" -v "$PING_TARGET" >  "$PING_LOG" 2>&1 || true; }
+ping_probe() { ping -A -D -c "$PING_COUNT" -v "$PING_TARGET" >> "$PING_LOG" 2>&1 || true; }
+ping_final() { ping    -D -c "$PING_COUNT" -v "$PING_TARGET" >> "$PING_LOG" 2>&1 || true; }
+
+# --- Node version manager bootstrap (fnm OR nvm) ---------------------------
+NODE_VM_ACTIVE="none"
+
+_try_fnm() {
+    command -v fnm >/dev/null 2>&1 || return 1
+    local out
+    # An explicit shell is faster and avoids fnm's process-tree detection.
+    out="$(fnm env --shell bash 2>/dev/null)" || return 1
+    eval "$out"
+    NODE_VM_ACTIVE="fnm"
+}
+
+_try_nvm() {
+    local nvm_sh="${NVM_DIR:-$HOME/.nvm}/nvm.sh"
+    [[ -s "$nvm_sh" ]] || return 1
+    # shellcheck disable=SC1090
+    \. "$nvm_sh" || return 1
+    command -v nvm >/dev/null 2>&1 || return 1
+    NODE_VM_ACTIVE="nvm"
+}
+
+bootstrap_node_vm() {
+    case "$NODE_VM" in
+        fnm) _try_fnm || echo "WARN: NODE_VM=fnm requested but fnm is unavailable." >&2 ;;
+        nvm) _try_nvm || echo "WARN: NODE_VM=nvm requested but nvm is unavailable." >&2 ;;
+        auto|*)
+            _try_fnm || _try_nvm \
+                || echo "WARN: neither fnm nor nvm found; Node-dependent steps may fail." >&2 ;;
+    esac
+    note "Node version manager: ${NODE_VM_ACTIVE}"
+}
+
+install_use_lts() {
+    case "$NODE_VM_ACTIVE" in
+        fnm)
+            time fnm install --lts             || true
+            time fnm use lts-latest            || true
+            fnm default lts-latest 2>/dev/null || true   # default for future shells
+            ;;
+        nvm)
+            time nvm install --lts             || true
+            time nvm use --lts                 || true
+            ;;
+        *)
+            echo "WARN: no Node version manager active; skipping LTS install/use." >&2
+            ;;
+    esac
+}
+
+run_export() {
+    if [[ -f "$EXPORT_SH" ]]; then
+        note "running export.sh (refresh ${UPDATE_LOG_REL%/*}/dump.txt)"
+        # export.sh tees its full dump to stdout; keep the console quiet and
+        # rely on the file it writes to docs/llm/dump.txt.
+        bash "$EXPORT_SH" >/dev/null 2>&1 || echo "WARN: export.sh exited non-zero." >&2
+    else
+        echo "WARN: export.sh not found at '$EXPORT_SH'; skipping context dump." >&2
+    fi
+}
+
+# ===========================================================================
+# 1. Boot: version manager + first probe + fresh run-log header
+# ===========================================================================
+bootstrap_node_vm
+
+ping_first
+date > "$LOG"
+gc "add timestamp"
+
+md ''
+md "# ${PROJECT_TITLE}"
+md ''
+md ''
+md "This project is live at [${SITE_URL}](${SITE_URL} \"colorado!\") thanks to Firebase."
+md ''
+md 'CI Status: '
+md ''
+md "[![Deploy to Firebase Hosting on merge](https://github.com/${GH_SLUG}/actions/workflows/${WORKFLOW_FILE}/badge.svg)](https://github.com/${GH_SLUG}/actions/workflows/${WORKFLOW_FILE})"
+md ''
+
+# ===========================================================================
+# 2. System status
+# ===========================================================================
+md_code bash
+ping_probe
+gc "begin add system status"
+md "System Memory"
+if command -v free >/dev/null 2>&1; then
+    free -h >> "$LOG" 2>&1 || true
+else
+    md '(free unavailable)'
+fi
+md "System Storage"
+du -sh . >> "$LOG" 2>&1 || true
+gc "add system status"
+md_endcode
+gc "end add system status"
+
+# ===========================================================================
+# 3. Update Node (LTS) + global tooling + install deps
+# ===========================================================================
+md_code bash
+ping_probe
+gc "begin update node"
+install_use_lts
+time npm install --global @angular/cli yarn || true
+time yarn run ng version >> "$LOG" 2>&1 || true
+time yarn >> "$LOG" 2>&1 || true
+md_endcode
+ping_probe
+gc "end update node"
+
+# ===========================================================================
+# 4. Update Angular (output goes to the terminal, as in the original)
+# ===========================================================================
+gc "begin prepare to update angular"
+time yarn run ng update "${NG_UPDATE_PKGS[@]}" || true
+gc "end prepare to update angular"
+
+# ===========================================================================
+# 5. Refresh the browserslist DB
+# ===========================================================================
+md_code bash
+time npx update-browserslist-db@latest >> "$LOG" 2>&1 || true
+md_endcode
+
+# ===========================================================================
+# 6. Production build
+# ===========================================================================
+md_code bash
+ping_probe
+gc "begin prepare to build angular"
+time yarn run ng build --configuration production >> "$LOG" 2>&1 || true
+md_endcode
+gc "end prepare to build angular"
+
+# ===========================================================================
+# 7. Unit tests (logged to the test log).
+#    NOTE: `ng test` can run Karma in watch mode unless your angular.json /
+#    karma.conf disables it; the command is kept identical to the original.
+# ===========================================================================
+printf '```bash\n' > "$TEST_LOG"
+ping_probe
+gc "begin prepare to unit test angular"
+time yarn run ng test >> "$TEST_LOG" || true
+printf '```\n' >> "$TEST_LOG"
+ping_probe
+gc "end prepare to unit test angular"
+
+# ===========================================================================
+# 8. Version bump, context dump, and publish on the CURRENT branch
+# ===========================================================================
+date >> "$LOG"
+ping_final
+# NOTE: in Yarn Classic, `yarn version --patch` wants a clean tree and makes
+# its own commit + tag. Command kept identical to the original.
+time yarn version --patch >> "$LOG" 2>&1 || true
+gc "add timestamp"
+
+run_export
+gc "add repo context dump"
+
+if [[ "$CURRENT_BRANCH" == "HEAD" ]]; then
+    echo "WARN: detached HEAD — skipping pull/push." >&2
+else
+    note "syncing with origin/${CURRENT_BRANCH}"
+    git pull --rebase origin "$CURRENT_BRANCH" --strategy-option=ours || true
+    gc "merge from remote"
+    git push origin "$CURRENT_BRANCH" || true
+fi
+
+note "done."
+
+==> Node version manager: fnm
+[feat/kus/upgrade-2026-06-29 785841c249] add timestamp
+ 2 files changed, 25 insertions(+), 323 deletions(-)
+[feat/kus/upgrade-2026-06-29 5a1f91ffea] begin add system status
+ 2 files changed, 38 insertions(+)
+[feat/kus/upgrade-2026-06-29 a368555fd4] add system status
+ 1 file changed, 6 insertions(+)
+[feat/kus/upgrade-2026-06-29 e6e8dfa7e8] end add system status
+ 1 file changed, 1 insertion(+)
+[feat/kus/upgrade-2026-06-29 956648413e] begin update node
+ 2 files changed, 28 insertions(+)
+Installing Node v24.18.0 (x64)
+warning: Version already installed at "/home/kushal/.local/share/fnm/node-versions/v24.18.0"
+
+real	0m0.118s
+user	0m0.008s
+sys	0m0.005s
+Using Node for alias lts-latest
+
+real	0m0.003s
+user	0m0.001s
+sys	0m0.002s
+
+changed 278 packages in 5s
+
+69 packages are looking for funding
+  run `npm fund` for details
+npm warn allow-scripts 1 package has install scripts not yet covered by allowScripts:
+npm warn allow-scripts   yarn@1.22.22 (preinstall: :; (node ./preinstall.js > /dev/null 2>&1 || true))
+npm warn allow-scripts
+npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.
+
+real	0m5.276s
+user	0m3.254s
+sys	0m1.784s
+
+real	0m0.376s
+user	0m0.297s
+sys	0m0.116s
+
+real	0m0.229s
+user	0m0.250s
+sys	0m0.051s
+[feat/kus/upgrade-2026-06-29 b95845f4ab] end update node
+ 2 files changed, 70 insertions(+)
+On branch feat/kus/upgrade-2026-06-29
+nothing to commit, working tree clean
+yarn run v1.22.22
+$ ng update @angular/core @angular/cli @angular/material @angular/localize
+Using package manager: yarn
+Collecting installed dependencies...
+Found 591 dependencies.
+Package '@angular/localize' is not a dependency.
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+real	0m1.557s
+user	0m1.062s
+sys	0m0.303s
+On branch feat/kus/upgrade-2026-06-29
+nothing to commit, working tree clean
+
+real	0m1.184s
+user	0m0.786s
+sys	0m0.228s
+[feat/kus/upgrade-2026-06-29 4f9d2d0f73] begin prepare to build angular
+ 2 files changed, 36 insertions(+)
+
+real	0m3.403s
+user	0m5.795s
+sys	0m0.731s
+[feat/kus/upgrade-2026-06-29 c3ffaf1653] end prepare to build angular
+ 1 file changed, 29 insertions(+)
+[feat/kus/upgrade-2026-06-29 82f09e2ce0] begin prepare to unit test angular
+ 2 files changed, 27 insertions(+), 8 deletions(-)
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+✘ [ERROR] TS2304: Cannot find name 'jasmine'. [plugin angular-compiler]
+
+    src/app/handle-unrecoverable-state.service.spec.ts:16:20:
+      16 │           useValue: jasmine.createSpyObj('SwUpdate', ['unrecoverab...
+         ╵                     ~~~~~~~
+
+
+✘ [ERROR] TS2304: Cannot find name 'jasmine'. [plugin angular-compiler]
+
+    src/app/handle-unrecoverable-state.service.spec.ts:20:20:
+      20 │           useValue: jasmine.createSpyObj('NgswCommChannel', []),
+         ╵                     ~~~~~~~
+
+
+✘ [ERROR] TS2503: Cannot find namespace 'jasmine'. [plugin angular-compiler]
+
+    src/app/handle-unrecoverable-state.service.spec.ts:34:34:
+      34 │ ...wUpdateSpy.unrecoverable as jasmine.SpyObj<Subject<Unrecoverabl...
+         ╵                                ~~~~~~~
+
+
+✘ [ERROR] TS2304: Cannot find name 'spyOn'. [plugin angular-compiler]
+
+    src/app/handle-unrecoverable-state.service.spec.ts:36:26:
+      36 │     const consoleLogSpy = spyOn(console, 'log');
+         ╵                           ~~~~~
+
+
+✘ [ERROR] Could not resolve "../material/material.module"
+
+    src/app/menu/menu.component.spec.ts:3:31:
+      3 │ import { MaterialModule } from '../material/material.module';
+        ╵                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2307: Cannot find module '../material/material.module' or its corresponding type declarations. [plugin angular-compiler]
+
+    src/app/menu/menu.component.spec.ts:3:31:
+      3 │ import { MaterialModule } from '../material/material.module';
+        ╵                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] Could not resolve "../material/material.module"
+
+    src/app/news/news.component.spec.ts:4:31:
+      4 │ import { MaterialModule } from '../material/material.module';
+        ╵                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2307: Cannot find module '../material/material.module' or its corresponding type declarations. [plugin angular-compiler]
+
+    src/app/news/news.component.spec.ts:4:31:
+      4 │ import { MaterialModule } from '../material/material.module';
+        ╵                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] Could not resolve "./http-request-interceptor.service"
+
+    src/app/prompt-update.service.spec.ts:4:46:
+      4 │ ...uestInterceptorService } from './http-request-interceptor.service';
+        ╵                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2307: Cannot find module './http-request-interceptor.service' or its corresponding type declarations. [plugin angular-compiler]
+
+    src/app/prompt-update.service.spec.ts:5:46:
+      5 │ ...uestInterceptorService } from './http-request-interceptor.service';
+        ╵                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+error Command failed with exit code 1.                                                                                                                                                                                                                                                                                                                                                                                                  
+
+real	0m1.895s
+user	0m3.617s
+sys	0m0.488s
+[feat/kus/upgrade-2026-06-29 a7762a0c93] end prepare to unit test angular
+ 2 files changed, 35 insertions(+)
+
+real	0m0.138s
+user	0m0.083s
+sys	0m0.058s
+[feat/kus/upgrade-2026-06-29 df8c99330f] add timestamp
+ 2 files changed, 32 insertions(+)
+
+==> running export.sh (refresh docs/llm/dump.txt)
+[feat/kus/upgrade-2026-06-29 b28d6ddf77] add repo context dump
+ 2 files changed, 353 insertions(+), 878 deletions(-)
+
+==> syncing with origin/feat/kus/upgrade-2026-06-29
+From github.com:teamkushal/coloradoquiz
+ * branch                  feat/kus/upgrade-2026-06-29 -> FETCH_HEAD
+warning: skipped previously applied commit 457bff4f02
+warning: skipped previously applied commit 71d4cc63b7
+warning: skipped previously applied commit f75c145891
+warning: skipped previously applied commit 07191ea639
+warning: skipped previously applied commit b15c9adc4f
+warning: skipped previously applied commit a33bb11b56
+warning: skipped previously applied commit ab7a33f858
+warning: skipped previously applied commit dd966da26e
+warning: skipped previously applied commit d1371ebca0
+warning: skipped previously applied commit fc0f3b28a3
+warning: skipped previously applied commit 8d442e6ee3
+warning: skipped previously applied commit 5bd5aab696
+warning: skipped previously applied commit 8f82cbc2b9
+warning: skipped previously applied commit b4ddcbb1fa
+warning: skipped previously applied commit 0564b436ac
+warning: skipped previously applied commit 2369269620
+hint: use --reapply-cherry-picks to include skipped commits
+hint: Disable this message with "git config set advice.skippedCherryPicks false"
+dropping b82f6017df0787c28fd281b223a7d0f12138cb4c add timestamp -- patch contents already upstream
+dropping ba7e04a8803154d9907675c5829c0f837ebfb22a begin add system status -- patch contents already upstream
+dropping 3d12b7a676def732b3cc65bd504947e6d694a047 add system status -- patch contents already upstream
+dropping 5e040447f3a4d8bcf131e98f2e98d55b1a954f83 end add system status -- patch contents already upstream
+dropping 6297ef16ef1b4cee25ada2f5b85164dc4380ab3d begin update node -- patch contents already upstream
+dropping 97c73f2d2fc297c9c3bfc5e7ab5801a09cb22565 end update node -- patch contents already upstream
+dropping 0b8d062d1bc444cc7747714004917179ad30c1c3 begin prepare to build angular -- patch contents already upstream
+dropping 2b0d89d7e830e52343cefdf102588ac284e65257 end prepare to build angular -- patch contents already upstream
+dropping ea007bf0d096494b189423a227784333b8c7b8b6 begin prepare to unit test angular -- patch contents already upstream
+dropping 666534d953d00c8d9c67d623cb5e26e69a7b6ad4 end prepare to unit test angular -- patch contents already upstream
+dropping 743a35c25053dded264f535d6c68a37beac0e47e v0.0.15018 -- patch contents already upstream
+dropping eed5e88f0636d2bd90b631f9792e717dc0272b4a add timestamp -- patch contents already upstream
+dropping cbc39192cf14b00b8afa884d7f056b34d2f0004b add repo context dump -- patch contents already upstream
+dropping ad98b03cb6e901e3b3ead2b47114ccd45764d398 add timestamp -- patch contents already upstream
+dropping 8b7be5341d37529514974c92ee5f15848b2f8e24 begin add system status -- patch contents already upstream
+dropping 08a514850cdf6dbdc29f9f3e7a882dde5ee32ef1 add system status -- patch contents already upstream
+dropping 04ac65d790ca5498fd55cb083acded1dbc6e392a end add system status -- patch contents already upstream
+dropping a15c922a7c4d8b3bae265020beaaf79044ce86ba begin update node -- patch contents already upstream
+dropping 3aef4f065935db4c20da430198c99db44468185b end update node -- patch contents already upstream
+dropping 4c8948e7b57b3740b1c54c3fbe83294226e05439 begin prepare to build angular -- patch contents already upstream
+dropping c12f182d66c3fbe1b77ea618a8c51f3f85a2c7ab end prepare to build angular -- patch contents already upstream
+dropping b28b33db171062685f630fd5ce952735fd32078d begin prepare to unit test angular -- patch contents already upstream
+dropping a18427ca1da2e57292076cae8792b5f53c8270e7 end prepare to unit test angular -- patch contents already upstream
+dropping ec67b901cb178f4edbb2387847aed7925398643c v0.0.15019 -- patch contents already upstream
+dropping 64dc6e4d1f49639ff0182ca158074d3fdc5210dd add timestamp -- patch contents already upstream
+dropping 22ba979779b4ef69ff4f3a4a14775223d786af3d add repo context dump -- patch contents already upstream
+dropping f360ca06cc7da39b317405ea6e21c5709c1f5daf add timestamp -- patch contents already upstream
+dropping 0787e9e5a05a60968e6b6c06ac131b8ff9c08511 begin add system status -- patch contents already upstream
+dropping cd05ca57310dd8805ebefa238e39ffeba508feb5 add system status -- patch contents already upstream
+dropping ffe2225cdf6415fb6e7c2cf16b7b612a67f14a05 end add system status -- patch contents already upstream
+dropping 447c58a7c4c2e7a63f2dad00daeedc150d71db84 begin update node -- patch contents already upstream
+dropping ea641f9563d3575fe9c960642a9d85b9122f38b9 end update node -- patch contents already upstream
+dropping 2121df7f4340aa334469f980d09f3f0fbe4fd7d6 begin prepare to build angular -- patch contents already upstream
+dropping bba69d572b23a91874cdc4fccef61451ecd2e642 end prepare to build angular -- patch contents already upstream
+dropping 43c57da367c51d638f2b762982234e69d235d8d4 begin prepare to unit test angular -- patch contents already upstream
+dropping a60062a51d68ccb86115f89a768cb582a444dcdb end prepare to unit test angular -- patch contents already upstream
+dropping 13063aa02dc9328ec47162deab9c69d126f79b8e v0.0.15020 -- patch contents already upstream
+dropping 2263f431cee5bd768a816ff9552316e67c3afc7f add timestamp -- patch contents already upstream
+dropping 126caab9218507b33719c9cf2c0a6a5f6c3bd6fc add repo context dump -- patch contents already upstream
+dropping af52e4ec95cc357cb355191a7d66e7d9567bf4e3 add timestamp -- patch contents already upstream
+dropping 7e31a73db5964e974de4d593ae8fdff23e3b8482 begin add system status -- patch contents already upstream
+dropping 99fa3158fe4c8c7899b7d971d24e57789d688e08 add system status -- patch contents already upstream
+dropping 9eda00743298a003ffb10c9867fc0d7d9c88a48b end add system status -- patch contents already upstream
+dropping b9a434261f41db7186fc728dde014b434d6e5fa3 begin update node -- patch contents already upstream
+dropping 8d1ce4fa76cc6827f9aa8f32db5ffdb9aaa57120 end update node -- patch contents already upstream
+dropping c877975bb278e4f28e07dbeefc93053a94bcdfd5 begin prepare to build angular -- patch contents already upstream
+dropping 126da14a2cbac713e20e08afa170792c044cc050 end prepare to build angular -- patch contents already upstream
+dropping f1e722f3df6561949c7f63b8fbb7bee884f3bdce begin prepare to unit test angular -- patch contents already upstream
+dropping 4847fdecfaf13b00b9adb34c81c49e19afa2b164 end prepare to unit test angular -- patch contents already upstream
+dropping dde4a92ea4a1c60e91e53989c4ffa6e06a1c9901 v0.0.15021 -- patch contents already upstream
+dropping cf7c3d3199e96c7e93ff54fcbfe46ad4d41b9e45 add timestamp -- patch contents already upstream
+dropping 4e3fcbd60cc853b67af928e7eda896c4ab767ccd add repo context dump -- patch contents already upstream
+dropping 540a26afec3505971efc31168f4784b3baa09c59 add timestamp -- patch contents already upstream
+dropping 66e12abb673d54ba2b17d618c20e72bb62a616e2 begin add system status -- patch contents already upstream
+dropping ba55071cad3d123257d981b52626b30b8febcee2 add system status -- patch contents already upstream
+dropping 1d34998706cec1391d105cf8193f9778908bf55b end add system status -- patch contents already upstream
+dropping bf9f158c7739d2ad09647762947f8672e42e72ba begin update node -- patch contents already upstream
+dropping 6e9066899a360a6b4cba167553303f97a9a75465 end update node -- patch contents already upstream
+dropping 8ae9d7db34a770cdeb8a8be74ba94a7225061b3c begin prepare to build angular -- patch contents already upstream
+dropping 4f1e9e7a8b81c0331ae0284b33720f09e82a400a end prepare to build angular -- patch contents already upstream
+dropping 23352c3e0ae1965b32a8a1fdc827d096b0eecb64 begin prepare to unit test angular -- patch contents already upstream
+dropping 662ae2b87b9e97745116a93b74bc669a06ddfaab end prepare to unit test angular -- patch contents already upstream
+dropping 2103e553c1e7d2aebdc2726a7da0485aaf2093ae v0.0.15022 -- patch contents already upstream
+dropping 3b6c146d9c172ea4f1bb226569c59425684751cb add timestamp -- patch contents already upstream
+dropping 85a9184422f34978df1f69ce8d0ff8002dde1c4e add repo context dump -- patch contents already upstream
+dropping b59cce413d183ee280d243dda9b3144469180620 add all changes -- patch contents already upstream
+dropping 606686457a09385bcf4f393f6dc731c8b171c23a add timestamp -- patch contents already upstream
+dropping b84015637a88d4184cd843ca9681c792ec0e9f39 begin prepare to unit test angular -- patch contents already upstream
+dropping a28a3617eb126696f2ed29cc27e67dee5391f6e5 add repo context dump -- patch contents already upstream
+Successfully rebased and updated refs/heads/feat/kus/upgrade-2026-06-29.
+On branch feat/kus/upgrade-2026-06-29
+nothing to commit, working tree clean
+Enumerating objects: 85, done.
+Counting objects: 100% (85/85), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (61/61), done.
+Writing objects: 100% (75/75), 15.96 KiB | 5.32 MiB/s, done.
+Total 75 (delta 43), reused 2 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (43/43), completed with 6 local objects.
+To github.com:teamkushal/coloradoquiz.git
+   ec9b3e631b..41d4a7da78  feat/kus/upgrade-2026-06-29 -> feat/kus/upgrade-2026-06-29
+
+==> done.
+
+real	1m23.141s
+user	0m53.543s
+sys	0m11.575s
+kushal@fedora:~/src/angular/coloradoquiz$ 

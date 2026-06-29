@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Service } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Quiz } from './quiz';
 
-@Service()
+@Injectable({ providedIn: 'root' })
 export class QuizService {
   private readonly http = inject(HttpClient);
   private readonly baseUrl = '/assets/quiz';

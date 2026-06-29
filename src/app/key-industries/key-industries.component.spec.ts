@@ -8,12 +8,9 @@ describe('KeyIndustriesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KeyIndustriesComponent ]
-    })
-    .compileComponents();
-  });
+      imports: [KeyIndustriesComponent],
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(KeyIndustriesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

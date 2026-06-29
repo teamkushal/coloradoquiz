@@ -1,10 +1,9 @@
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
-import { MaterialModule } from '../material/material.module';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 
 import { NewsComponent } from './news.component';
-import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('NewsComponent', () => {
   let component: NewsComponent;
@@ -12,22 +11,14 @@ describe('NewsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    declarations: [NewsComponent],
-    imports: [MaterialModule],
-    providers: [
-        {
-            provide: ActivatedRoute, useValue: {
-                snapshot: { params: { title: 'top-stories' } }
-            }
-        },
+      imports: [NewsComponent],
+      providers: [
+        provideNoopAnimations(),
         provideHttpClient(withXhr(), withInterceptorsFromDi()),
-        provideHttpClientTesting()
-    ]
-})
-    .compileComponents();
-  });
+        provideHttpClientTesting(),
+      ],
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(NewsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
