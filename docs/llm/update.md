@@ -61,3 +61,21 @@ yarn install v1.22.22
 success Already up-to-date.
 Done in 0.47s.
 ```
+```bash
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Latest version:     1.0.30001800
+Installed version:  1.0.30001799
+Removing old caniuse-lite from lock file
+Installing new caniuse-lite version
+$ yarn add -W caniuse-lite baseline-browser-mapping
+warning " > vitest@4.1.9" has unmet peer dependency "vite@^6.0.0 || ^7.0.0 || ^8.0.0".
+Cleaning package.json dependencies from caniuse-lite
+$ yarn remove -W caniuse-lite baseline-browser-mapping
+warning " > vitest@4.1.9" has unmet peer dependency "vite@^6.0.0 || ^7.0.0 || ^8.0.0".
+caniuse-lite has been successfully updated
+
+No target browser changes
+```
+```bash
