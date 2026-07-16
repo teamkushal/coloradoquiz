@@ -17,3 +17,4 @@ Swap:          975Mi       975Mi       512Ki
 System Storage
 1.3G	.
 ```
+```bash
