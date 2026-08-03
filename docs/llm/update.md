@@ -18,3 +18,46 @@ System Storage
 1.3G	.
 ```
 ```bash
+yarn run v1.22.22
+$ ng version
+
+     _                      _                 ____ _     ___
+    / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
+   / △ \ | '_ \ / _` | | | | |/ _` | '__|   | |   | |    | |
+  / ___ \| | | | (_| | |_| | | (_| | |      | |___| |___ | |
+ /_/   \_\_| |_|\__, |\__,_|_|\__,_|_|       \____|_____|___|
+                |___/
+    
+
+Angular CLI       : 22.1.2
+Angular           : 22.1.0
+Node.js           : 24.18.1
+Package Manager   : yarn 1.22.22
+Operating System  : linux x64
+
+┌───────────────────────────┬───────────────────┬───────────────────┐
+│ Package                   │ Installed Version │ Requested Version │
+├───────────────────────────┼───────────────────┼───────────────────┤
+│ @angular/animations       │ 22.1.0            │ ^22.1.0           │
+│ @angular/build            │ 22.1.2            │ ^22.1.2           │
+│ @angular/cdk              │ 22.1.0            │ ^22.1.0           │
+│ @angular/cli              │ 22.1.2            │ ^22.1.2           │
+│ @angular/common           │ 22.1.0            │ ^22.1.0           │
+│ @angular/compiler         │ 22.1.0            │ ^22.1.0           │
+│ @angular/compiler-cli     │ 22.1.0            │ ^22.1.0           │
+│ @angular/core             │ 22.1.0            │ ^22.1.0           │
+│ @angular/forms            │ 22.1.0            │ ^22.1.0           │
+│ @angular/material         │ 22.1.0            │ ^22.1.0           │
+│ @angular/platform-browser │ 22.1.0            │ ^22.1.0           │
+│ @angular/router           │ 22.1.0            │ ^22.1.0           │
+│ @angular/service-worker   │ 22.1.0            │ ^22.1.0           │
+│ rxjs                      │ 7.8.1             │ ~7.8.0            │
+│ typescript                │ 6.0.3             │ ~6.0.2            │
+│ vitest                    │ 4.1.9             │ ^4.0.8            │
+└───────────────────────────┴───────────────────┴───────────────────┘
+Done in 0.89s.
+yarn install v1.22.22
+[1/4] Resolving packages...
+success Already up-to-date.
+Done in 0.37s.
+```
