@@ -73,3 +73,33 @@ caniuse-lite has been successfully updated
 No target browser changes
 ```
 ```bash
+yarn run v1.22.22
+$ ng build --configuration production
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+❯ Building...
+✔ Building...
+Initial chunk files | Names                    |  Raw size | Estimated transfer size
+main-A3FKMQUG.js    | main                     | 170.91 kB |                43.96 kB
+chunk-pY4VO7By.js   | -                        | 160.72 kB |                48.11 kB
+styles-AX2II72J.css | styles                   |   8.05 kB |                 1.31 kB
+
+                    | Initial total            | 339.68 kB |                93.39 kB
+
+Lazy chunk files    | Names                    |  Raw size | Estimated transfer size
+chunk-Coo_dKBP.js   | -                        | 107.60 kB |                21.59 kB
+chunk-pyqlkxSs.js   | browser                  |  67.86 kB |                17.80 kB
+chunk-D6y8P533.js   | quiz-component           |  55.90 kB |                13.54 kB
+chunk-BychvtSp.js   | -                        |  29.20 kB |                 7.49 kB
+chunk-DiLpTCt7.js   | -                        |  24.21 kB |                 5.83 kB
+chunk-CQUA_QZz.js   | key-industries-component |   3.76 kB |                 1.18 kB
+chunk-BxG9H6Bq.js   | news-component           |   3.35 kB |                 1.42 kB
+chunk-BW4EiYu9.js   | home-component           |   1.43 kB |               679 bytes
+chunk-BOXFNWda.js   | loader-io-component      | 307 bytes |               307 bytes
+chunk-BMuhZ-oj.js   | playground-component     | 246 bytes |               246 bytes
+
+Application bundle generation complete. [7.246 seconds] - 2026-09-01T05:10:34.070Z
+
+Output location: /home/kushal/src/angular/coloradoquiz/public
+
+Done in 9.19s.
+```
