@@ -73,3 +73,28 @@ caniuse-lite has been successfully updated
 No target browser changes
 ```
 ```bash
+yarn run v1.22.22
+$ ng build --configuration production
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+❯ Building...
+✔ Building...
+Application bundle generation failed. [1.065 seconds] - 2026-10-09T06:10:28.103Z
+
+✘ [ERROR] Angular compilation initialization failed. [plugin angular-compiler]
+
+  SyntaxError: The requested module '@jridgewell/sourcemap-codec' does not provide an export named 'encodeRangeMappings'
+      at ModuleJobSync.runSync (node:internal/modules/esm/module_job:658:17)
+      at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:347:47)
+      at loadESMFromCJS (node:internal/modules/cjs/loader:1747:24)
+      at Module._compile (node:internal/modules/cjs/loader:1911:5)
+      at Object..js (node:internal/modules/cjs/loader:2060:10)
+      at Module.load (node:internal/modules/cjs/loader:1651:32)
+      at Module._load (node:internal/modules/cjs/loader:1443:12)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+      at Module.require (node:internal/modules/cjs/loader:1674:12)
+      at require (node:internal/modules/helpers:157:16)
+
+
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+```
