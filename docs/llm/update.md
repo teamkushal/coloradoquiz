@@ -61,3 +61,25 @@ yarn install v1.22.22
 success Already up-to-date.
 Done in 0.37s.
 ```
+```bash
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Registry latest:         1.0.30001828
+Installed version:       1.0.30001827
+Removing old caniuse-lite from lock file
+Installing new caniuse-lite version
+$ yarn add -W caniuse-lite baseline-browser-mapping
+warning "@angular/build > @oxc-parser/binding-wasm32-wasi > @napi-rs/wasm-runtime@1.2.7" has incorrect peer dependency "@emnapi/core@^1.7.1 || 2.0.0-beta.2 || 2.0.0-beta.3".
+warning "@angular/build > @oxc-parser/binding-wasm32-wasi > @napi-rs/wasm-runtime@1.2.7" has incorrect peer dependency "@emnapi/runtime@^1.7.1 || 2.0.0-beta.2 || 2.0.0-beta.3".
+warning " > vitest@4.1.9" has unmet peer dependency "vite@^6.0.0 || ^7.0.0 || ^8.0.0".
+Cleaning package.json dependencies from caniuse-lite
+$ yarn remove -W caniuse-lite baseline-browser-mapping
+warning "@angular/build > @oxc-parser/binding-wasm32-wasi > @napi-rs/wasm-runtime@1.2.7" has incorrect peer dependency "@emnapi/core@^1.7.1 || 2.0.0-beta.2 || 2.0.0-beta.3".
+warning "@angular/build > @oxc-parser/binding-wasm32-wasi > @napi-rs/wasm-runtime@1.2.7" has incorrect peer dependency "@emnapi/runtime@^1.7.1 || 2.0.0-beta.2 || 2.0.0-beta.3".
+warning " > vitest@4.1.9" has unmet peer dependency "vite@^6.0.0 || ^7.0.0 || ^8.0.0".
+caniuse-lite has been successfully updated
+
+No target browser changes
+```
+```bash
